@@ -12,5 +12,3 @@ iOS 9 SDK, OSX 10.11 SDK
 
 iOS 9, 64 bit devices
 OSX 10.11
-
-Copyright (C) 2014~2015 Apple Inc. All rights reserved.
