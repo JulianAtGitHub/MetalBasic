@@ -46,6 +46,11 @@
     
     // this is the default but if we wanted to perform compute on the final rendering layer we could set this to no
     _metalLayer.framebufferOnly = YES;
+    
+    // setup view with drawable formats
+    _depthPixelFormat   = MTLPixelFormatDepth32Float;
+    _stencilPixelFormat = MTLPixelFormatInvalid;
+    _sampleCount        = 1;
 }
 
 #ifdef TARGET_IOS

@@ -131,11 +131,6 @@ static const float kCubeVertexData[] =
     // find a usable Device
     _device = view.device;
     
-    // setup view with drawable formats
-    view.depthPixelFormat   = MTLPixelFormatDepth32Float;
-    view.stencilPixelFormat = MTLPixelFormatInvalid;
-    view.sampleCount        = 1;
-    
     // create a new command queue
     _commandQueue = [_device newCommandQueue];
     

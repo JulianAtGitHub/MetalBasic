@@ -8,9 +8,9 @@
 class RPObjModel {
 
 	enum VertexDataType {
-		Position 	= 0x01,
-		TexCoord 	= 0x10,
-		Normal 		= 0x100
+		VDT_Position 	= 0x01,
+		VDT_TexCoord 	= 0x10,
+		VDT_Normal 		= 0x100
 	};
 
 	const static std::string position_key_;
@@ -22,15 +22,17 @@ public:
 	RPObjModel(const std::string &filePath);
 	~RPObjModel(void);
 
+	inline uint GetDataType(void) {return dataType_;}
+	inline const std::vector<float>& GetVertexData(void) {return vertexDatas_;}
+	inline const std::vector<uint>& GetIndexData(void) {return indexDatas_;}
+
 protected:
 	bool ParseModel(const std::string &filePath);
-	inline const std::vertor<float>& GetVertexData(void) {return vertexDatas_;}
-	inline const std::vertor<int>& GetIndexData(void) {return indexDatas_;}
 
 private:
-	unsigned int types_;
-	std::vertor<float> vertexDatas_;
-	std::vector<int> indexDatas_;
+	uint dataType_;
+	std::vector<float> vertexDatas_;
+	std::vector<uint> indexDatas_;
 };
 
 #endif /* _RP_OBJ_MODEL_H_ */

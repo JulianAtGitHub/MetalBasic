@@ -37,6 +37,9 @@
 		626C60FA1932F165007A3E00 /* AAPLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626C60EE1932F165007A3E00 /* AAPLViewController.mm */; };
 		626C61091932F259007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C61081932F259007A3E00 /* Metal.framework */; };
 		626C610B1932F25E007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C610A1932F25E007A3E00 /* QuartzCore.framework */; };
+		F2CCB1DC1DC07A78000AF9C3 /* suzanne_low.obj in Resources */ = {isa = PBXBuildFile; fileRef = F2CCB1DA1DC07A78000AF9C3 /* suzanne_low.obj */; };
+		F2CCB1DD1DC07A78000AF9C3 /* suzanne.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CCB1DB1DC07A78000AF9C3 /* suzanne.png */; };
+		F2CCB1E01DC07ABB000AF9C3 /* RPObjModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,10 @@
 		626C60EE1932F165007A3E00 /* AAPLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAPLViewController.mm; sourceTree = "<group>"; };
 		626C61081932F259007A3E00 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		626C610A1932F25E007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F2CCB1DA1DC07A78000AF9C3 /* suzanne_low.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = suzanne_low.obj; path = Resources/suzanne_low.obj; sourceTree = "<group>"; };
+		F2CCB1DB1DC07A78000AF9C3 /* suzanne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = suzanne.png; path = Resources/suzanne.png; sourceTree = "<group>"; };
+		F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RPObjModel.cpp; sourceTree = "<group>"; };
+		F2CCB1DF1DC07ABB000AF9C3 /* RPObjModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPObjModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +102,8 @@
 		2541A06C1DBA8A2500D9DBD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2CCB1DA1DC07A78000AF9C3 /* suzanne_low.obj */,
+				F2CCB1DB1DC07A78000AF9C3 /* suzanne.png */,
 				2541A06D1DBA8A3800D9DBD4 /* suzanne.mtl */,
 				2541A06E1DBA8A3800D9DBD4 /* suzanne.obj */,
 			);
@@ -145,6 +154,8 @@
 		622A9BA319A983FC007F8120 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */,
+				F2CCB1DF1DC07ABB000AF9C3 /* RPObjModel.h */,
 				629ADF531933EBBC00DEFFB1 /* App */,
 				629ADF551933EBD800DEFFB1 /* Math */,
 			);
@@ -326,8 +337,10 @@
 			files = (
 				2541A0711DBA8A3800D9DBD4 /* suzanne.obj in Resources */,
 				3A2179371BCC653D0073FB40 /* Assets.xcassets in Resources */,
+				F2CCB1DD1DC07A78000AF9C3 /* suzanne.png in Resources */,
 				3A2179351BCC65370073FB40 /* Main.storyboard in Resources */,
 				2541A06F1DBA8A3800D9DBD4 /* suzanne.mtl in Resources */,
+				F2CCB1DC1DC07A78000AF9C3 /* suzanne_low.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +369,7 @@
 				3A21792E1BCC5BDD0073FB40 /* AAPLTransforms.mm in Sources */,
 				3A59134E1BCC55CF00890143 /* AAPLView.mm in Sources */,
 				3A59134D1BCC557900890143 /* AAPLViewController.mm in Sources */,
+				F2CCB1E01DC07ABB000AF9C3 /* RPObjModel.cpp in Sources */,
 				3A2179311BCC652A0073FB40 /* main.m in Sources */,
 				3A5913711BCC565D00890143 /* AAPLAppDelegate.m in Sources */,
 			);
@@ -392,10 +406,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					TARGET_OSX,
@@ -414,10 +430,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = TARGET_OSX;
 				INFOPLIST_FILE = "MetalBasic3D/OSX//Info.plist";
