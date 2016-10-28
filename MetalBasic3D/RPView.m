@@ -9,35 +9,19 @@
 #import "RPView.h"
 
 @implementation RPView {
+
 @private
     BOOL _drawPause;
 }
 
-- (RPSurface *) surface {
-    return (RPSurface *)self.layer;
-}
-
-- (void)initCommon {
-    _drawPause = NO;
-    _updateLayerSizeFlag = NO;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-    if(self = [super initWithFrame:frame]) {
-        [self initCommon];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    if(self = [super initWithCoder:coder]) {
-        [self initCommon];
-    }
-    return self;
-}
-
 - (void)updateLayerSize {
-    
+    CGSize newSize = self.bounds.size;
+    NSScreen* screen = self.window.screen ?: [NSScreen mainScreen];
+    newSize.width *= screen.backingScaleFactor;
+    newSize.height *= screen.backingScaleFactor;
+    if (self.delegate) {
+        [self.delegate reshape:newSize];
+    }
 }
 
 - (void)display {
@@ -48,6 +32,10 @@
     if (_updateLayerSizeFlag) {
         [self updateLayerSize];
         _updateLayerSizeFlag = NO;
+    }
+
+    if (self.delegate) {
+        [self.delegate draw];
     }
 }
 

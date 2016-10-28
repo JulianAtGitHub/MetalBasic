@@ -1,60 +1,44 @@
 //
-//  RPSurface.m
+//  RPRenderer.m
 //  MetalBasic3D
 //
 //  Created by Julian on 27/10/2016.
 //  Copyright © 2016 Apple Inc. All rights reserved.
 //
 
-#import "RPSurface.h"
+#import "RPRenderer.h"
 
-@implementation RPSurface {
-    
+@implementation RPRenderer {
+
 @private
-    id <MTLTexture>  _depthTexture;
-    id <MTLTexture>  _stencilTexture;
-    id <MTLTexture>  _msaaTexture;
-    
-    MTLRenderPassDescriptor *_renderPassDescriptor;
-}
-
-+ (instancetype)surface {
-    return [RPSurface layer];
-}
-
-- (void) initCommon {
-    self.device = MTLCreateSystemDefaultDevice();
-    
-    self.pixelFormat = MTLPixelFormatBGRA8Unorm;
-    self.depthPixelFormat = MTLPixelFormatDepth32Float;
-    self.stencilPixelFormat = MTLPixelFormatInvalid;
-    self.multisampleCount = 1;
-    
-    // this is the default but if we wanted to perform compute on the final rendering layer we could set this to no
-    self.framebufferOnly = YES;
-    
-    _renderPassDescriptor = [MTLRenderPassDescriptor renderPassDescriptor];
+	__weak CAMetalLayer *_metalLayer;
+	id<MTLDevice> _device;
+	MTLRenderPassDescriptor *_renderPassDescriptor;
 }
 
 - (id)init {
     if(self = [super init]) {
-        [self initCommon];
-    }
-    return self;
-}
+        _colorPixelFormat = MTLPixelFormatBGRA8Unorm;
+    	_depthPixelFormat = MTLPixelFormatDepth32Float;
+    	_stencilPixelFormat = MTLPixelFormatInvalid;
+    	_multisampleCount = 1;
 
-- (id)initWithLayer:(id)layer {
-    if(self = [super initWithLayer:layer]) {
-        [self initCommon];
+    	_device = MTLCreateSystemDefaultDevice();
+    	_renderPassDescriptor = [MTLRenderPassDescriptor renderPassDescriptor];
+
+    	_layer = _metalLayer = [CAMetalLayer layer];
+    	_metalLayer.device = _device;
+        _metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
+        _metalLayer.framebufferOnly = YES;
     }
     return self;
 }
 
 - (void)reshape:(CGSize)size {
-    self.drawableSize = size;
+	_metalLayer.drawableSize = size;
     NSUInteger width = size.width;
     NSUInteger height = size.height;
-    id <MTLTexture> colorTexture = self.nextDrawable.texture;
+    id <MTLTexture> colorTexture = _metalLayer.nextDrawable.texture;
     
     MTLRenderPassColorAttachmentDescriptor *colorAttachment = _renderPassDescriptor.colorAttachments[0];
     colorAttachment.texture = colorTexture;
@@ -73,11 +57,11 @@
         // this must match the sample count given to any pipeline state using this render pass descriptor
         desc.sampleCount = _multisampleCount;
         
-        _msaaTexture = [self.device newTextureWithDescriptor: desc];
+        id <MTLTexture> msaaTexture = [_device newTextureWithDescriptor: desc];
         
         // When multisampling, perform rendering to _msaaTex, then resolve
         // to 'texture' at the end of the scene
-        colorAttachment.texture = _msaaTexture;
+        colorAttachment.texture = msaaTexture;
         colorAttachment.resolveTexture = colorTexture;
         
         // set store action to resolve in this case
@@ -102,10 +86,10 @@
         desc.usage = MTLTextureUsageUnknown;
         desc.storageMode = MTLStorageModePrivate;
         
-        _depthTexture = [self.device newTextureWithDescriptor: desc];
+        id <MTLTexture> depthTexture = [_device newTextureWithDescriptor: desc];
         
         MTLRenderPassDepthAttachmentDescriptor *depthAttachment = _renderPassDescriptor.depthAttachment;
-        depthAttachment.texture = _depthTexture;
+        depthAttachment.texture = depthTexture;
         depthAttachment.loadAction = MTLLoadActionClear;
         depthAttachment.storeAction = MTLStoreActionDontCare;
         depthAttachment.clearDepth = 1.0;
@@ -126,10 +110,10 @@
         desc.textureType = (_multisampleCount > 1) ? MTLTextureType2DMultisample : MTLTextureType2D;
         desc.sampleCount = _multisampleCount;
         
-        _stencilTexture = [self.device newTextureWithDescriptor: desc];
+        id <MTLTexture> stencilTexture = [_device newTextureWithDescriptor: desc];
         
         MTLRenderPassStencilAttachmentDescriptor* stencilAttachment = _renderPassDescriptor.stencilAttachment;
-        stencilAttachment.texture = _stencilTexture;
+        stencilAttachment.texture = stencilTexture;
         stencilAttachment.loadAction = MTLLoadActionClear;
         stencilAttachment.storeAction = MTLStoreActionDontCare;
         stencilAttachment.clearStencil = 0;
@@ -137,6 +121,18 @@
         MTLRenderPassStencilAttachmentDescriptor* stencilAttachment = _renderPassDescriptor.stencilAttachment;
         stencilAttachment.texture = nil;
     } //stencil
+}
+
+- (void)draw {
+
+}
+
+- (void)update:(NSTimeInterval)deltaTime {
+    
+}
+
+- (void)viewController:(RPViewController *)controller willPause:(BOOL)pause {
+    
 }
 
 @end

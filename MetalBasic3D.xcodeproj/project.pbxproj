@@ -11,13 +11,8 @@
 		2541A0701DBA8A3800D9DBD4 /* suzanne.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 2541A06D1DBA8A3800D9DBD4 /* suzanne.mtl */; };
 		2541A0711DBA8A3800D9DBD4 /* suzanne.obj in Resources */ = {isa = PBXBuildFile; fileRef = 2541A06E1DBA8A3800D9DBD4 /* suzanne.obj */; };
 		2541A0721DBA8A3800D9DBD4 /* suzanne.obj in Resources */ = {isa = PBXBuildFile; fileRef = 2541A06E1DBA8A3800D9DBD4 /* suzanne.obj */; };
-		25CCA93A1DC2433D00E2F666 /* RPSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CCA9381DC2433D00E2F666 /* RPSurface.h */; };
-		25CCA93B1DC2433D00E2F666 /* RPSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CCA9391DC2433D00E2F666 /* RPSurface.m */; };
-		25CCA93C1DC2433D00E2F666 /* RPSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CCA9391DC2433D00E2F666 /* RPSurface.m */; };
 		25CCA9421DC2546300E2F666 /* RPView.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CCA9401DC2546300E2F666 /* RPView.h */; };
 		25CCA9431DC2546300E2F666 /* RPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CCA9411DC2546300E2F666 /* RPView.m */; };
-		25CCA9441DC2546300E2F666 /* RPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CCA9411DC2546300E2F666 /* RPView.m */; };
-		25CCA9471DC2571A00E2F666 /* RPView_macOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CCA9461DC2571A00E2F666 /* RPView_macOS.m */; };
 		3A21792D1BCC5BD00073FB40 /* AAPLRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626C60E71932F165007A3E00 /* AAPLRenderer.mm */; };
 		3A21792E1BCC5BDD0073FB40 /* AAPLTransforms.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626C60EA1932F165007A3E00 /* AAPLTransforms.mm */; };
 		3A21792F1BCC63F90073FB40 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 623F27DB19340FA2000FA88C /* shaders.metal */; };
@@ -44,6 +39,8 @@
 		626C60FA1932F165007A3E00 /* AAPLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626C60EE1932F165007A3E00 /* AAPLViewController.mm */; };
 		626C61091932F259007A3E00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C61081932F259007A3E00 /* Metal.framework */; };
 		626C610B1932F25E007A3E00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C610A1932F25E007A3E00 /* QuartzCore.framework */; };
+		F2AE86E41DC33A2E004B800B /* RPRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AE86E31DC33A2E004B800B /* RPRenderer.m */; };
+		F2AE86E71DC33AF5004B800B /* RPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AE86E61DC33AF5004B800B /* RPViewController.m */; };
 		F2CCB1DC1DC07A78000AF9C3 /* suzanne_low.obj in Resources */ = {isa = PBXBuildFile; fileRef = F2CCB1DA1DC07A78000AF9C3 /* suzanne_low.obj */; };
 		F2CCB1DD1DC07A78000AF9C3 /* suzanne.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CCB1DB1DC07A78000AF9C3 /* suzanne.png */; };
 		F2CCB1E01DC07ABB000AF9C3 /* RPObjModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */; };
@@ -52,12 +49,8 @@
 /* Begin PBXFileReference section */
 		2541A06D1DBA8A3800D9DBD4 /* suzanne.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = suzanne.mtl; path = Resources/suzanne.mtl; sourceTree = "<group>"; };
 		2541A06E1DBA8A3800D9DBD4 /* suzanne.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = suzanne.obj; path = Resources/suzanne.obj; sourceTree = "<group>"; };
-		25CCA9381DC2433D00E2F666 /* RPSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPSurface.h; sourceTree = "<group>"; };
-		25CCA9391DC2433D00E2F666 /* RPSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPSurface.m; sourceTree = "<group>"; };
 		25CCA9401DC2546300E2F666 /* RPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPView.h; sourceTree = "<group>"; };
 		25CCA9411DC2546300E2F666 /* RPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPView.m; sourceTree = "<group>"; };
-		25CCA9451DC2571A00E2F666 /* RPView_macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPView_macOS.h; sourceTree = "<group>"; };
-		25CCA9461DC2571A00E2F666 /* RPView_macOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPView_macOS.m; sourceTree = "<group>"; };
 		3A2179301BCC652A0073FB40 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OSX/main.m; sourceTree = "<group>"; };
 		3A2179321BCC65310073FB40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = OSX/Info.plist; sourceTree = "<group>"; };
 		3A2179341BCC65370073FB40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = OSX/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +79,10 @@
 		626C60EE1932F165007A3E00 /* AAPLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAPLViewController.mm; sourceTree = "<group>"; };
 		626C61081932F259007A3E00 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		626C610A1932F25E007A3E00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F2AE86E21DC33A2E004B800B /* RPRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPRenderer.h; sourceTree = "<group>"; };
+		F2AE86E31DC33A2E004B800B /* RPRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPRenderer.m; sourceTree = "<group>"; };
+		F2AE86E51DC33AF5004B800B /* RPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPViewController.h; sourceTree = "<group>"; };
+		F2AE86E61DC33AF5004B800B /* RPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPViewController.m; sourceTree = "<group>"; };
 		F2CCB1DA1DC07A78000AF9C3 /* suzanne_low.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = suzanne_low.obj; path = Resources/suzanne_low.obj; sourceTree = "<group>"; };
 		F2CCB1DB1DC07A78000AF9C3 /* suzanne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = suzanne.png; path = Resources/suzanne.png; sourceTree = "<group>"; };
 		F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RPObjModel.cpp; sourceTree = "<group>"; };
@@ -169,12 +166,12 @@
 			children = (
 				F2CCB1DE1DC07ABB000AF9C3 /* RPObjModel.cpp */,
 				F2CCB1DF1DC07ABB000AF9C3 /* RPObjModel.h */,
-				25CCA9381DC2433D00E2F666 /* RPSurface.h */,
-				25CCA9391DC2433D00E2F666 /* RPSurface.m */,
+				F2AE86E21DC33A2E004B800B /* RPRenderer.h */,
+				F2AE86E31DC33A2E004B800B /* RPRenderer.m */,
 				25CCA9401DC2546300E2F666 /* RPView.h */,
 				25CCA9411DC2546300E2F666 /* RPView.m */,
-				25CCA9451DC2571A00E2F666 /* RPView_macOS.h */,
-				25CCA9461DC2571A00E2F666 /* RPView_macOS.m */,
+				F2AE86E51DC33AF5004B800B /* RPViewController.h */,
+				F2AE86E61DC33AF5004B800B /* RPViewController.m */,
 				629ADF531933EBBC00DEFFB1 /* App */,
 				629ADF551933EBD800DEFFB1 /* Math */,
 			);
@@ -270,7 +267,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25CCA93A1DC2433D00E2F666 /* RPSurface.h in Headers */,
 				3A59133C1BCC46E600890143 /* AAPLAppDelegate.h in Headers */,
 				626C60F41932F165007A3E00 /* AAPLSharedTypes.h in Headers */,
 				626C60F21932F165007A3E00 /* AAPLRenderer.h in Headers */,
@@ -387,14 +383,14 @@
 			files = (
 				3A21792F1BCC63F90073FB40 /* shaders.metal in Sources */,
 				3A21792D1BCC5BD00073FB40 /* AAPLRenderer.mm in Sources */,
+				F2AE86E41DC33A2E004B800B /* RPRenderer.m in Sources */,
 				3A21792E1BCC5BDD0073FB40 /* AAPLTransforms.mm in Sources */,
 				3A59134E1BCC55CF00890143 /* AAPLView.mm in Sources */,
+				F2AE86E71DC33AF5004B800B /* RPViewController.m in Sources */,
 				25CCA9431DC2546300E2F666 /* RPView.m in Sources */,
 				3A59134D1BCC557900890143 /* AAPLViewController.mm in Sources */,
 				F2CCB1E01DC07ABB000AF9C3 /* RPObjModel.cpp in Sources */,
-				25CCA93B1DC2433D00E2F666 /* RPSurface.m in Sources */,
 				3A2179311BCC652A0073FB40 /* main.m in Sources */,
-				25CCA9471DC2571A00E2F666 /* RPView_macOS.m in Sources */,
 				3A5913711BCC565D00890143 /* AAPLAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,9 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25CCA9441DC2546300E2F666 /* RPView.m in Sources */,
 				626C60F81932F165007A3E00 /* AAPLView.mm in Sources */,
-				25CCA93C1DC2433D00E2F666 /* RPSurface.m in Sources */,
 				626C60F31932F165007A3E00 /* AAPLRenderer.mm in Sources */,
 				3A59133D1BCC46E600890143 /* AAPLAppDelegate.mm in Sources */,
 				626C60F61932F165007A3E00 /* AAPLTransforms.mm in Sources */,

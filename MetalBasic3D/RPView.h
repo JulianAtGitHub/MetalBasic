@@ -6,17 +6,25 @@
 //  Copyright © 2016 Apple Inc. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "RPSurface.h"
+
+#import <AppKit/AppKit.h>
+
+@protocol RPViewDelegate;
 
 @interface RPView : NSView
 
-@property (nonatomic, readonly) RPSurface *surface;
+@property (nonatomic, weak) id <RPViewDelegate> delegate;
 
 @property (nonatomic, readwrite) BOOL updateLayerSizeFlag;
 
-- (void)initCommon;
-
 - (void)updateLayerSize;
+
+@end
+
+@protocol RPViewDelegate <NSObject>
+
+@required
+- (void)reshape:(CGSize)size;
+- (void)draw;
 
 @end
