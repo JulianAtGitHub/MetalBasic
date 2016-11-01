@@ -5,27 +5,29 @@
 #include <array>
 #include <cstdlib>
 #include <cstring>
-#include <simd/simd.h>
 
+#include "RPMathType.h"
 #include "RPObjModel.h"
 
-const std::string RPObjModel::position_key_ = "v";
-const std::string RPObjModel::texcoord_key_ = "vt";
-const std::string RPObjModel::normal_key_ = "vn";
-const std::string RPObjModel::primitive_key_ = "f";
+namespace RedPixel {
 
-RPObjModel::RPObjModel(const std::string &filePath) 
+const std::string ObjModel::position_key_ = "v";
+const std::string ObjModel::texcoord_key_ = "vt";
+const std::string ObjModel::normal_key_ = "vn";
+const std::string ObjModel::primitive_key_ = "f";
+
+ObjModel::ObjModel(const std::string &filePath) 
 :dataType_(0) {
 	if (!ParseModel(filePath)) {
 		std::cout << "Parse Model File:" << filePath << " Failed" << std::endl;
 	}
 }
 
-RPObjModel::~RPObjModel(void) {
+ObjModel::~ObjModel(void) {
 
 }
 
-bool RPObjModel::ParseModel(const std::string &filePath) {
+bool ObjModel::ParseModel(const std::string &filePath) {
 	std::ifstream objFile(filePath);
 	if (!objFile.is_open()) {
 		return false;
@@ -34,34 +36,34 @@ bool RPObjModel::ParseModel(const std::string &filePath) {
 	vertexDatas_.clear();
 	indexDatas_.clear();
 
-	std::vector<simd::float3> positions;
-	std::vector<simd::float2> texcoords;
-	std::vector<simd::float3> normals;
+	std::vector<float3> positions;
+	std::vector<float2> texcoords;
+	std::vector<float3> normals;
 	std::vector<std::string> primitives;
 
 	std::string strWord;
-	simd::float2 attrfloat2;
-	simd::float3 attrfloat3;
+	float2 attrfloat2;
+	float3 attrfloat3;
 
 	while (objFile >> strWord) {
 		if (strWord == position_key_) {
 			for (int i = 0; i < 3; ++i) {
 				objFile >> strWord;
-				attrfloat3[i] = std::stof(strWord);
+				attrfloat3.v[i] = std::stof(strWord);
 			}
 			positions.push_back(attrfloat3);
 
 		} else if (strWord == texcoord_key_) {
 			for (int i = 0; i < 2; ++i) {
 				objFile >> strWord;
-				attrfloat2[i] = std::stof(strWord);
+				attrfloat2.v[i] = std::stof(strWord);
 			}
 			texcoords.push_back(attrfloat2);
 
 		} else if (strWord == normal_key_) {
 			for (int i = 0; i < 3; ++i) {
 				objFile >> strWord;
-				attrfloat3[i] = std::stof(strWord);
+				attrfloat3.v[i] = std::stof(strWord);
 			}
 			normals.push_back(attrfloat3);
 
@@ -93,22 +95,22 @@ bool RPObjModel::ParseModel(const std::string &filePath) {
 		iss.getline(&arr[0], 8, '/');
 		if (std::strlen(&arr[0]) > 0){
 			int index = std::atoi(&arr[0]) - 1;
-			simd::float3 position = positions[index];
-			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(position[i]);}
+			float3 &position = positions[index];
+			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(position.v[i]);}
 		}
 
 		iss.getline(&arr[0], 8, '/');
 		if (std::strlen(&arr[0]) > 0){
 			int index = std::atoi(&arr[0]) - 1;
-			simd::float2 texcoord = texcoords[index];
-			for (int i = 0; i < 2; ++i) {vertexDatas_.push_back(texcoord[i]);}
+			float2 &texcoord = texcoords[index];
+			for (int i = 0; i < 2; ++i) {vertexDatas_.push_back(texcoord.v[i]);}
 		}
 
 		iss.getline(&arr[0], 8, '/');
 		if (std::strlen(&arr[0]) > 0){
 			int index = std::atoi(&arr[0]) - 1;
-			simd::float3 normal = normals[index];
-			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(normal[i]);}
+			float3 &normal = normals[index];
+			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(normal.v[i]);}
 		}
 	}
 
@@ -121,12 +123,14 @@ bool RPObjModel::ParseModel(const std::string &filePath) {
 	return true;
 }
 
-const void * RPObjModel::GetVertexData(uint &length) {
+const void * ObjModel::GetVertexData(uint &length) {
 	length = vertexDatas_.size() << 2;
 	return &(vertexDatas_[0]);
 }
 
-const void * RPObjModel::GetIndexData(uint &length) {
+const void * ObjModel::GetIndexData(uint &length) {
 	length = indexDatas_.size() << 2;
 	return &(indexDatas_[0]);
+}
+
 }

@@ -5,9 +5,11 @@
 #include <string>
 #include <vector>
 
-#include "RPModel.h"
+#include "RPIModel.h"
 
-class RPObjModel : public RPModel {
+namespace RedPixel {
+
+class ObjModel : public IModel {
 
 	enum VertexDataType {
 		VDT_Position 	= 0x01,
@@ -21,8 +23,8 @@ class RPObjModel : public RPModel {
 	const static std::string primitive_key_;
 
 public:
-	RPObjModel(const std::string &filePath);
-	~RPObjModel(void);
+	ObjModel(const std::string &filePath);
+	~ObjModel(void);
 
 	inline uint GetDataType(void) {return dataType_;}
 	virtual const void * GetVertexData(uint &length);
@@ -36,5 +38,7 @@ private:
 	std::vector<float> vertexDatas_;
 	std::vector<uint> indexDatas_;
 };
+
+}
 
 #endif /* _RP_OBJ_MODEL_H_ */
