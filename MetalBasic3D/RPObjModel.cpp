@@ -120,3 +120,13 @@ bool RPObjModel::ParseModel(const std::string &filePath) {
 
 	return true;
 }
+
+const void * RPObjModel::GetVertexData(uint &length) {
+	length = vertexDatas_.size() << 2;
+	return &(vertexDatas_[0]);
+}
+
+const void * RPObjModel::GetIndexData(uint &length) {
+	length = indexDatas_.size() << 2;
+	return &(indexDatas_[0]);
+}

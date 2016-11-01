@@ -5,7 +5,9 @@
 #include <string>
 #include <vector>
 
-class RPObjModel {
+#include "RPModel.h"
+
+class RPObjModel : public RPModel {
 
 	enum VertexDataType {
 		VDT_Position 	= 0x01,
@@ -23,8 +25,8 @@ public:
 	~RPObjModel(void);
 
 	inline uint GetDataType(void) {return dataType_;}
-	inline const std::vector<float>& GetVertexData(void) {return vertexDatas_;}
-	inline const std::vector<uint>& GetIndexData(void) {return indexDatas_;}
+	virtual const void * GetVertexData(uint &length);
+	virtual const void * GetIndexData(uint &length);
 
 protected:
 	bool ParseModel(const std::string &filePath);
