@@ -12,7 +12,7 @@ namespace RedPixel {
 class ObjModel : public IModel {
 
 	enum VertexDataType {
-		VDT_Position 	= 0x01,
+		VDT_Position 	= 0x1,
 		VDT_TexCoord 	= 0x10,
 		VDT_Normal 		= 0x100
 	};

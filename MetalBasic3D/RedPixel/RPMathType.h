@@ -10,7 +10,6 @@ union _float2 {
 };
 typedef union _float2 float2;
 
-
 union _float3 {
     struct { float x, y, z; };
     struct { float r, g, b; };
