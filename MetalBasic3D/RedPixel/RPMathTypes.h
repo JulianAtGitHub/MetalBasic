@@ -1,6 +1,6 @@
 
-#ifndef _RP_MATH_TYPE_H
-#define _RP_MATH_TYPE_H
+#ifndef _RP_MATH_TYPES_H
+#define _RP_MATH_TYPES_H
 
 namespace RedPixel {
 
@@ -26,4 +26,4 @@ typedef union _float4 float4;
 
 }
 
-#endif /* _RP_MATH_TYPE_H */
+#endif /* _RP_MATH_TYPES_H */

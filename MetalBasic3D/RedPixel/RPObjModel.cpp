@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "RPMathType.h"
+#include "RPMathTypes.h"
 #include "RPObjModel.h"
 
 namespace RedPixel {
