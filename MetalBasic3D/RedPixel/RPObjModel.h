@@ -12,9 +12,9 @@ namespace RedPixel {
 class ObjModel : public IModel {
 
 	enum VertexDataType {
-		VDT_Position 	= 0x1,
-		VDT_TexCoord 	= 0x10,
-		VDT_Normal 		= 0x100
+		VDT_Position 	= 0x1 << 0,
+		VDT_TexCoord 	= 0x1 << 1,
+		VDT_Normal 		= 0x1 << 2
 	};
 
 	const static std::string position_key_;
