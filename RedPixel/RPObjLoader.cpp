@@ -91,32 +91,46 @@ bool ObjLoader::ParseModel(const std::string &filePath) {
 	std::array<char, 8> arr;
 	for ( auto const & strPrimitive : primitives) {
 		std::istringstream iss(strPrimitive);
+		
+		int positionIndex = -1;
+		int normalIndex = -1;
+		int texcoordIndex = -1;
 
-		iss.getline(&arr[0], 8, '/');
-		if (std::strlen(&arr[0]) > 0){
-			int index = std::atoi(&arr[0]) - 1;
-			float3 &position = positions[index];
+		iss.getline(arr.data(), 8, '/');
+		if (std::strlen(arr.data()) > 0){
+			positionIndex = std::atoi(arr.data()) - 1;
+		}
+
+		iss.getline(arr.data(), 8, '/');
+		if (std::strlen(arr.data()) > 0){
+			texcoordIndex = std::atoi(arr.data()) - 1;
+		}
+
+		iss.getline(arr.data(), 8, '/');
+		if (std::strlen(arr.data()) > 0){
+			normalIndex = std::atoi(arr.data()) - 1;
+		}
+		
+		if (positionIndex >= 0) {
+			float3 &position = positions[positionIndex];
 			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(position.v[i]);}
 		}
 
-		iss.getline(&arr[0], 8, '/');
-		if (std::strlen(&arr[0]) > 0){
-			int index = std::atoi(&arr[0]) - 1;
-			float2 &texcoord = texcoords[index];
-			for (int i = 0; i < 2; ++i) {vertexDatas_.push_back(texcoord.v[i]);}
+		if (normalIndex >= 0) {
+			float3 &normal = normals[normalIndex];
+			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(normal.v[i]);}
 		}
 
-		iss.getline(&arr[0], 8, '/');
-		if (std::strlen(&arr[0]) > 0){
-			int index = std::atoi(&arr[0]) - 1;
-			float3 &normal = normals[index];
-			for (int i = 0; i < 3; ++i) {vertexDatas_.push_back(normal.v[i]);}
+		if (texcoordIndex >= 0) {
+			float2 &texcoord = texcoords[texcoordIndex];
+			for (int i = 0; i < 2; ++i) {vertexDatas_.push_back(texcoord.v[i]);}
 		}
 	}
 
 	if (positions.size() > 0) {dataType_ |= OVDTPosition;}
-	if (texcoords.size() > 0) {dataType_ |= OVDTTexCoord;}
 	if (normals.size() > 0) {dataType_ |= OVDTNormal;}
+	if (texcoords.size() > 0) {dataType_ |= OVDTTexCoord;}
+
 
 	objFile.close();
 

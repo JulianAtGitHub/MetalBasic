@@ -2,15 +2,16 @@
 #define _RP_MTSL_LAMBERT_H_
 
 #include <simd/simd.h>
+using namespace simd;
 
 namespace RedPixel {
 
 struct LambertConstants {
-	simd::float4x4 mvpMatrix_;
-	simd::float3x3 normalMatrix_;
-	simd::float3 ambientColor_;
-	simd::float3 diffuseColor_;
-	simd::float3 lightDirection_;
+	float4x4 mvpMatrix_;
+	float4x4 normalMatrix_;
+	float3 ambientColor_;
+	float3 diffuseColor_;
+	float3 lightDirection_;
 };
 
 }

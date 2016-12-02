@@ -1,14 +1,15 @@
+#import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
-#include "RPMTLDevice.h"
-#include "RPMTLShaderLibrary.h"
+#include "Metal/RPMTDevice.h"
+#include "Metal/RPMTShaderLibrary.h"
 
-@interface MTLShaderLibraryOC : NSObject
+@interface MTShaderLibraryOC : NSObject
 
 @property (nonatomic, readonly) id<MTLLibrary> mtlLibrary;
 
 @end
 
-@implementation MTLShaderLibraryOC
+@implementation MTShaderLibraryOC
 
 - (id<MTLLibrary>) mtlLibrary {
 	if (mtlLibrary_ == nil) {
@@ -23,15 +24,15 @@
 
 namespace RedPixel {
 
-MTLShaderLibrary::MTLShaderLibrary(void) {
-	shaderLibraryOC_ = [[MTLShaderLibraryOC alloc] init];
+MTShaderLibrary::MTShaderLibrary(void) {
+	shaderLibraryOC_ = [[MTShaderLibraryOC alloc] init];
 }
 
-MTLShaderLibrary::~MTLShaderLibrary(void) {
+MTShaderLibrary::~MTShaderLibrary(void) {
 	shaderLibraryOC_ = nil;
 }
 
-void MTLShaderLibrary::GenerateDefaultShaders(void) {
+void MTShaderLibrary::GenerateDefaultShaders(void) {
 	
 }
 

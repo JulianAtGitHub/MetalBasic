@@ -1,5 +1,5 @@
 #import <Metal/Metal.h>
-#import "RPMTLDevice.h"
+#import "Metal/RPMTDevice.h"
 
 static __strong id<MTLDevice> defaultDevice = nil;
 

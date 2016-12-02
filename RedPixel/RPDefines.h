@@ -8,14 +8,15 @@
 #ifdef __OBJC__
 #define OBJC_CLASS(name) @class name
 #else
-typedef struct objc_object id;
+typedef void *id;
 #define OBJC_CLASS(name) typedef struct objc_object name
+OBJC_CLASS(NSObject);
 #endif
 
 #ifdef NDEBUG
-#define RP_ASSERT(condition, log) ((void)0)
+#define RP_ASSERT(b, err) ((void)0)
 #else
-#define RP_ASSERT(condition, log) ((condition)? : std::cout<<(log)<<std::endl)
+#define RP_ASSERT(b, err) ((b)? : std::cout<<(err)<<std::endl), assert(0)
 #endif
 
 

@@ -13,8 +13,8 @@ class ObjLoader {
 
 	enum ObjVertexDataType {
 		OVDTPosition 	= 0x1 << 0,
-		OVDTTexCoord 	= 0x1 << 1,
-		OVDTNormal 		= 0x1 << 2
+		OVDTNormal 		= 0x1 << 1,
+		OVDTTexCoord 	= 0x1 << 2
 	};
 
 	const static std::string position_key_;

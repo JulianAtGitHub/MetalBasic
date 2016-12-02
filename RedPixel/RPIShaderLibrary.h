@@ -9,9 +9,13 @@ namespace RedPixel {
 
 class IShaderLibrary
 {
+	static IShaderLibrary * s_shaderLibrary_;
 public:
+	static IShaderLibrary * DefaultShaderLibrary(void);
+	static void SetDefaultShaderLibrary(IShaderLibrary *library);
+
 	virtual IShader & GetShaderByLabel(const std::string &label) = 0;
-	virtual ~IShaderLibrary(void) { }
+	virtual ~IShaderLibrary(void);
 
 protected:
 	virtual void GenerateDefaultShaders(void) = 0;
