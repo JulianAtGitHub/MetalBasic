@@ -4,6 +4,7 @@
 
 #include <cassert>
 #include <iostream>
+#include <string>
 
 #ifdef __OBJC__
 #define OBJC_CLASS(name) @class name
@@ -21,6 +22,8 @@ OBJC_CLASS(NSObject);
 
 
 namespace RedPixel {
+
+	std::string DefaultLabel("unknow");
 
 	enum DataFormat {
 		DataFormatInvalid	= 0,

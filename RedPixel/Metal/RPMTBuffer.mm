@@ -1,5 +1,5 @@
 #import <Metal/Metal.h>
-#import "Metal/RPMTDevice.h"
+#import "Metal/RPMTDefault.h"
 #include "Metal/RPMTBuffer.h"
 
 namespace RedPixel {

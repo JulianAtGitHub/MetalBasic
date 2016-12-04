@@ -13,7 +13,7 @@ struct VertexInput {
 struct VertexOutput {
 	float4 position [[position]];
 	half4 color;
-}
+};
 
 vertex VertexOutput LambertVertex ( const device VertexInput *vertices [[buffer(0)]],
 									constant LambertConstants &constants [[buffer(1)]],

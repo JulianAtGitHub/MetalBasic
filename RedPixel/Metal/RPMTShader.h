@@ -8,13 +8,18 @@ namespace RedPixel {
 
 class MTShader : public IShader {
 public:
-	virtual void Use(void);
-
-	MTShader(std::string vsName, std::string fsName, std::string label = "");
+	MTShader(	std::string &vsName, 
+				std::string &fsName, 
+				std::string &label = DefaultLabel);
 	virtual ~MTShader(void);
 
+	inline id vertexFunction(void) const { return vertexFunction_; }
+	inline id fragmentFunction(void) const { return fragmentFunction_; }
+
 private:
-	id shaderOC_;
+	virtual void Generate(void);
+	id vertexFunction_;
+	id fragmentFunction_;
 }
 
 }
