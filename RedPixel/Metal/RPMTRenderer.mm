@@ -3,11 +3,15 @@
 
 namespace RedPixel {
 
-RPMTRenderer::~RPMTRenderer {
+MTRenderer::MTRenderer(void) {
+	
+}
+
+MTRenderer::~MTRenderer(void) {
 
 }
 
-void RPMTRenderer::Draw(void) {
+void MTRenderer::Draw(void) {
 	
 }
 

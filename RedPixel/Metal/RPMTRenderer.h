@@ -6,10 +6,12 @@
 
 namespace RedPixel {
 
-class RPMTRenderer {
+class MTRenderer : public IRenderer {
 public:
 	virtual void Draw(void);
-	virtual ~RPMTRenderer(void);
+
+	MTRenderer(void);
+	virtual ~MTRenderer(void);
 };
 
 }

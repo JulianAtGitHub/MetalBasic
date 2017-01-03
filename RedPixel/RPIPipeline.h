@@ -25,7 +25,8 @@ public:
 	virtual void ApplyState(void) = 0;
 
 	IPipeline(const IShader *shader, std::string &label = DefaultLabel) 
-	:shader_(shader) { }
+	:shader_(shader) 
+	,label_(label) { }
 	virtual ~IPipeline(void) { }
 
 protected:

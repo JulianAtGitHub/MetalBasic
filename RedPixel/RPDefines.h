@@ -17,7 +17,7 @@ OBJC_CLASS(NSObject);
 #ifdef NDEBUG
 #define RP_ASSERT(b, err) ((void)0)
 #else
-#define RP_ASSERT(b, err) ((b)? : std::cout<<(err)<<std::endl), assert(0)
+#define RP_ASSERT(b, err) ((b)? : std::cout<<(err)<<std::endl, assert(0))
 #endif
 
 

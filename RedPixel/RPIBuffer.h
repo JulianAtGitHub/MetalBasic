@@ -7,7 +7,7 @@ class IBuffer {
 public:
 	virtual void * contents(void) = 0;
 
-	IBuffer(size_t size, void *bytes = nullptr) :size_(size) { }
+	IBuffer(size_t size);
 	virtual ~IBuffer(void) { }
 
 protected:

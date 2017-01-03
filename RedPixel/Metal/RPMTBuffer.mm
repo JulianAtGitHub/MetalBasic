@@ -5,7 +5,7 @@
 namespace RedPixel {
 
 MTBuffer(size_t size, void *bytes) 
-:IBuffer(size, bytes) {
+:IBuffer(size) {
 	if (bytes == nullptr) {
 		bufferOC_ = [DefaultMTLDevice() newBufferWithLength:size options:0];
 	} else {

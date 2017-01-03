@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import <Metal/Metal.h>
 #import "Metal/RPMTDefault.h"
 #include "Metal/RPMTShader.h"
@@ -13,7 +12,8 @@ MTShader::MTShader(	std::string &vsName,
 }
 
 MTShader::~MTShader(void) {
-	shaderOC_ = nil;
+	vertexFunction_ = nil;
+	fragmentFunction_ = nil;
 }
 
 void MTShader::Generate(void) {
