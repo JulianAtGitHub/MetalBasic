@@ -34,6 +34,13 @@
     return self;
 }
 
+- (void) setName:(NSString *)name {
+    if (name == nil || name.length == 0) {
+        _name = @"noname";
+    }
+    _name = name;
+}
+
 - (void) addChild:(nonnull MTUNode *)child {
     if (child != nil && [_children containsObject:child] == NO) {
         [_children addObject:child];

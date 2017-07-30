@@ -52,7 +52,7 @@
     
     [MTUDevice sharedInstance].view = view;
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPTN];
-    MTUNode *sphere = [_scene findNodeWithName:@"default"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh"];
     if (sphere) {
         MTUGlobalLight light;
         light.direction = vector_normalize(vector3(-1.0f, -0.1f, -0.176f));
@@ -87,7 +87,7 @@
 - (void) onMouseDrag:(NSPoint)delta {
     _move.x += delta.x * 0.5;
     _move.y += delta.y * 0.5;
-    MTUNode *sphere = [_scene findNodeWithName:@"default"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh"];
     if (sphere) {
         [sphere rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
     }
@@ -98,7 +98,7 @@
     if (_scroll < -15.0) {
         _scroll = -15.0;
     }
-    MTUNode *sphere = [_scene findNodeWithName:@"default"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh"];
     if (sphere) {
         [sphere moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
     }
