@@ -259,7 +259,7 @@ static MTUFbxImporter *instance = nil;
         MTUNode *mesh = [[MTUNode alloc] initWithParent:node];
         NSString *name = [NSString stringWithUTF8String:fbxMesh->GetName()];
         if (name.length == 0) {
-            name = [NSString stringWithFormat:@"%@_mesh", node.name];
+            name = [NSString stringWithFormat:@"%@_mesh_%d", node.name, i];
         }
         mesh.name = name;
         
