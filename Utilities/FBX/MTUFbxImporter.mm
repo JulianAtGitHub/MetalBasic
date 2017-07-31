@@ -38,51 +38,49 @@ static bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFi
     if( !lImportStatus )
     {
         FbxString error = lImporter->GetStatus().GetErrorString();
-        FBXSDK_printf("Call to FbxImporter::Initialize() failed.\n");
-        FBXSDK_printf("Error returned: %s\n\n", error.Buffer());
+        NSLog(@"Call to FbxImporter::Initialize() failed.");
+        NSLog(@"Error returned: %s\n", error.Buffer());
         
         if (lImporter->GetStatus().GetCode() == FbxStatus::eInvalidFileVersion)
         {
-            FBXSDK_printf("FBX file format version for this FBX SDK is %d.%d.%d\n", lSDKMajor, lSDKMinor, lSDKRevision);
-            FBXSDK_printf("FBX file format version for file '%s' is %d.%d.%d\n\n", pFilename, lFileMajor, lFileMinor, lFileRevision);
+            NSLog(@"FBX file format version for this FBX SDK is %d.%d.%d", lSDKMajor, lSDKMinor, lSDKRevision);
+            NSLog(@"FBX file format version for file '%s' is %d.%d.%d\n", pFilename, lFileMajor, lFileMinor, lFileRevision);
         }
         
         return false;
     }
     
-    FBXSDK_printf("FBX file format version for this FBX SDK is %d.%d.%d\n", lSDKMajor, lSDKMinor, lSDKRevision);
+    NSLog(@"FBX file format version for this FBX SDK is %d.%d.%d", lSDKMajor, lSDKMinor, lSDKRevision);
     
     if (lImporter->IsFBX())
     {
-        FBXSDK_printf("FBX file format version for file '%s' is %d.%d.%d\n\n", pFilename, lFileMajor, lFileMinor, lFileRevision);
+        NSLog(@"FBX file format version for file '%s' is %d.%d.%d\n", pFilename, lFileMajor, lFileMinor, lFileRevision);
         
         // From this point, it is possible to access animation stack information without
         // the expense of loading the entire file.
         
-        FBXSDK_printf("Animation Stack Information\n");
+        NSLog(@"Animation Stack Information");
         
         lAnimStackCount = lImporter->GetAnimStackCount();
         
-        FBXSDK_printf("    Number of Animation Stacks: %d\n", lAnimStackCount);
-        FBXSDK_printf("    Current Animation Stack: \"%s\"\n", lImporter->GetActiveAnimStackName().Buffer());
-        FBXSDK_printf("\n");
+        NSLog(@"    Number of Animation Stacks: %d", lAnimStackCount);
+        NSLog(@"    Current Animation Stack: \"%s\"\n", lImporter->GetActiveAnimStackName().Buffer());
         
         for(i = 0; i < lAnimStackCount; i++)
         {
             FbxTakeInfo* lTakeInfo = lImporter->GetTakeInfo(i);
             
-            FBXSDK_printf("    Animation Stack %d\n", i);
-            FBXSDK_printf("         Name: \"%s\"\n", lTakeInfo->mName.Buffer());
-            FBXSDK_printf("         Description: \"%s\"\n", lTakeInfo->mDescription.Buffer());
+            NSLog(@"    Animation Stack %d", i);
+            NSLog(@"         Name: \"%s\"", lTakeInfo->mName.Buffer());
+            NSLog(@"         Description: \"%s\"", lTakeInfo->mDescription.Buffer());
             
             // Change the value of the import name if the animation stack should be imported
             // under a different name.
-            FBXSDK_printf("         Import Name: \"%s\"\n", lTakeInfo->mImportName.Buffer());
+            NSLog(@"         Import Name: \"%s\"", lTakeInfo->mImportName.Buffer());
             
             // Set the value of the import state to false if the animation stack should be not
             // be imported.
-            FBXSDK_printf("         Import State: %s\n", lTakeInfo->mSelect ? "true" : "false");
-            FBXSDK_printf("\n");
+            NSLog(@"         Import State: %s\n", lTakeInfo->mSelect ? "true" : "false");
         }
         
         // Set the import states. By default, the import states are always set to
@@ -101,7 +99,7 @@ static bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFi
     
     if(lStatus == false && lImporter->GetStatus().GetCode() == FbxStatus::ePasswordError)
     {
-        FBXSDK_printf("Please enter password: ");
+        NSLog(@"Please enter password: ");
         
         lPassword[0] = '\0';
         
@@ -118,7 +116,7 @@ static bool LoadScene(FbxManager* pManager, FbxDocument* pScene, const char* pFi
         
         if(lStatus == false && lImporter->GetStatus().GetCode() == FbxStatus::ePasswordError)
         {
-            FBXSDK_printf("\nPassword is wrong, import aborted.\n");
+            NSLog(@"Password is wrong, import aborted.");
         }
     }
     
