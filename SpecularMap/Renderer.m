@@ -84,14 +84,10 @@
     MTUMaterial *foliageMaterial = [[MTUMaterial alloc] initWithConfig:foliageConfig];
     
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Temple.dae" andConvertToFormat:MTUVertexFormatPTNTB];
-    MTUNode *structure = [_scene findNodeWithName:@"cage_stairs_01_001_Material0"];
-    if (structure) {
-        structure.material = structureMaterial;
-    }
-    MTUNode *tree = [_scene findNodeWithName:@"cage_stairs_01_001_Material1"];
-    if (tree) {
-        tree.material = foliageMaterial;
-    }
+    MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
+    NSArray <MTUMesh *> *meshes = cageStairs.meshes;
+    meshes[0].material = structureMaterial;
+    meshes[1].material = foliageMaterial;
 }
 
 - (float) calculateDistance {
@@ -105,13 +101,9 @@
 - (void) onMouseDrag:(NSPoint)delta {
     _move.x += delta.x * 0.5;
     _move.y += delta.y * 0.5;
-    MTUNode *structure = [_scene findNodeWithName:@"cage_stairs_01_001_Material0"];
-    if (structure) {
-        [structure rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
-    }
-    MTUNode *tree = [_scene findNodeWithName:@"cage_stairs_01_001_Material1"];
-    if (tree) {
-        [tree rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
+    MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
+    if (cageStairs) {
+        [cageStairs rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
     }
 }
 
@@ -120,13 +112,9 @@
     if (_scroll < -15.0) {
         _scroll = -15.0;
     }
-    MTUNode *structure = [_scene findNodeWithName:@"cage_stairs_01_001_Material0"];
-    if (structure) {
-        [structure moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
-    }
-    MTUNode *tree = [_scene findNodeWithName:@"cage_stairs_01_001_Material1"];
-    if (tree) {
-        [tree moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
+    MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
+    if (cageStairs) {
+        [cageStairs moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
     }
 }
 

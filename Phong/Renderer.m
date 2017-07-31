@@ -72,7 +72,7 @@
         materialConfig.bufferIndexOfVertexShader = @[@0];
         materialConfig.bufferIndexOfFragmentShader = @[@0, @1];
         materialConfig.textures = @[@"earth_day"];
-        sphere.material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+        sphere.meshes[0].material = [[MTUMaterial alloc] initWithConfig:materialConfig];
     }
 }
 
@@ -87,7 +87,7 @@
 - (void) onMouseDrag:(NSPoint)delta {
     _move.x += delta.x * 0.5;
     _move.y += delta.y * 0.5;
-    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh_0"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
         [sphere rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
     }
@@ -98,7 +98,7 @@
     if (_scroll < -15.0) {
         _scroll = -15.0;
     }
-    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh_0"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
         [sphere moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
     }

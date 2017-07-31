@@ -254,17 +254,16 @@ static MTUFbxImporter *instance = nil;
         }
         
         FbxMesh *fbxMesh = dynamic_cast<FbxMesh *>(attribute);
-        MTUNode *mesh = [[MTUNode alloc] initWithParent:node];
-        NSString *name = [NSString stringWithUTF8String:fbxMesh->GetName()];
-        if (name.length == 0) {
-            name = [NSString stringWithFormat:@"%@_mesh_%d", node.name, i];
+        MTUMesh *mesh = [self loadMeshFromFbxMesh:fbxMesh];
+        if (mesh) {
+            NSString *name = [NSString stringWithUTF8String:fbxMesh->GetName()];
+            if (name.length == 0) {
+                name = [NSString stringWithFormat:@"%@_mesh_%d", node.name, i];
+            }
+            mesh.name = name;
+            NSLog(@"Load FBX Mesh:%@", name);
+            [node addMesh:mesh];
         }
-        mesh.name = name;
-        
-        NSLog(@"Load FBX Mesh:%@", name);
-        mesh.mesh = [self loadMeshFromFbxMesh:fbxMesh];
-        
-        [node addChild:mesh];
     }
     
     for (NSUInteger i = 0; i < root->GetChildCount(); ++i) {

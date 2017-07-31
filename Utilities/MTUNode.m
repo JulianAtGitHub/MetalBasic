@@ -13,6 +13,7 @@
 #import "MTUNode.h"
 
 @interface MTUNode () {
+    NSMutableArray <MTUMesh *> *_meshes;
     NSMutableArray <MTUNode *> *_children;
 }
 
@@ -20,13 +21,18 @@
 
 @implementation MTUNode
 
-- (NSArray<MTUNode *> *)children {
+- (NSArray <MTUMesh *> *) meshes {
+    return _meshes;
+}
+
+- (NSArray <MTUNode *> *) children {
     return _children;
 }
 
 - (instancetype) initWithParent:(MTUNode *)parent {
     self = [super init];
     if (self) {
+        _meshes = [NSMutableArray array];
         _children = [NSMutableArray array];
         _parent = parent;
         _scale = (MTUPoint3){1.0, 1.0, 1.0};
@@ -39,6 +45,12 @@
         _name = @"noname";
     }
     _name = name;
+}
+
+- (void) addMesh:(nonnull MTUMesh *)mesh {
+    if (mesh != nil && [_meshes containsObject:mesh] == NO) {
+        [_meshes addObject:mesh];
+    }
 }
 
 - (void) addChild:(nonnull MTUNode *)child {
@@ -94,7 +106,7 @@
 }
 
 - (void) updateWithCamera:(MTUCamera *)camera {
-    if (_mesh != nil && _material != nil) {
+    if (_meshes.count > 0) {
         MTUDevice *device = [MTUDevice sharedInstance];
         [device updateInFlightBuffersWithNode:self andCamera:camera];
     }
@@ -105,9 +117,14 @@
 }
 
 - (void) draw {
-    if (_mesh != nil || _material != nil) {
+    if (_meshes.count > 0) {
         MTUDevice *device = [MTUDevice sharedInstance];
-        [device drawMesh:self.mesh withMaterial:self.material];
+        for (MTUMesh *mesh in _meshes) {
+            if (mesh.material == nil) {
+                continue;
+            }
+            [device drawMesh:mesh withMaterial:mesh.material];
+        }
     }
     
     for (MTUNode *child in _children) {

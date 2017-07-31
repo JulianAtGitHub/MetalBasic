@@ -12,15 +12,21 @@
 #import <Metal/Metal.h>
 #import "MTUTypes.h"
 
+@class MTUMaterial;
+
 @interface MTUMesh : NSObject
 
 - (nonnull instancetype) initWithVertexData:(nonnull NSData *)data andVertexFormat:(MTUVertexFormat) format;
+
+@property (nullable, readwrite) NSString *name;
 
 @property (nonatomic, readonly) NSUInteger vertexCount;
 
 @property (nonatomic, readonly) MTUVertexFormat vertexFormat;
 
 @property (nullable, readonly) id <MTLBuffer> vertexBuffer;
+
+@property (nullable, readwrite) MTUMaterial *material;
 
 @end
 

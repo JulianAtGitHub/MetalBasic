@@ -206,48 +206,53 @@ static MTUDevice *instance = nil;
                                                                      0.01f, 10000.0f);
     
     matrix_float4x4 modelview_projection = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
-    
     matrix_float3x3 normal_matrix = matrix3x3_upper_left(modelMatrix);
     
-    id <MTLBuffer> buffer = node.material.transformBuffers[_inFlightBufferIndex];
-    switch (node.material.transformType) {
-        case MTUTransformTypeMvp: {
-            MTUTransformMvp transform;
-            transform.modelview_projection = modelview_projection;
-            memcpy(buffer.contents, &transform, sizeof(MTUTransformMvp));
+    for (MTUMesh *mesh in node.meshes) {
+        if (mesh.material == nil) {
+            continue;
+        }
+        
+        id <MTLBuffer> buffer = mesh.material.transformBuffers[_inFlightBufferIndex];
+        switch (mesh.material.transformType) {
+            case MTUTransformTypeMvp: {
+                MTUTransformMvp transform;
+                transform.modelview_projection = modelview_projection;
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvp));
+                break;
+            }
+            case MTUTransformTypeMvpMN: {
+                MTUTransformMvpMN transform;
+                transform.modelview_projection = modelview_projection;
+                transform.model_matrix = modelMatrix;
+                transform.normal_matrix = normal_matrix;
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMN));
+                break;
+            }
+            case MTUTransformTypeMvpMNP: {
+                MTUTransformMvpMNP transform;
+                transform.modelview_projection = modelview_projection;
+                transform.model_matrix = modelMatrix;
+                transform.normal_matrix = normal_matrix;
+                transform.camera_position = cameraPosition;
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNP));
+                break;
+            }
+            case MTUTransformTypeMvpMNPD: {
+                MTUTransformMvpMNPD transform;
+                transform.modelview_projection = modelview_projection;
+                transform.model_matrix = modelMatrix;
+                transform.normal_matrix = normal_matrix;
+                transform.camera_position = cameraPosition;
+                transform.camera_look_at = vector_normalize((vector_float3){cameraTarget.x - cameraPosition.x,
+                    cameraTarget.y - cameraPosition.y,
+                    cameraTarget.z - cameraPosition.z});
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNPD));
+                break;
+            }
+            default:
             break;
         }
-        case MTUTransformTypeMvpMN: {
-            MTUTransformMvpMN transform;
-            transform.modelview_projection = modelview_projection;
-            transform.model_matrix = modelMatrix;
-            transform.normal_matrix = normal_matrix;
-            memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMN));
-            break;
-        }
-        case MTUTransformTypeMvpMNP: {
-            MTUTransformMvpMNP transform;
-            transform.modelview_projection = modelview_projection;
-            transform.model_matrix = modelMatrix;
-            transform.normal_matrix = normal_matrix;
-            transform.camera_position = cameraPosition;
-            memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNP));
-            break;
-        }
-        case MTUTransformTypeMvpMNPD: {
-            MTUTransformMvpMNPD transform;
-            transform.modelview_projection = modelview_projection;
-            transform.model_matrix = modelMatrix;
-            transform.normal_matrix = normal_matrix;
-            transform.camera_position = cameraPosition;
-            transform.camera_look_at = vector_normalize((vector_float3){cameraTarget.x - cameraPosition.x,
-                                                                        cameraTarget.y - cameraPosition.y,
-                                                                        cameraTarget.z - cameraPosition.z});
-            memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNPD));
-            break;
-        }
-        default:
-            break;
     }
 
 }

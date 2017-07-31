@@ -26,15 +26,15 @@
 
 @property (nonatomic) MTUPoint3 scale;
 
-@property (nullable, readwrite) MTUMesh *mesh;
-
-@property (nullable, readwrite) MTUMaterial *material;
+@property (nullable, readonly) NSArray <MTUMesh *> *meshes;
 
 @property (nullable, readonly) NSArray <MTUNode *> *children;
 
 @property (nullable, readonly) MTUNode *parent;
 
 - (nonnull instancetype) initWithParent:(nullable MTUNode *)parent;
+
+- (void) addMesh:(nonnull MTUMesh *)mesh;
 
 - (void) addChild:(nonnull MTUNode *)child;
 
