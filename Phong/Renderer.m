@@ -52,7 +52,7 @@
     
     [MTUDevice sharedInstance].view = view;
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPTN];
-    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh_0"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
         MTUGlobalLight light;
         light.direction = vector_normalize(vector3(-1.0f, -0.1f, -0.176f));

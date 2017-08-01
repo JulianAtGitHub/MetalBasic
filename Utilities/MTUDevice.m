@@ -190,7 +190,9 @@ static MTUDevice *instance = nil;
     
     matrix_float4x4 translateMatrix = matrix4x4_translation(position.x, position.y, position.z);
     matrix_float4x4 scaleMatrix = matrix4x4_scale(scale.x, scale.y, scale.z);
-    quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
+    quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion_multiply(
+                                                  quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
+                                                  quaternion_normalize(quaternion(rotation.y, vector3(0.0f, 1.0f, 0.0f))))),
                                                   quaternion_normalize(quaternion(rotation.z, vector3(0.0f, 0.0f, 1.0f))));
     matrix_float4x4 rotateMatrix = matrix4x4_from_quaternion(rotate);
     matrix_float4x4 modelMatrix = matrix_multiply(translateMatrix, matrix_multiply(rotateMatrix, scaleMatrix));

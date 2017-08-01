@@ -48,7 +48,7 @@
     
     [MTUDevice sharedInstance].view = view;
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPT];
-    MTUNode *sphere = [_scene findNodeWithName:@"default_mesh_0"];
+    MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
         MTUMaterialConfig *materialConfig = [[MTUMaterialConfig alloc] init];
         materialConfig.name = @"BasicColor";

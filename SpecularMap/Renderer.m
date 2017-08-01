@@ -40,15 +40,15 @@
     view.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
     
     _camera = (MTUCamera){
-        {0.0f, 1000.0f, 200.0f},
-        {0.0f, 0.0f, 200.0f},
-        {0.0f, 0.0f, 1.0f},
+        {0.0f, 300.0f, 800.0f},
+        {0.0f, 300.0f, 0.0f},
+        {0.0f, 1.0f, 0.0f},
         65.0f
     };
     
     [MTUDevice sharedInstance].view = view;
     MTUDirectLight light;
-    light.inversed_direction = vector_normalize(vector3(-1.0f, 1.0f, 1.0f));
+    light.inversed_direction = vector_normalize(vector3(1.0f, 1.0f, 1.0f));
     light.ambient_color = vector3(0.2f, 0.2f, 0.2f);
     light.color = vector3(0.75f, 0.75f, 0.75f);
     NSData *lightData = [NSData dataWithBytes:&light length:sizeof(MTUDirectLight)];
@@ -103,7 +103,7 @@
     _move.y += delta.y * 0.5;
     MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
     if (cageStairs) {
-        [cageStairs rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
+        [cageStairs rotateTo:(MTUPoint3){radians_from_degrees(-_move.y), radians_from_degrees(_move.x), 0}];
     }
 }
 
@@ -114,7 +114,7 @@
     }
     MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
     if (cageStairs) {
-        [cageStairs moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
+        [cageStairs moveTo:(MTUPoint3){0, 0, [self calculateDistance]}];
     }
 }
 
