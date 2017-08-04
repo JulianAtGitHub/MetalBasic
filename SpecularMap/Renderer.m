@@ -14,11 +14,12 @@
 #import "Utilities/MTUDevice.h"
 #import "Utilities/MTUNode.h"
 #import "Utilities/MTUMesh.h"
+#import "Utilities/MTUCamera.h"
 #import "Utilities/MTUMaterial.h"
 #import "Renderer.h"
 
 @interface Renderer () {
-    MTUCamera _camera;
+    MTUCamera *_camera;
     MTUNode *_scene;
     CGPoint _move;
     CGFloat _scroll;
@@ -28,23 +29,12 @@
 
 @implementation Renderer
 
-- (instancetype) initWithMTKView:(MTKView *)view {
-    self = [super init];
-    if (self) {
-        [self loadMetal:view];
-    }
-    return self;
-}
-
 - (void) loadMetal:(MTKView *)view {
     view.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
     
-    _camera = (MTUCamera){
-        {0.0f, 300.0f, 800.0f},
-        {0.0f, 300.0f, 0.0f},
-        {0.0f, 1.0f, 0.0f},
-        65.0f
-    };
+    _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 300.0f, 800.0f}
+                                           target:(MTUPoint3){0.0f, 300.0f, 0.0f}
+                                               up:(MTUPoint3){0.0f, 1.0f, 0.0f}];
     
     [MTUDevice sharedInstance].view = view;
     MTUDirectLight light;
@@ -127,13 +117,10 @@
     
     MTUDevice *device = [MTUDevice sharedInstance];
     [device startDraw];
-    [_scene updateWithCamera:&_camera];
+    [_camera update];
+    [_scene updateWithCamera:_camera];
     [_scene draw];
     [device commit];
-}
-
-- (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
-    
 }
 
 @end

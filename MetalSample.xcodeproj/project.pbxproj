@@ -10,8 +10,34 @@
 		F22678941F167A0F004E1516 /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
 		F226789B1F1A007F004E1516 /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
 		F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
-		F22678A31F1D0596004E1516 /* BasicColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* BasicColor.metal */; };
-		F22678A61F1D0888004E1516 /* Phong-Diffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */; };
+		F22678A31F1D0596004E1516 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F22EB7381F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F22EB7391F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F22EB73A1F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F22EB73B1F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F22EB73C1F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F24FD32A1F30CFD700119E7A /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD3281F30CFCF00119E7A /* Renderer.m */; };
+		F24FD32B1F30CFDE00119E7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479461EEEDBD700A43D21 /* AppDelegate.m */; };
+		F24FD32C1F30CFE100119E7A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B4794C1EEEDBD700A43D21 /* ViewController.m */; };
+		F24FD32D1F30CFE400119E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B479501EEEDBD700A43D21 /* Main.storyboard */; };
+		F24FD32E1F30CFE900119E7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479491EEEDBD700A43D21 /* main.m */; };
+		F24FD32F1F30CFF400119E7A /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F24FD3301F30CFF800119E7A /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F24FD3311F30CFFB00119E7A /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
+		F24FD3321F30CFFE00119E7A /* Phong.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101CA1F2DB99B00ADBF18 /* Phong.metal */; };
+		F24FD3331F30D00300119E7A /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
+		F24FD3341F30D00700119E7A /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
+		F24FD3351F30D00A00119E7A /* MTUMath.c in Sources */ = {isa = PBXBuildFile; fileRef = F29476E01F03F03C00F793C5 /* MTUMath.c */; };
+		F24FD3361F30D00D00119E7A /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
+		F24FD3371F30D01000119E7A /* MTUMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */; };
+		F24FD3381F30D01300119E7A /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
+		F24FD3391F30D01A00119E7A /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F29101951F2B9C6500ADBF18 /* Models */; };
+		F24FD33A1F30D01D00119E7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F291017F1F2B911E00ADBF18 /* Assets.xcassets */; };
+		F24FD33B1F30D0E900119E7A /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795C1EEEDCA400A43D21 /* Metal.framework */; };
+		F24FD33C1F30D0EB00119E7A /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
+		F24FD33D1F30D0ED00119E7A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
+		F24FD3401F30D1B600119E7A /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
 		F271EABD1EF0238100236CEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479461EEEDBD700A43D21 /* AppDelegate.m */; };
 		F271EABE1EF0238500236CEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B4794C1EEEDBD700A43D21 /* ViewController.m */; };
 		F271EAC11EF0239E00236CEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479491EEEDBD700A43D21 /* main.m */; };
@@ -71,16 +97,16 @@
 		F278EB3A1F08DBD40081B339 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
 		F278EB3B1F08DBD60081B339 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
 		F278EB401F08DC0C0081B339 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F278EB3D1F08DC0C0081B339 /* Renderer.m */; };
-		F28B09561F2793FA00A37338 /* BasicColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* BasicColor.metal */; };
-		F28B09571F2793FE00A37338 /* Phong-Diffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */; };
+		F28B09561F2793FA00A37338 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F28B09571F2793FE00A37338 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
 		F28B09581F27940300A37338 /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
 		F28B09591F27940B00A37338 /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
 		F28B095A1F27941300A37338 /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
 		F28B095B1F27941E00A37338 /* MTUMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */; };
 		F28B095C1F27942100A37338 /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
-		F29101771F2A42CF00ADBF18 /* Phong-NormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* Phong-NormalMap.metal */; };
-		F29101781F2A454C00ADBF18 /* BasicColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* BasicColor.metal */; };
-		F29101791F2A454E00ADBF18 /* Phong-Diffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */; };
+		F29101771F2A42CF00ADBF18 /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
+		F29101781F2A454C00ADBF18 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F29101791F2A454E00ADBF18 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
 		F291017A1F2A455500ADBF18 /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
 		F291017B1F2A455B00ADBF18 /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
 		F291017C1F2A456200ADBF18 /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
@@ -97,10 +123,10 @@
 		F29101B81F2DB80600ADBF18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B4794C1EEEDBD700A43D21 /* ViewController.m */; };
 		F29101B91F2DB81200ADBF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B479501EEEDBD700A43D21 /* Main.storyboard */; };
 		F29101BA1F2DB81700ADBF18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479491EEEDBD700A43D21 /* main.m */; };
-		F29101BB1F2DB81E00ADBF18 /* BasicColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* BasicColor.metal */; };
-		F29101BC1F2DB82200ADBF18 /* Phong-Diffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */; };
-		F29101BD1F2DB82500ADBF18 /* Phong-NormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* Phong-NormalMap.metal */; };
-		F29101BE1F2DB83000ADBF18 /* Phong-NormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* Phong-NormalMap.metal */; };
+		F29101BB1F2DB81E00ADBF18 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F29101BC1F2DB82200ADBF18 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F29101BD1F2DB82500ADBF18 /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
+		F29101BE1F2DB83000ADBF18 /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
 		F29101BF1F2DB83400ADBF18 /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
 		F29101C01F2DB83700ADBF18 /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
 		F29101C11F2DB83B00ADBF18 /* MTUMath.c in Sources */ = {isa = PBXBuildFile; fileRef = F29476E01F03F03C00F793C5 /* MTUMath.c */; };
@@ -139,6 +165,17 @@
 		F2E055761F076ED7007A4BAA /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795C1EEEDCA400A43D21 /* Metal.framework */; };
 		F2E055771F076ED9007A4BAA /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
 		F2E055781F076EDB007A4BAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
+		F2FF2FFF1F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30001F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30011F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30021F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30031F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30041F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30051F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30061F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30071F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30081F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F2FF30091F322C3200EAE2A9 /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,52 +186,51 @@
 		F226789C1F1A084F004E1516 /* MTUTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUTypes.h; sourceTree = "<group>"; };
 		F226789E1F1A7401004E1516 /* MTUMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUMaterial.h; sourceTree = "<group>"; };
 		F226789F1F1A741D004E1516 /* MTUMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUMaterial.m; sourceTree = "<group>"; };
-		F22678A21F1D0596004E1516 /* BasicColor.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = BasicColor.metal; sourceTree = "<group>"; };
-		F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Phong-Diffuse.metal"; sourceTree = "<group>"; };
-		F22678A71F1D0DDB004E1516 /* PrivateShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateShaderTypes.h; sourceTree = "<group>"; };
+		F22678A21F1D0596004E1516 /* Basic.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Basic.metal; sourceTree = "<group>"; };
+		F22678A51F1D0888004E1516 /* PhongDiffuse.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongDiffuse.metal; sourceTree = "<group>"; };
+		F22678A71F1D0DDB004E1516 /* PrivateTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateTypes.h; sourceTree = "<group>"; };
+		F22EB7361F34BE5000F174D9 /* MTUCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUCamera.h; sourceTree = "<group>"; };
+		F22EB7371F34BE5000F174D9 /* MTUCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUCamera.m; sourceTree = "<group>"; };
 		F24BC8AB1F2246F700D0CE2F /* MTUShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUShaderTypes.h; sourceTree = "<group>"; };
+		F24FD3131F30CF5D00119E7A /* Skybox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skybox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24FD3231F30CF5D00119E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F24FD3281F30CFCF00119E7A /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		F24FD33E1F30D1B600119E7A /* MTUSkybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUSkybox.h; sourceTree = "<group>"; };
+		F24FD33F1F30D1B600119E7A /* MTUSkybox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUSkybox.m; sourceTree = "<group>"; };
 		F271EAA91EF0232700236CEE /* HelloTriangle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloTriangle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EAB91EF0232700236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F271EAC61EF024DA00236CEE /* DevicesAndCommands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevicesAndCommands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EAD61EF024DA00236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F271EADF1EF0253000236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EAE01EF0253000236CEE /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
-		F271EAE81EF02AFC00236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EAE91EF02AFC00236CEE /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F271EAEB1EF036C400236CEE /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		F271EAEC1EF0401000236CEE /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F271EAF21EF1852D00236CEE /* BasicBuffers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicBuffers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EB021EF1852D00236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F271EB0E1EF185A300236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EB0F1EF185A300236CEE /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F271EB101EF185A300236CEE /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F271EB111EF185A300236CEE /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		F271EB181EF2CA1000236CEE /* BasicTexturing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicTexturing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EB281EF2CA1000236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F271EB341EF2CA5E00236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EB351EF2CA5E00236CEE /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F271EB361EF2CA5E00236CEE /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F271EB371EF2CA5E00236CEE /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		F271EB451EF64B5F00236CEE /* HelloCompute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCompute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EB551EF64B6000236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F271EB621EF64BE400236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EB631EF64BE400236CEE /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F271EB641EF64BE400236CEE /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F271EB651EF64BE400236CEE /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		F271EB6C1EF6C1CA00236CEE /* CPU-GPUSynchronization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CPU-GPUSynchronization.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F271EB7C1EF6C1CB00236CEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F271EB881EF6C2FE00236CEE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F271EB8B1EF6C2FE00236CEE /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		F278EB1A1F08DB660081B339 /* NormalMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F278EB2A1F08DB660081B339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F278EB3C1F08DC0C0081B339 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F278EB3D1F08DC0C0081B339 /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
-		F29101761F2A42CF00ADBF18 /* Phong-NormalMap.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Phong-NormalMap.metal"; sourceTree = "<group>"; };
+		F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongNormalMap.metal; sourceTree = "<group>"; };
 		F291017F1F2B911E00ADBF18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F29101951F2B9C6500ADBF18 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		F291019D1F2DB75B00ADBF18 /* SpecularMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpecularMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29101AD1F2DB75B00ADBF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F29101B11F2DB7E500ADBF18 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F29101B21F2DB7E500ADBF18 /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F29101CA1F2DB99B00ADBF18 /* Phong.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Phong.metal; sourceTree = "<group>"; };
 		F29476E01F03F03C00F793C5 /* MTUMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MTUMath.c; sourceTree = "<group>"; };
@@ -214,17 +250,28 @@
 		F2B64BEE1F0D3A6C00FE06FA /* MTUFbxImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUFbxImporter.h; sourceTree = "<group>"; };
 		F2B716101EFABD39001B9A87 /* Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B716201EFABD39001B9A87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2B7162D1EFABDBA001B9A87 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F2B7162E1EFABDBA001B9A87 /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F2B716341EFABF3A001B9A87 /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F2B716351EFABF3A001B9A87 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		F2E0554F1F076E35007A4BAA /* Phong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E0555F1F076E35007A4BAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E055631F076E83007A4BAA /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		F2E055641F076E83007A4BAA /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		F2FF2FFD1F322C3200EAE2A9 /* BaseRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRenderer.h; sourceTree = "<group>"; };
+		F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRenderer.m; sourceTree = "<group>"; };
+		F2FF300A1F322F1500EAE2A9 /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F24FD3101F30CF5D00119E7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24FD33B1F30D0E900119E7A /* Metal.framework in Frameworks */,
+				F24FD33C1F30D0EB00119E7A /* MetalKit.framework in Frameworks */,
+				F24FD33D1F30D0ED00119E7A /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F271EAA61EF0232700236CEE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,13 +378,22 @@
 		F22678A11F1BC0D7004E1516 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				F22678A71F1D0DDB004E1516 /* PrivateShaderTypes.h */,
-				F22678A21F1D0596004E1516 /* BasicColor.metal */,
-				F22678A51F1D0888004E1516 /* Phong-Diffuse.metal */,
-				F29101761F2A42CF00ADBF18 /* Phong-NormalMap.metal */,
+				F22678A71F1D0DDB004E1516 /* PrivateTypes.h */,
+				F22678A21F1D0596004E1516 /* Basic.metal */,
+				F22678A51F1D0888004E1516 /* PhongDiffuse.metal */,
+				F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */,
 				F29101CA1F2DB99B00ADBF18 /* Phong.metal */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		F24FD3141F30CF5D00119E7A /* Skybox */ = {
+			isa = PBXGroup;
+			children = (
+				F24FD3281F30CFCF00119E7A /* Renderer.m */,
+				F24FD3231F30CF5D00119E7A /* Info.plist */,
+			);
+			path = Skybox;
 			sourceTree = "<group>";
 		};
 		F26D2CDC1EFAC66A00C33683 /* Utilities */ = {
@@ -357,6 +413,10 @@
 				F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */,
 				F22678991F19FF29004E1516 /* MTUNode.h */,
 				F226789A1F1A007F004E1516 /* MTUNode.m */,
+				F24FD33E1F30D1B600119E7A /* MTUSkybox.h */,
+				F24FD33F1F30D1B600119E7A /* MTUSkybox.m */,
+				F22EB7361F34BE5000F174D9 /* MTUCamera.h */,
+				F22EB7371F34BE5000F174D9 /* MTUCamera.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -364,7 +424,6 @@
 		F271EAAA1EF0232700236CEE /* HelloTriangle */ = {
 			isa = PBXGroup;
 			children = (
-				F271EAE81EF02AFC00236CEE /* Renderer.h */,
 				F271EAE91EF02AFC00236CEE /* Renderer.m */,
 				F271EAB91EF0232700236CEE /* Info.plist */,
 				F271EAEB1EF036C400236CEE /* ShaderTypes.h */,
@@ -376,7 +435,6 @@
 		F271EAC71EF024DA00236CEE /* DevicesAndCommands */ = {
 			isa = PBXGroup;
 			children = (
-				F271EADF1EF0253000236CEE /* Renderer.h */,
 				F271EAE01EF0253000236CEE /* Renderer.m */,
 				F271EAD61EF024DA00236CEE /* Info.plist */,
 			);
@@ -386,7 +444,6 @@
 		F271EAF31EF1852D00236CEE /* BasicBuffers */ = {
 			isa = PBXGroup;
 			children = (
-				F271EB0E1EF185A300236CEE /* Renderer.h */,
 				F271EB0F1EF185A300236CEE /* Renderer.m */,
 				F271EB021EF1852D00236CEE /* Info.plist */,
 				F271EB101EF185A300236CEE /* Shaders.metal */,
@@ -398,7 +455,6 @@
 		F271EB191EF2CA1000236CEE /* BasicTexturing */ = {
 			isa = PBXGroup;
 			children = (
-				F271EB341EF2CA5E00236CEE /* Renderer.h */,
 				F271EB351EF2CA5E00236CEE /* Renderer.m */,
 				F271EB361EF2CA5E00236CEE /* Shaders.metal */,
 				F271EB371EF2CA5E00236CEE /* ShaderTypes.h */,
@@ -419,7 +475,6 @@
 		F271EB461EF64B5F00236CEE /* HelloCompute */ = {
 			isa = PBXGroup;
 			children = (
-				F271EB621EF64BE400236CEE /* Renderer.h */,
 				F271EB631EF64BE400236CEE /* Renderer.m */,
 				F271EB641EF64BE400236CEE /* Shaders.metal */,
 				F271EB651EF64BE400236CEE /* ShaderTypes.h */,
@@ -431,7 +486,6 @@
 		F271EB6D1EF6C1CB00236CEE /* CPU-GPUSynchronization */ = {
 			isa = PBXGroup;
 			children = (
-				F271EB881EF6C2FE00236CEE /* Renderer.h */,
 				F2B716341EFABF3A001B9A87 /* Renderer.m */,
 				F2B716351EFABF3A001B9A87 /* Shaders.metal */,
 				F271EB8B1EF6C2FE00236CEE /* ShaderTypes.h */,
@@ -460,6 +514,7 @@
 				F2E055501F076E35007A4BAA /* Phong */,
 				F278EB1B1F08DB660081B339 /* NormalMap */,
 				F291019E1F2DB75B00ADBF18 /* SpecularMap */,
+				F24FD3141F30CF5D00119E7A /* Skybox */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -467,7 +522,6 @@
 		F278EB1B1F08DB660081B339 /* NormalMap */ = {
 			isa = PBXGroup;
 			children = (
-				F278EB3C1F08DC0C0081B339 /* Renderer.h */,
 				F278EB3D1F08DC0C0081B339 /* Renderer.m */,
 				F278EB2A1F08DB660081B339 /* Info.plist */,
 			);
@@ -477,7 +531,6 @@
 		F291019E1F2DB75B00ADBF18 /* SpecularMap */ = {
 			isa = PBXGroup;
 			children = (
-				F29101B11F2DB7E500ADBF18 /* Renderer.h */,
 				F29101B21F2DB7E500ADBF18 /* Renderer.m */,
 				F29101AD1F2DB75B00ADBF18 /* Info.plist */,
 			);
@@ -510,6 +563,7 @@
 				F2E0554F1F076E35007A4BAA /* Phong.app */,
 				F278EB1A1F08DB660081B339 /* NormalMap.app */,
 				F291019D1F2DB75B00ADBF18 /* SpecularMap.app */,
+				F24FD3131F30CF5D00119E7A /* Skybox.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -521,8 +575,11 @@
 				F2B479461EEEDBD700A43D21 /* AppDelegate.m */,
 				F2B4794B1EEEDBD700A43D21 /* ViewController.h */,
 				F2B4794C1EEEDBD700A43D21 /* ViewController.m */,
+				F2FF2FFD1F322C3200EAE2A9 /* BaseRenderer.h */,
+				F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */,
 				F2B479501EEEDBD700A43D21 /* Main.storyboard */,
 				F2B479481EEEDBD700A43D21 /* Supporting Files */,
+				F2FF300A1F322F1500EAE2A9 /* Renderer.h */,
 			);
 			path = MetalSample;
 			sourceTree = "<group>";
@@ -557,7 +614,6 @@
 		F2B716111EFABD39001B9A87 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				F2B7162D1EFABDBA001B9A87 /* Renderer.h */,
 				F2B7162E1EFABDBA001B9A87 /* Renderer.m */,
 				F2B716201EFABD39001B9A87 /* Info.plist */,
 			);
@@ -567,7 +623,6 @@
 		F2E055501F076E35007A4BAA /* Phong */ = {
 			isa = PBXGroup;
 			children = (
-				F2E055631F076E83007A4BAA /* Renderer.h */,
 				F2E055641F076E83007A4BAA /* Renderer.m */,
 				F2E0555F1F076E35007A4BAA /* Info.plist */,
 			);
@@ -577,6 +632,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F24FD3121F30CF5D00119E7A /* Skybox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F24FD3261F30CF5D00119E7A /* Build configuration list for PBXNativeTarget "Skybox" */;
+			buildPhases = (
+				F24FD30F1F30CF5D00119E7A /* Sources */,
+				F24FD3101F30CF5D00119E7A /* Frameworks */,
+				F24FD3111F30CF5D00119E7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Skybox;
+			productName = Skybox;
+			productReference = F24FD3131F30CF5D00119E7A /* Skybox.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F271EAA81EF0232700236CEE /* HelloTriangle */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F271EABC1EF0232700236CEE /* Build configuration list for PBXNativeTarget "HelloTriangle" */;
@@ -756,6 +828,10 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = julian;
 				TargetAttributes = {
+					F24FD3121F30CF5D00119E7A = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					F271EAA81EF0232700236CEE = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -821,11 +897,22 @@
 				F2E0554E1F076E35007A4BAA /* Phong */,
 				F278EB191F08DB660081B339 /* NormalMap */,
 				F291019C1F2DB75B00ADBF18 /* SpecularMap */,
+				F24FD3121F30CF5D00119E7A /* Skybox */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F24FD3111F30CF5D00119E7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24FD3391F30D01A00119E7A /* Models in Resources */,
+				F24FD33A1F30D01D00119E7A /* Assets.xcassets in Resources */,
+				F24FD32D1F30CFE400119E7A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F271EAA71EF0232700236CEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -917,6 +1004,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F24FD30F1F30CF5D00119E7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24FD3351F30D00A00119E7A /* MTUMath.c in Sources */,
+				F24FD3401F30D1B600119E7A /* MTUSkybox.m in Sources */,
+				F2FF30091F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F24FD3321F30CFFE00119E7A /* Phong.metal in Sources */,
+				F24FD32C1F30CFE100119E7A /* ViewController.m in Sources */,
+				F24FD3371F30D01000119E7A /* MTUMesh.m in Sources */,
+				F24FD32B1F30CFDE00119E7A /* AppDelegate.m in Sources */,
+				F24FD3331F30D00300119E7A /* MTUFbxImporter.mm in Sources */,
+				F24FD3381F30D01300119E7A /* MTUNode.m in Sources */,
+				F24FD3361F30D00D00119E7A /* MTUMaterial.m in Sources */,
+				F24FD32F1F30CFF400119E7A /* Basic.metal in Sources */,
+				F24FD3301F30CFF800119E7A /* PhongDiffuse.metal in Sources */,
+				F24FD32E1F30CFE900119E7A /* main.m in Sources */,
+				F24FD32A1F30CFD700119E7A /* Renderer.m in Sources */,
+				F24FD3341F30D00700119E7A /* MTUDevice.m in Sources */,
+				F24FD3311F30CFFB00119E7A /* PhongNormalMap.metal in Sources */,
+				F22EB73C1F34BE5000F174D9 /* MTUCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F271EAA51EF0232700236CEE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -925,6 +1036,7 @@
 				F271EABE1EF0238500236CEE /* ViewController.m in Sources */,
 				F271EABD1EF0238100236CEE /* AppDelegate.m in Sources */,
 				F271EAC11EF0239E00236CEE /* main.m in Sources */,
+				F2FF30001F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F271EAED1EF0401000236CEE /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -934,6 +1046,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F271EAE11EF0253000236CEE /* Renderer.m in Sources */,
+				F2FF2FFF1F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F271EADB1EF024F700236CEE /* ViewController.m in Sources */,
 				F271EADE1EF0250100236CEE /* main.m in Sources */,
 				F271EADA1EF024F300236CEE /* AppDelegate.m in Sources */,
@@ -948,6 +1061,7 @@
 				F271EB071EF1855C00236CEE /* ViewController.m in Sources */,
 				F271EB0A1EF1856F00236CEE /* main.m in Sources */,
 				F271EB061EF1855800236CEE /* AppDelegate.m in Sources */,
+				F2FF30011F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F271EB131EF185A300236CEE /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,6 +1074,7 @@
 				F271EB2D1EF2CA3000236CEE /* ViewController.m in Sources */,
 				F271EB301EF2CA3C00236CEE /* main.m in Sources */,
 				F271EB2C1EF2CA2D00236CEE /* AppDelegate.m in Sources */,
+				F2FF30021F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F271EB391EF2CA5E00236CEE /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -972,6 +1087,7 @@
 				F271EB5A1EF64B7E00236CEE /* ViewController.m in Sources */,
 				F271EB591EF64B7B00236CEE /* AppDelegate.m in Sources */,
 				F271EB5D1EF64B8700236CEE /* main.m in Sources */,
+				F2FF30031F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F271EB671EF64BE400236CEE /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -984,6 +1100,7 @@
 				F271EB811EF6C2AB00236CEE /* ViewController.m in Sources */,
 				F271EB841EF6C2BE00236CEE /* main.m in Sources */,
 				F271EB801EF6C2A900236CEE /* AppDelegate.m in Sources */,
+				F2FF30041F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F2B716371EFABF3A001B9A87 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -993,18 +1110,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F278EB2F1F08DB8F0081B339 /* ViewController.m in Sources */,
+				F2FF30071F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F278EB321F08DBA20081B339 /* main.m in Sources */,
 				F291017D1F2A456500ADBF18 /* MTUMesh.m in Sources */,
 				F278EB401F08DC0C0081B339 /* Renderer.m in Sources */,
+				F22EB73A1F34BE5000F174D9 /* MTUCamera.m in Sources */,
 				F278EB331F08DBA90081B339 /* MTUMath.c in Sources */,
 				F291017E1F2A456900ADBF18 /* MTUNode.m in Sources */,
 				F291017C1F2A456200ADBF18 /* MTUMaterial.m in Sources */,
 				F278EB2E1F08DB8C0081B339 /* AppDelegate.m in Sources */,
 				F29101CD1F2DB99B00ADBF18 /* Phong.metal in Sources */,
-				F29101791F2A454E00ADBF18 /* Phong-Diffuse.metal in Sources */,
+				F29101791F2A454E00ADBF18 /* PhongDiffuse.metal in Sources */,
 				F291017B1F2A455B00ADBF18 /* MTUDevice.m in Sources */,
-				F29101781F2A454C00ADBF18 /* BasicColor.metal in Sources */,
-				F29101771F2A42CF00ADBF18 /* Phong-NormalMap.metal in Sources */,
+				F29101781F2A454C00ADBF18 /* Basic.metal in Sources */,
+				F29101771F2A42CF00ADBF18 /* PhongNormalMap.metal in Sources */,
 				F291017A1F2A455500ADBF18 /* MTUFbxImporter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1014,19 +1133,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F29101C21F2DB83D00ADBF18 /* MTUMaterial.m in Sources */,
+				F2FF30081F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F29101C11F2DB83B00ADBF18 /* MTUMath.c in Sources */,
 				F29101B81F2DB80600ADBF18 /* ViewController.m in Sources */,
 				F29101BF1F2DB83400ADBF18 /* MTUFbxImporter.mm in Sources */,
+				F22EB73B1F34BE5000F174D9 /* MTUCamera.m in Sources */,
 				F29101B71F2DB80200ADBF18 /* AppDelegate.m in Sources */,
 				F29101C01F2DB83700ADBF18 /* MTUDevice.m in Sources */,
-				F29101BB1F2DB81E00ADBF18 /* BasicColor.metal in Sources */,
+				F29101BB1F2DB81E00ADBF18 /* Basic.metal in Sources */,
 				F29101C31F2DB84100ADBF18 /* MTUMesh.m in Sources */,
 				F29101CE1F2DB99B00ADBF18 /* Phong.metal in Sources */,
-				F29101BC1F2DB82200ADBF18 /* Phong-Diffuse.metal in Sources */,
+				F29101BC1F2DB82200ADBF18 /* PhongDiffuse.metal in Sources */,
 				F29101BA1F2DB81700ADBF18 /* main.m in Sources */,
 				F29101B61F2DB7F100ADBF18 /* Renderer.m in Sources */,
 				F29101C41F2DB84300ADBF18 /* MTUNode.m in Sources */,
-				F29101BD1F2DB82500ADBF18 /* Phong-NormalMap.metal in Sources */,
+				F29101BD1F2DB82500ADBF18 /* PhongNormalMap.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,10 +1162,12 @@
 				F2B716311EFABDBA001B9A87 /* Renderer.m in Sources */,
 				F22678941F167A0F004E1516 /* MTUDevice.m in Sources */,
 				F2B716241EFABD53001B9A87 /* AppDelegate.m in Sources */,
-				F22678A31F1D0596004E1516 /* BasicColor.metal in Sources */,
+				F22678A31F1D0596004E1516 /* Basic.metal in Sources */,
+				F2FF30051F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F226789B1F1A007F004E1516 /* MTUNode.m in Sources */,
-				F22678A61F1D0888004E1516 /* Phong-Diffuse.metal in Sources */,
+				F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */,
 				F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */,
+				F22EB7381F34BE5000F174D9 /* MTUCamera.m in Sources */,
 				F29101CB1F2DB99B00ADBF18 /* Phong.metal in Sources */,
 				F2B64BE51F0BF4E000FE06FA /* MTUMesh.m in Sources */,
 			);
@@ -1055,18 +1178,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E0556E1F076EAA007A4BAA /* main.m in Sources */,
+				F2FF30061F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F28B09581F27940300A37338 /* MTUFbxImporter.mm in Sources */,
 				F2E0556F1F076EB0007A4BAA /* MTUMath.c in Sources */,
 				F28B095B1F27941E00A37338 /* MTUMesh.m in Sources */,
+				F22EB7391F34BE5000F174D9 /* MTUCamera.m in Sources */,
 				F28B095C1F27942100A37338 /* MTUNode.m in Sources */,
 				F28B09591F27940B00A37338 /* MTUDevice.m in Sources */,
-				F28B09571F2793FE00A37338 /* Phong-Diffuse.metal in Sources */,
+				F28B09571F2793FE00A37338 /* PhongDiffuse.metal in Sources */,
 				F28B095A1F27941300A37338 /* MTUMaterial.m in Sources */,
 				F29101CC1F2DB99B00ADBF18 /* Phong.metal in Sources */,
-				F29101BE1F2DB83000ADBF18 /* Phong-NormalMap.metal in Sources */,
+				F29101BE1F2DB83000ADBF18 /* PhongNormalMap.metal in Sources */,
 				F2E055671F076E83007A4BAA /* Renderer.m in Sources */,
 				F2E0556A1F076E97007A4BAA /* ViewController.m in Sources */,
-				F28B09561F2793FA00A37338 /* BasicColor.metal in Sources */,
+				F28B09561F2793FA00A37338 /* Basic.metal in Sources */,
 				F2E055691F076E93007A4BAA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1085,6 +1210,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F24FD3241F30CF5D00119E7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Skybox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/debug/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Skybox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F24FD3251F30CF5D00119E7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Skybox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/release/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Skybox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F271EABA1EF0232700236CEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1507,6 +1678,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F24FD3261F30CF5D00119E7A /* Build configuration list for PBXNativeTarget "Skybox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24FD3241F30CF5D00119E7A /* Debug */,
+				F24FD3251F30CF5D00119E7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F271EABC1EF0232700236CEE /* Build configuration list for PBXNativeTarget "HelloTriangle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1577,6 +1757,7 @@
 				F29101B01F2DB75B00ADBF18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2B4793D1EEEDBD700A43D21 /* Build configuration list for PBXProject "MetalSample" */ = {
 			isa = XCConfigurationList;

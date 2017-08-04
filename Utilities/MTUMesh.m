@@ -20,6 +20,7 @@
         _vertexFormat = format;
         size_t vertexSize = 0;
         switch (format) {
+            case MTUVertexFormatP: vertexSize = sizeof(MTUVertexP); break;
             case MTUVertexFormatPT: vertexSize = sizeof(MTUVertexPT); break;
             case MTUVertexFormatPN: vertexSize = sizeof(MTUVertexPN); break;
             case MTUVertexFormatPTN: vertexSize = sizeof(MTUVertexPTN); break;

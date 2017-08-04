@@ -10,9 +10,9 @@
 #import "MTUNode.h"
 #import "MTUMesh.h"
 #import "MTUMaterial.h"
+#import "MTUCamera.h"
 #import "MTUShaderTypes.h"
 #import "MTUDevice.h"
-
 
 const static NSUInteger MAX_BUFFERS_IN_FLIGHT = 3;
 
@@ -184,31 +184,13 @@ static MTUDevice *instance = nil;
 }
 
 - (void) updateInFlightBuffersWithNode:(MTUNode *)node andCamera:(MTUCamera *)camera {
-    MTUPoint3 position = node.position;
-    MTUPoint3 rotation = node.rotation;
-    MTUPoint3 scale = node.scale;
-    
-    matrix_float4x4 translateMatrix = matrix4x4_translation(position.x, position.y, position.z);
-    matrix_float4x4 scaleMatrix = matrix4x4_scale(scale.x, scale.y, scale.z);
-    quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion_multiply(
-                                                  quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
-                                                  quaternion_normalize(quaternion(rotation.y, vector3(0.0f, 1.0f, 0.0f))))),
-                                                  quaternion_normalize(quaternion(rotation.z, vector3(0.0f, 0.0f, 1.0f))));
-    matrix_float4x4 rotateMatrix = matrix4x4_from_quaternion(rotate);
-    matrix_float4x4 modelMatrix = matrix_multiply(translateMatrix, matrix_multiply(rotateMatrix, scaleMatrix));
-    
-    vector_float3 cameraPosition = {camera->position.x, camera->position.y, camera->position.z};
-    vector_float3 cameraTarget = {camera->target.x, camera->target.y, camera->target.z};
-    vector_float3 cameraUp = {camera->up.x, camera->up.y, camera->up.z};
-    matrix_float4x4 viewMatrix = matrix_look_at_right_hand(cameraPosition, cameraTarget, cameraUp);
-    
     CGSize viewSize = _view.drawableSize;
-    matrix_float4x4 projectionMatrix = matrix_perspective_right_hand(radians_from_degrees(camera->fovy),
+    matrix_float4x4 projectionMatrix = matrix_perspective_right_hand(radians_from_degrees(camera.fovy),
                                                                      viewSize.width / viewSize.height,
                                                                      0.01f, 10000.0f);
     
-    matrix_float4x4 modelview_projection = matrix_multiply(projectionMatrix, matrix_multiply(viewMatrix, modelMatrix));
-    matrix_float3x3 normal_matrix = matrix3x3_upper_left(modelMatrix);
+    matrix_float4x4 modelview_projection = matrix_multiply(projectionMatrix, matrix_multiply(camera->viewMatrix, node->modelMatrix));
+    matrix_float3x3 normal_matrix = matrix3x3_upper_left(node->modelMatrix);
     
     for (MTUMesh *mesh in node.meshes) {
         if (mesh.material == nil) {
@@ -226,7 +208,7 @@ static MTUDevice *instance = nil;
             case MTUTransformTypeMvpMN: {
                 MTUTransformMvpMN transform;
                 transform.modelview_projection = modelview_projection;
-                transform.model_matrix = modelMatrix;
+                transform.model_matrix = node->modelMatrix;
                 transform.normal_matrix = normal_matrix;
                 memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMN));
                 break;
@@ -234,21 +216,19 @@ static MTUDevice *instance = nil;
             case MTUTransformTypeMvpMNP: {
                 MTUTransformMvpMNP transform;
                 transform.modelview_projection = modelview_projection;
-                transform.model_matrix = modelMatrix;
+                transform.model_matrix = node->modelMatrix;
                 transform.normal_matrix = normal_matrix;
-                transform.camera_position = cameraPosition;
+                transform.camera_position = camera->position;
                 memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNP));
                 break;
             }
             case MTUTransformTypeMvpMNPD: {
                 MTUTransformMvpMNPD transform;
                 transform.modelview_projection = modelview_projection;
-                transform.model_matrix = modelMatrix;
+                transform.model_matrix = node->modelMatrix;
                 transform.normal_matrix = normal_matrix;
-                transform.camera_position = cameraPosition;
-                transform.camera_look_at = vector_normalize((vector_float3){cameraTarget.x - cameraPosition.x,
-                    cameraTarget.y - cameraPosition.y,
-                    cameraTarget.z - cameraPosition.z});
+                transform.camera_position = camera->position;
+                transform.camera_look_at = vector_normalize(camera->target - camera->position);
                 memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNPD));
                 break;
             }

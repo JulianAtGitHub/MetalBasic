@@ -7,9 +7,11 @@
 //
 
 #import "FBX/MTUFbxImporter.h"
+#import "MTUMath.h"
 #import "MTUMesh.h"
 #import "MTUMaterial.h"
 #import "MTUDevice.h"
+#import "MTUCamera.h"
 #import "MTUNode.h"
 
 @interface MTUNode () {
@@ -35,7 +37,8 @@
         _meshes = [NSMutableArray array];
         _children = [NSMutableArray array];
         _parent = parent;
-        _scale = (MTUPoint3){1.0, 1.0, 1.0};
+        scale = vector3(1.0f, 1.0f, 1.0f);
+        modelMatrix = matrix_identity_float4x4;
     }
     return self;
 }
@@ -97,16 +100,25 @@
     return target;
 }
 
-- (void) moveTo:(MTUPoint3)position {
-    _position = position;
+- (void) moveTo:(MTUPoint3)position_ {
+    position = vector3(position_.x, position_.y, position_.z);
 }
 
-- (void) rotateTo:(MTUPoint3)roatation {
-    _rotation = roatation;
+- (void) rotateTo:(MTUPoint3)rotation_ {
+    rotation = vector3(rotation_.x, rotation_.y, rotation_.z);
 }
 
 - (void) updateWithCamera:(MTUCamera *)camera {
     if (_meshes.count > 0) {
+        matrix_float4x4 translateMatrix = matrix4x4_translation(position);
+        matrix_float4x4 scaleMatrix = matrix4x4_scale(scale);
+        quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion_multiply(
+                                  quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
+                                  quaternion_normalize(quaternion(rotation.y, vector3(0.0f, 1.0f, 0.0f))))),
+                                  quaternion_normalize(quaternion(rotation.z, vector3(0.0f, 0.0f, 1.0f))));
+        matrix_float4x4 rotateMatrix = matrix4x4_from_quaternion(rotate);
+        modelMatrix = matrix_multiply(translateMatrix, matrix_multiply(rotateMatrix, scaleMatrix));
+        
         MTUDevice *device = [MTUDevice sharedInstance];
         [device updateInFlightBuffersWithNode:self andCamera:camera];
     }

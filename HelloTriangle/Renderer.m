@@ -25,39 +25,27 @@ static const Vertex triangleVertices[] = {
     id <MTLRenderPipelineState> _pipelineState;
 }
 
-- (instancetype) initWithMTKView:(MTKView *)view {
-    self = [super init];
-    if (self) {
-        _device = view.device;
-        
-        id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
-        id <MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"fragmentShader"];
-        
-        MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
-        pipelineStateDescriptor.label = @"MyPipeline";
-        pipelineStateDescriptor.vertexFunction = vertexFunction;
-        pipelineStateDescriptor.fragmentFunction = fragmentFunction;
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat;
-        
-        NSError *err = nil;
-        _pipelineState = [_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:&err];
-        if (!_pipelineState) {
-            NSLog(@"Failed to created pipeline state, error %@", err);
-            return nil;
-        }
-        
-        _commandQueue = [_device newCommandQueue];
+- (void) loadMetal:(MTKView *)view {
+    _device = view.device;
+    
+    id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
+    id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
+    id <MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"fragmentShader"];
+    
+    MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
+    pipelineStateDescriptor.label = @"MyPipeline";
+    pipelineStateDescriptor.vertexFunction = vertexFunction;
+    pipelineStateDescriptor.fragmentFunction = fragmentFunction;
+    pipelineStateDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat;
+    
+    NSError *err = nil;
+    _pipelineState = [_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:&err];
+    if (!_pipelineState) {
+        NSLog(@"Failed to created pipeline state, error %@", err);
+        return nil;
     }
-    return self;
-}
-
-- (void) onMouseDrag:(NSPoint)delta {
     
-}
-
-- (void) onMouseScroll:(CGFloat)delta {
-    
+    _commandQueue = [_device newCommandQueue];
 }
 
 #pragma mark - implementation of MKTViewDelegate

@@ -293,6 +293,9 @@ static MTUFbxImporter *instance = nil;
         BOOL hasNormal = NO;
         BOOL hasTangent = NO;
         switch (_vertexFormat) {
+            case MTUVertexFormatP: {
+                vertexSize = sizeof(MTUVertexP);
+            } break;
             case MTUVertexFormatPT: {
                 vertexSize = sizeof(MTUVertexPT);
                 hasTexCoord = YES;
@@ -361,6 +364,7 @@ static MTUFbxImporter *instance = nil;
             FbxVector4 position = fbxMesh->GetControlPointAt(cpIndex);
             vector_float3 *vPosition = NULL;
             switch (_vertexFormat) {
+                case MTUVertexFormatP: vPosition = &(((MTUVertexP *)vertex)->position); break;
                 case MTUVertexFormatPT: vPosition = &(((MTUVertexPT *)vertex)->position); break;
                 case MTUVertexFormatPN: vPosition = &(((MTUVertexPN *)vertex)->position); break;
                 case MTUVertexFormatPTN: vPosition = &(((MTUVertexPTN *)vertex)->position); break;

@@ -9,7 +9,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-#include "PrivateShaderTypes.h"
+#include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
 vertex VertOutPTNTBH vertPhongNormalMap(uint vertexID [[vertex_id]],

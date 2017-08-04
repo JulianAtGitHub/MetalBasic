@@ -14,10 +14,11 @@
 #import "Utilities/MTUNode.h"
 #import "Utilities/MTUMesh.h"
 #import "Utilities/MTUMaterial.h"
+#import "Utilities/MTUCamera.h"
 #import "Renderer.h"
 
 @interface Renderer () {
-    MTUCamera _camera;
+    MTUCamera *_camera;
     MTUNode *_scene;
     CGPoint _move;
     CGFloat _scroll;
@@ -27,24 +28,13 @@
 
 @implementation Renderer
 
-- (instancetype) initWithMTKView:(MTKView *)view {
-    self = [super init];
-    if (self) {
-        [self loadMetal:view];
-    }
-    return self;
-}
-
 - (void) loadMetal:(MTKView *)view {
     view.clearColor = MTLClearColorMake(0.65f, 0.65f, 0.65f, 1.0f);
     view.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
     
-    _camera = (MTUCamera){
-        {0.0f, 3.0f, 0.0f},
-        {0.0f, 0.0f, 0.0f},
-        {0.0f, 0.0f, 1.0f},
-        65.0f
-    };
+    _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 3.0f, 0.0f}
+                                           target:(MTUPoint3){0.0f, 0.0f, 0.0f}
+                                               up:(MTUPoint3){0.0f, 0.0f, 1.0f}];
     
     [MTUDevice sharedInstance].view = view;
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPT];
@@ -97,13 +87,10 @@
     
     MTUDevice *device = [MTUDevice sharedInstance];
     [device startDraw];
-    [_scene updateWithCamera:&_camera];
+    [_camera update];
+    [_scene updateWithCamera:_camera];
     [_scene draw];
     [device commit];
-}
-
-- (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
-
 }
 
 @end

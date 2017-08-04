@@ -38,16 +38,8 @@ static const Vertex quadVertices[] = {
     MTLSize _threadgroupCount;
 }
 
-- (instancetype) initWithMTKView:(MTKView *)view {
-    self = [super init];
-    if (self) {
-        _device = view.device;
-        [self loadMetal:view];
-    }
-    return self;
-}
-
 - (void) loadMetal:(MTKView *)view {
+    _device = view.device;
     NSError *err = nil;
     id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
     
@@ -104,14 +96,6 @@ static const Vertex quadVertices[] = {
     _viewportSize = [_device newBufferWithLength:sizeof(_viewSize) options:MTLResourceStorageModeShared];
     
     _commandQueue = [_device newCommandQueue];
-}
-
-- (void) onMouseDrag:(NSPoint)delta {
-    
-}
-
-- (void) onMouseScroll:(CGFloat)delta {
-    
 }
 
 #pragma mark - implementation of MKTViewDelegate

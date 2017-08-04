@@ -80,56 +80,50 @@ static const NSUInteger MaxBuffersInFlight = 3;
 /// Initialize with the MetalKit view from which we'll obtain our Metal device.  We'll also use this
 /// mtkView object to set the pixelformat and other properties of our drawable
 /// Initialize with the MetalKit view from which we'll obtain our metal device
-- (instancetype) initWithMTKView:(nonnull MTKView *)mtkView {
-    self = [super init];
-    if(self) {
-        _device = mtkView.device;
-        
-        _inFlightSemaphore = dispatch_semaphore_create(MaxBuffersInFlight);
-        // Create and load our basic Metal state objects
-        
-        // Load all the shader files with a metal file extension in the project
-        id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
-        
-        // Load the vertex function into the library
-        id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
-        
-        // Load the fragment function into the library
-        id <MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"fragmentShader"];
-        
-        // Create a reusable pipeline state
-        MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
-        pipelineStateDescriptor.label = @"MyPipeline";
-        pipelineStateDescriptor.sampleCount = mtkView.sampleCount;
-        pipelineStateDescriptor.vertexFunction = vertexFunction;
-        pipelineStateDescriptor.fragmentFunction = fragmentFunction;
-        pipelineStateDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat;
-        pipelineStateDescriptor.depthAttachmentPixelFormat = mtkView.depthStencilPixelFormat;
-        pipelineStateDescriptor.stencilAttachmentPixelFormat = mtkView.depthStencilPixelFormat;
-        
-        NSError *error = NULL;
-        _pipelineState = [_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:&error];
-        if (!_pipelineState) {
-            NSLog(@"Failed to created pipeline state, error %@", error);
-        }
-        // Create the command queue
-        _commandQueue = [_device newCommandQueue];
-        
-        [self generateSprites];
-        
-        _totalSpriteVertexCount = Sprite.vertexCount * _sprites.count;
-        
-        NSUInteger spriteVertexBufferSize = _totalSpriteVertexCount * sizeof(Vertex);
-        
-        
-        for(NSUInteger bufferIndex = 0; bufferIndex < MaxBuffersInFlight; bufferIndex++) {
-            _vertexBuffers[bufferIndex] = [_device newBufferWithLength:spriteVertexBufferSize
-                                                               options:MTLResourceStorageModeShared];
-        }
-        
-    }
+- (void) loadMetal:(MTKView *)view {
+    _device = mtkView.device;
     
-    return self;
+    _inFlightSemaphore = dispatch_semaphore_create(MaxBuffersInFlight);
+    // Create and load our basic Metal state objects
+    
+    // Load all the shader files with a metal file extension in the project
+    id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
+    
+    // Load the vertex function into the library
+    id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
+    
+    // Load the fragment function into the library
+    id <MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"fragmentShader"];
+    
+    // Create a reusable pipeline state
+    MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
+    pipelineStateDescriptor.label = @"MyPipeline";
+    pipelineStateDescriptor.sampleCount = mtkView.sampleCount;
+    pipelineStateDescriptor.vertexFunction = vertexFunction;
+    pipelineStateDescriptor.fragmentFunction = fragmentFunction;
+    pipelineStateDescriptor.colorAttachments[0].pixelFormat = mtkView.colorPixelFormat;
+    pipelineStateDescriptor.depthAttachmentPixelFormat = mtkView.depthStencilPixelFormat;
+    pipelineStateDescriptor.stencilAttachmentPixelFormat = mtkView.depthStencilPixelFormat;
+    
+    NSError *error = NULL;
+    _pipelineState = [_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:&error];
+    if (!_pipelineState) {
+        NSLog(@"Failed to created pipeline state, error %@", error);
+    }
+    // Create the command queue
+    _commandQueue = [_device newCommandQueue];
+    
+    [self generateSprites];
+    
+    _totalSpriteVertexCount = Sprite.vertexCount * _sprites.count;
+    
+    NSUInteger spriteVertexBufferSize = _totalSpriteVertexCount * sizeof(Vertex);
+    
+    
+    for(NSUInteger bufferIndex = 0; bufferIndex < MaxBuffersInFlight; bufferIndex++) {
+        _vertexBuffers[bufferIndex] = [_device newBufferWithLength:spriteVertexBufferSize
+                                                           options:MTLResourceStorageModeShared];
+    }
 }
 
 /// Generate a list of sprites, initializing each and inserting it into `_sprites`.
@@ -183,14 +177,6 @@ static const NSUInteger MaxBuffersInFlight = 3;
         }
     }
     _sprites = sprites;
-}
-
-- (void) onMouseDrag:(NSPoint)delta {
-    
-}
-
-- (void) onMouseScroll:(CGFloat)delta {
-    
 }
 
 /// Called whenever view changes orientation or is resized

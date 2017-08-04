@@ -76,6 +76,36 @@
     return;
 }
 
+- (void)rightMouseDown:(NSEvent *)theEvent {
+    BOOL keepOn = YES;
+    NSPoint delta;
+    NSPoint mouseLoc;
+    NSPoint lastMouseLoc = [self.view convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSWindow *window = [[NSApplication sharedApplication] mainWindow];
+    
+    while (keepOn) {
+        theEvent = [window nextEventMatchingMask: NSEventMaskRightMouseUp | NSEventMaskRightMouseDragged];
+        mouseLoc = [self.view convertPoint:[theEvent locationInWindow] fromView:nil];
+        
+        switch ([theEvent type]) {
+            case NSEventTypeRightMouseDragged:
+                delta = CGPointMake(mouseLoc.x - lastMouseLoc.x, mouseLoc.y - lastMouseLoc.y);
+                [_renderer onRightMouseDrag:delta];
+                lastMouseLoc = mouseLoc;
+                break;
+            case NSEventTypeRightMouseUp:
+                keepOn = NO;
+                break;
+            default:
+                /* Ignore any other kind of event. */
+                break;
+        }
+        
+    };
+    
+    return;
+}
+
 - (void)scrollWheel:(NSEvent *)event {
     CGFloat scroll = [event scrollingDeltaY];
     [_renderer onMouseScroll:scroll];

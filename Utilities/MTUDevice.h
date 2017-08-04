@@ -13,11 +13,9 @@
 #import "MTUTypes.h"
 
 @class MTUNode;
-
 @class MTUMesh;
-
 @class MTUMaterial;
-
+@class MTUCamera;
 @class MTUMaterialConfig;
 
 @interface MTUDevice : NSObject

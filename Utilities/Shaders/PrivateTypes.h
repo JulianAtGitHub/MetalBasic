@@ -16,6 +16,11 @@ typedef struct {
 
 typedef struct {
     float4 position [[position]];
+    float3 texCoord;
+} VertOutPT3;
+
+typedef struct {
+    float4 position [[position]];
     float2 texCoord;
     float3 normal;
     float3 halfVector;
@@ -31,5 +36,6 @@ typedef struct {
 } VertOutPTNTBH;
 
 constexpr sampler defaultSampler(filter::linear, address::repeat);
+constexpr sampler skyboxSampler(filter::linear, address::clamp_to_edge);
 
 #endif /* _PRIVATE_SHADER_TYPES_H_ */

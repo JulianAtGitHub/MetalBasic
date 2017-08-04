@@ -20,15 +20,16 @@ typedef struct {
     float x, y, z;
 } MTUPoint3;
 
-typedef struct {
-    MTUPoint3 position;
-    MTUPoint3 target;
-    MTUPoint3 up;
-    float fovy;
-} MTUCamera;
+//typedef struct {
+//    MTUPoint3 position;
+//    MTUPoint3 target;
+//    MTUPoint3 up;
+//    float fovy;
+//} MTUCamera;
 
 typedef enum {
-    MTUVertexFormatPT = 0,
+    MTUVertexFormatP = 0,
+    MTUVertexFormatPT,
     MTUVertexFormatPN,
     MTUVertexFormatPTN,
     MTUVertexFormatPTNTB,

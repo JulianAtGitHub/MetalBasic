@@ -14,13 +14,9 @@
     id <MTLCommandQueue> _commandQueue;
 }
 
-- (instancetype) initWithMTKView:(MTKView *)view {
-    self = [super init];
-    if (self) {
-        _device = view.device;
-        _commandQueue = [_device newCommandQueue];
-    }
-    return self;
+- (void) loadMetal:(MTKView *)view {
+    _device = view.device;
+    _commandQueue = [_device newCommandQueue];
 }
 
 //    Gradually cycles through different colors on each invocation.  Generally you would just pick
@@ -52,14 +48,6 @@
     return MTLClearColorMake(colorChannels[0], colorChannels[1], colorChannels[2], colorChannels[3]);
 }
 
-- (void) onMouseDrag:(NSPoint)delta {
-    
-}
-
-- (void) onMouseScroll:(CGFloat)delta {
-    
-}
-
 #pragma mark - implementation of MKTViewDelegate
 
 - (void)drawInMTKView:(nonnull MTKView *)view {
@@ -77,10 +65,6 @@
     }
     
     [commandBuffer commit];
-}
-
-- (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
-    
 }
 
 @end

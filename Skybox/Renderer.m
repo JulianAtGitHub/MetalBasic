@@ -7,20 +7,21 @@
 //
 
 #include <math.h>
-#import "Utilities/FBX/MTUFbxImporter.h"
-#import "Utilities/MTUTypes.h"
-#import "Utilities/MTUShaderTypes.h"
-#import "Utilities/MTUMath.h"
-#import "Utilities/MTUDevice.h"
-#import "Utilities/MTUNode.h"
-#import "Utilities/MTUMesh.h"
-#import "Utilities/MTUCamera.h"
-#import "Utilities/MTUMaterial.h"
+#import "FBX/MTUFbxImporter.h"
+#import "MTUTypes.h"
+#import "MTUMath.h"
+#import "MTUDevice.h"
+#import "MTUNode.h"
+#import "MTUMesh.h"
+#import "MTUMaterial.h"
+#import "MTUCamera.h"
+#import "MTUSkybox.h"
 #import "Renderer.h"
 
 @interface Renderer () {
     MTUCamera *_camera;
     MTUNode *_scene;
+    MTUSkybox *_skybox;
     CGPoint _move;
     CGFloat _scroll;
 }
@@ -32,34 +33,24 @@
 - (void) loadMetal:(MTKView *)view {
     view.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
     
-    _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 3.0f, 0.0f}
+    _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 0.0f,-3.0f}
                                            target:(MTUPoint3){0.0f, 0.0f, 0.0f}
-                                               up:(MTUPoint3){0.0f, 0.0f, 1.0f}];
+                                               up:(MTUPoint3){0.0f, 1.0f, 0.0f}];
     
     [MTUDevice sharedInstance].view = view;
-    _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPTNTB];
+    _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/SphereUV.obj" andConvertToFormat:MTUVertexFormatPT];
     MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
-        MTUGlobalLight light;
-        light.direction = vector_normalize(vector3(-1.0f, -0.15f, -0.176f));
-        light.intensity = vector3(0.05f, 0.6f, 0.35f);
-        NSData *lightData = [NSData dataWithBytes:&light length:sizeof(MTUGlobalLight)];
-        
-        MTUObjectParams object;
-        object.shiness = 32.0f;
-        NSData *objectData = [NSData dataWithBytes:&object length:sizeof(MTUObjectParams)];
-        
         MTUMaterialConfig *materialConfig = [[MTUMaterialConfig alloc] init];
-        materialConfig.name = @"Phong-NormalMap";
-        materialConfig.vertexShader = @"vertPhongNormalMap";
-        materialConfig.fragmentShader = @"fragPhongNormalMap";
-        materialConfig.transformType = MTUTransformTypeMvpMNP;
-        materialConfig.buffers = @[lightData, objectData];
-        materialConfig.bufferIndexOfVertexShader = @[@0];
-        materialConfig.bufferIndexOfFragmentShader = @[@0, @1];
-        materialConfig.textures = @[@"earth_day", @"earth_normal"];
+        materialConfig.name = @"BasicColor";
+        materialConfig.vertexShader = @"vertBasicColor";
+        materialConfig.fragmentShader = @"fragBasicColor";
+        materialConfig.transformType = MTUTransformTypeMvp;
+        materialConfig.textures = @[@"metal_image"];
         sphere.meshes[0].material = [[MTUMaterial alloc] initWithConfig:materialConfig];
     }
+    
+    _skybox = [[MTUSkybox alloc] initWithTextureAsset:@"skybox_baseColor"];
 }
 
 - (float) calculateDistance {
@@ -75,8 +66,12 @@
     _move.y += delta.y * 0.5;
     MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
-        [sphere rotateTo:(MTUPoint3){radians_from_degrees(_move.y), 0, radians_from_degrees(_move.x)}];
+        [sphere rotateTo:(MTUPoint3){radians_from_degrees(_move.y), radians_from_degrees(_move.x), 0}];
     }
+}
+
+- (void) onRightMouseDrag:(NSPoint)delta {
+    [_camera rotateXZOnTarget:radians_from_degrees(delta.x * 0.5)];
 }
 
 - (void) onMouseScroll:(CGFloat)delta {
@@ -86,7 +81,7 @@
     }
     MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
-        [sphere moveTo:(MTUPoint3){0, [self calculateDistance], 0}];
+        [sphere moveTo:(MTUPoint3){0, 0, [self calculateDistance]}];
     }
 }
 
@@ -99,9 +94,14 @@
     
     MTUDevice *device = [MTUDevice sharedInstance];
     [device startDraw];
+    
     [_camera update];
     [_scene updateWithCamera:_camera];
+    [_skybox updateWithCamera:_camera];
+    
     [_scene draw];
+    [_skybox draw];
+    
     [device commit];
 }
 

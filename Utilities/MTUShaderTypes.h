@@ -16,6 +16,9 @@ extern "C" {
 #endif
 
 // vertex types
+typedef struct {
+    vector_float3 position;
+} MTUVertexP;
 
 typedef struct {
     vector_float3 position;

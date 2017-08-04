@@ -9,22 +9,23 @@
 #ifndef _MTU_NODE_H_
 #define _MTU_NODE_H_
 
+#include <simd/simd.h>
 #import <Foundation/Foundation.h>
 #import "MTUTypes.h"
 
 @class MTUMesh;
-
 @class MTUMaterial;
+@class MTUCamera;
 
-@interface MTUNode : NSObject
+@interface MTUNode : NSObject {
+    @public
+    vector_float3 position;
+    vector_float3 rotation;
+    vector_float3 scale;
+    matrix_float4x4 modelMatrix;
+}
 
 @property (nullable, nonatomic) NSString *name;
-
-@property (nonatomic) MTUPoint3 position;
-
-@property (nonatomic) MTUPoint3 rotation;
-
-@property (nonatomic) MTUPoint3 scale;
 
 @property (nullable, readonly) NSArray <MTUMesh *> *meshes;
 
@@ -44,7 +45,7 @@
 
 - (void) moveTo:(MTUPoint3)position;
 
-- (void) rotateTo:(MTUPoint3)roatation;
+- (void) rotateTo:(MTUPoint3)rotation;
 
 - (void) updateWithCamera:(nonnull MTUCamera *)camera;
 
