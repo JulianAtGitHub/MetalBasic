@@ -20,13 +20,6 @@ typedef struct {
     float x, y, z;
 } MTUPoint3;
 
-//typedef struct {
-//    MTUPoint3 position;
-//    MTUPoint3 target;
-//    MTUPoint3 up;
-//    float fovy;
-//} MTUCamera;
-
 typedef enum {
     MTUVertexFormatP = 0,
     MTUVertexFormatPT,
@@ -39,10 +32,15 @@ typedef enum {
 typedef enum {
     MTUTransformTypeMvp = 0,
     MTUTransformTypeMvpMN,
-    MTUTransformTypeMvpMNP,
-    MTUTransformTypeMvpMNPD,
     MTUTransformTypeMax
 } MTUTransformType;
+
+typedef enum {
+    MTUCameraParamsNotUse = 0,
+    MTUCameraParamsForVertexShader,
+    MTUCameraParamsForFragmentShader,
+    MTUCameraParamsForBothShaders
+} MTUCameraParamsUsage;
     
 #ifdef __cplusplus
 }

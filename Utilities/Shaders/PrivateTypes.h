@@ -23,8 +23,30 @@ typedef struct {
     float4 position [[position]];
     float2 texCoord;
     float3 normal;
+} VertOutPTN;
+
+typedef struct {
+    float4 position [[position]];
+    float3 wp_position; // world space position
+    float2 texCoord;
+    float3 normal;
+} VertOutPPTN;
+
+typedef struct {
+    float4 position [[position]];
+    float2 texCoord;
+    float3 normal;
     float3 halfVector;
 } VertOutPTNH;
+
+typedef struct {
+    float4 position [[position]];
+    float3 wp_position; // world space position
+    float2 texCoord;
+    float3 normal;
+    float3 tangent;
+    float3 binormal;
+} VertOutPPTNTB;
 
 typedef struct {
     float4 position [[position]];
@@ -36,6 +58,6 @@ typedef struct {
 } VertOutPTNTBH;
 
 constexpr sampler defaultSampler(filter::linear, address::repeat);
-constexpr sampler skyboxSampler(filter::linear, address::clamp_to_edge);
+constexpr sampler cubemapSampler(filter::linear, address::clamp_to_edge);
 
 #endif /* _PRIVATE_SHADER_TYPES_H_ */

@@ -30,29 +30,17 @@
                                                up:(MTUPoint3){0.0f, 1.0f, 0.0f}];
     
     [MTUDevice sharedInstance].view = view;
-    MTUDirectLight light;
-    light.inversed_direction = vector_normalize(vector3(1.0f, 1.0f, 1.0f));
-    light.ambient_color = vector3(0.25f, 0.25f, 0.25f);
-    light.color = vector3(0.75f, 0.75f, 0.75f);
-    NSData *lightData = [NSData dataWithBytes:&light length:sizeof(MTUDirectLight)];
-    
-    MTUObjectParams object;
-    object.shiness = 16.0f;
-    NSData *objectData = [NSData dataWithBytes:&object length:sizeof(MTUObjectParams)];
-    
+  
     MTUMaterialConfig *cyborgConfig = [[MTUMaterialConfig alloc] init];
-    cyborgConfig.name = @"cyborg-phong";
-    cyborgConfig.vertexShader = @"vertPhong";
-    cyborgConfig.fragmentShader = @"fragPhong";
+    cyborgConfig.name = @"cyborg-reflect";
+    cyborgConfig.vertexShader = @"vertBasicReflection";
+    cyborgConfig.fragmentShader = @"fragBasicReflection";
     cyborgConfig.transformType = MTUTransformTypeMvpMN;
-    cyborgConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
-    cyborgConfig.buffers = @[lightData, objectData];
-    cyborgConfig.bufferIndexOfVertexShader = @[@0];
-    cyborgConfig.bufferIndexOfFragmentShader = @[@0, @1];
-    cyborgConfig.textures = @[@"cyborg_diffuse", @"cyborg_normal", @"cyborg_specular"];
+    cyborgConfig.cameraParamsUsage = MTUCameraParamsForFragmentShader;
+    cyborgConfig.textures = @[@"skybox_baseColor"];
     MTUMaterial *cyborgMaterial = [[MTUMaterial alloc] initWithConfig:cyborgConfig];
     
-    _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Cyborg.obj" andConvertToFormat:MTUVertexFormatPTNTB];
+    _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Cyborg.obj" andConvertToFormat:MTUVertexFormatPTN];
     MTUNode *cyborg = [_scene findNodeWithName:@"default"];
     NSArray <MTUMesh *> *meshes = cyborg.meshes;
     meshes[0].material = cyborgMaterial;

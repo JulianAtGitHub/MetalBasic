@@ -14,14 +14,17 @@
 #import "MTUTypes.h"
 
 @interface MTUCamera : NSObject {
-    @public
+@public
     vector_float3 position;
     vector_float3 target;
     vector_float3 up;
     matrix_float4x4 viewMatrix;
+    matrix_float4x4 projectionMatrix;
 }
 
 @property (nonatomic, readwrite) float fovy;
+
+@property (nullable, readonly) NSArray <id <MTLBuffer> > *buffers;
 
 - (nonnull instancetype) initWithPosition:(MTUPoint3)position target:(MTUPoint3)target up:(MTUPoint3)up;
 

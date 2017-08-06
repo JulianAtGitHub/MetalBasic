@@ -11,15 +11,7 @@
 //static const float object_shiness = 32;
 
 #include <math.h>
-#import "Utilities/FBX/MTUFbxImporter.h"
-#import "Utilities/MTUTypes.h"
-#import "Utilities/MTUShaderTypes.h"
-#import "Utilities/MTUMath.h"
-#import "Utilities/MTUDevice.h"
-#import "Utilities/MTUNode.h"
-#import "Utilities/MTUMesh.h"
-#import "Utilities/MTUCamera.h"
-#import "Utilities/MTUMaterial.h"
+#import "Utilities/MetalUtils.h"
 #import "Renderer.h"
 
 @interface Renderer () {
@@ -57,7 +49,8 @@
         materialConfig.name = @"Phong-Diffuse";
         materialConfig.vertexShader = @"vertPhongDiffuse";
         materialConfig.fragmentShader = @"fragPhongDiffuse";
-        materialConfig.transformType = MTUTransformTypeMvpMNP;
+        materialConfig.transformType = MTUTransformTypeMvpMN;
+        materialConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
         materialConfig.buffers = @[lightData, objectData];
         materialConfig.bufferIndexOfVertexShader = @[@0];
         materialConfig.bufferIndexOfFragmentShader = @[@0, @1];

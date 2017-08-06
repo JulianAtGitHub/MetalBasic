@@ -7,6 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21F0D361F36FFE600965EAC /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D351F36FFE600965EAC /* Renderer.m */; };
+		F21F0D371F36FFED00965EAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479461EEEDBD700A43D21 /* AppDelegate.m */; };
+		F21F0D381F36FFF100965EAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B4794C1EEEDBD700A43D21 /* ViewController.m */; };
+		F21F0D391F36FFF400965EAC /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F21F0D3A1F36FFF900965EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B479501EEEDBD700A43D21 /* Main.storyboard */; };
+		F21F0D3B1F37000400965EAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479491EEEDBD700A43D21 /* main.m */; };
+		F21F0D3C1F37000F00965EAC /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F21F0D3D1F37001100965EAC /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F21F0D3E1F37001400965EAC /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
+		F21F0D3F1F37001700965EAC /* Phong.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101CA1F2DB99B00ADBF18 /* Phong.metal */; };
+		F21F0D401F37001A00965EAC /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
+		F21F0D411F37002000965EAC /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
+		F21F0D421F37002300965EAC /* MTUMath.c in Sources */ = {isa = PBXBuildFile; fileRef = F29476E01F03F03C00F793C5 /* MTUMath.c */; };
+		F21F0D431F37002600965EAC /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
+		F21F0D441F37002900965EAC /* MTUMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */; };
+		F21F0D451F37002D00965EAC /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
+		F21F0D461F37003200965EAC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F21F0D471F37003600965EAC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F21F0D481F37003700965EAC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F21F0D491F37003700965EAC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F21F0D4A1F37003800965EAC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F21F0D4B1F37003B00965EAC /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F21F0D4C1F37019700965EAC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795C1EEEDCA400A43D21 /* Metal.framework */; };
+		F21F0D4D1F37019A00965EAC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
+		F21F0D4E1F37019C00965EAC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
+		F21F0D4F1F3701A200965EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F291017F1F2B911E00ADBF18 /* Assets.xcassets */; };
+		F21F0D501F3701B200965EAC /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F29101951F2B9C6500ADBF18 /* Models */; };
+		F21F0D521F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F21F0D531F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F21F0D541F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F21F0D551F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F21F0D561F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F21F0D571F37027500965EAC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
 		F22678941F167A0F004E1516 /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
 		F226789B1F1A007F004E1516 /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
 		F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
@@ -179,6 +212,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21F0D211F36FFBA00965EAC /* Reflection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reflection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F21F0D311F36FFBA00965EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F21F0D351F36FFE600965EAC /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		F21F0D511F37027500965EAC /* Reflection.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Reflection.metal; sourceTree = "<group>"; };
+		F21F0D581F37798800965EAC /* MetalUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalUtils.h; sourceTree = "<group>"; };
 		F22678921F167501004E1516 /* MTUDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUDevice.h; sourceTree = "<group>"; };
 		F22678931F167A0F004E1516 /* MTUDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUDevice.m; sourceTree = "<group>"; };
 		F22678991F19FF29004E1516 /* MTUNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUNode.h; sourceTree = "<group>"; };
@@ -262,6 +300,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F21F0D1E1F36FFBA00965EAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21F0D4C1F37019700965EAC /* Metal.framework in Frameworks */,
+				F21F0D4D1F37019A00965EAC /* MetalKit.framework in Frameworks */,
+				F21F0D4E1F37019C00965EAC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F24FD3101F30CF5D00119E7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -375,6 +423,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F21F0D221F36FFBA00965EAC /* Reflection */ = {
+			isa = PBXGroup;
+			children = (
+				F21F0D351F36FFE600965EAC /* Renderer.m */,
+				F21F0D311F36FFBA00965EAC /* Info.plist */,
+			);
+			path = Reflection;
+			sourceTree = "<group>";
+		};
 		F22678A11F1BC0D7004E1516 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +440,7 @@
 				F22678A51F1D0888004E1516 /* PhongDiffuse.metal */,
 				F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */,
 				F29101CA1F2DB99B00ADBF18 /* Phong.metal */,
+				F21F0D511F37027500965EAC /* Reflection.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -413,10 +471,11 @@
 				F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */,
 				F22678991F19FF29004E1516 /* MTUNode.h */,
 				F226789A1F1A007F004E1516 /* MTUNode.m */,
-				F24FD33E1F30D1B600119E7A /* MTUSkybox.h */,
-				F24FD33F1F30D1B600119E7A /* MTUSkybox.m */,
 				F22EB7361F34BE5000F174D9 /* MTUCamera.h */,
 				F22EB7371F34BE5000F174D9 /* MTUCamera.m */,
+				F24FD33E1F30D1B600119E7A /* MTUSkybox.h */,
+				F24FD33F1F30D1B600119E7A /* MTUSkybox.m */,
+				F21F0D581F37798800965EAC /* MetalUtils.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -515,6 +574,7 @@
 				F278EB1B1F08DB660081B339 /* NormalMap */,
 				F291019E1F2DB75B00ADBF18 /* SpecularMap */,
 				F24FD3141F30CF5D00119E7A /* Skybox */,
+				F21F0D221F36FFBA00965EAC /* Reflection */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -564,6 +624,7 @@
 				F278EB1A1F08DB660081B339 /* NormalMap.app */,
 				F291019D1F2DB75B00ADBF18 /* SpecularMap.app */,
 				F24FD3131F30CF5D00119E7A /* Skybox.app */,
+				F21F0D211F36FFBA00965EAC /* Reflection.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -577,9 +638,9 @@
 				F2B4794C1EEEDBD700A43D21 /* ViewController.m */,
 				F2FF2FFD1F322C3200EAE2A9 /* BaseRenderer.h */,
 				F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */,
+				F2FF300A1F322F1500EAE2A9 /* Renderer.h */,
 				F2B479501EEEDBD700A43D21 /* Main.storyboard */,
 				F2B479481EEEDBD700A43D21 /* Supporting Files */,
-				F2FF300A1F322F1500EAE2A9 /* Renderer.h */,
 			);
 			path = MetalSample;
 			sourceTree = "<group>";
@@ -632,6 +693,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F21F0D201F36FFBA00965EAC /* Reflection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F21F0D341F36FFBA00965EAC /* Build configuration list for PBXNativeTarget "Reflection" */;
+			buildPhases = (
+				F21F0D1D1F36FFBA00965EAC /* Sources */,
+				F21F0D1E1F36FFBA00965EAC /* Frameworks */,
+				F21F0D1F1F36FFBA00965EAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reflection;
+			productName = Reflection;
+			productReference = F21F0D211F36FFBA00965EAC /* Reflection.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F24FD3121F30CF5D00119E7A /* Skybox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F24FD3261F30CF5D00119E7A /* Build configuration list for PBXNativeTarget "Skybox" */;
@@ -828,6 +906,10 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = julian;
 				TargetAttributes = {
+					F21F0D201F36FFBA00965EAC = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					F24FD3121F30CF5D00119E7A = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -898,11 +980,22 @@
 				F278EB191F08DB660081B339 /* NormalMap */,
 				F291019C1F2DB75B00ADBF18 /* SpecularMap */,
 				F24FD3121F30CF5D00119E7A /* Skybox */,
+				F21F0D201F36FFBA00965EAC /* Reflection */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F21F0D1F1F36FFBA00965EAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21F0D501F3701B200965EAC /* Models in Resources */,
+				F21F0D4F1F3701A200965EAC /* Assets.xcassets in Resources */,
+				F21F0D3A1F36FFF900965EAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F24FD3111F30CF5D00119E7A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1004,6 +1097,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F21F0D1D1F36FFBA00965EAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21F0D3E1F37001400965EAC /* PhongNormalMap.metal in Sources */,
+				F21F0D441F37002900965EAC /* MTUMesh.m in Sources */,
+				F21F0D3F1F37001700965EAC /* Phong.metal in Sources */,
+				F21F0D431F37002600965EAC /* MTUMaterial.m in Sources */,
+				F21F0D3B1F37000400965EAC /* main.m in Sources */,
+				F21F0D381F36FFF100965EAC /* ViewController.m in Sources */,
+				F21F0D3C1F37000F00965EAC /* Basic.metal in Sources */,
+				F21F0D451F37002D00965EAC /* MTUNode.m in Sources */,
+				F21F0D3D1F37001100965EAC /* PhongDiffuse.metal in Sources */,
+				F21F0D371F36FFED00965EAC /* AppDelegate.m in Sources */,
+				F21F0D411F37002000965EAC /* MTUDevice.m in Sources */,
+				F21F0D361F36FFE600965EAC /* Renderer.m in Sources */,
+				F21F0D571F37027500965EAC /* Reflection.metal in Sources */,
+				F21F0D4A1F37003800965EAC /* MTUSkybox.m in Sources */,
+				F21F0D391F36FFF400965EAC /* BaseRenderer.m in Sources */,
+				F21F0D421F37002300965EAC /* MTUMath.c in Sources */,
+				F21F0D401F37001A00965EAC /* MTUFbxImporter.mm in Sources */,
+				F21F0D4B1F37003B00965EAC /* MTUCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F24FD30F1F30CF5D00119E7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1020,6 +1138,7 @@
 				F24FD3361F30D00D00119E7A /* MTUMaterial.m in Sources */,
 				F24FD32F1F30CFF400119E7A /* Basic.metal in Sources */,
 				F24FD3301F30CFF800119E7A /* PhongDiffuse.metal in Sources */,
+				F21F0D561F37027500965EAC /* Reflection.metal in Sources */,
 				F24FD32E1F30CFE900119E7A /* main.m in Sources */,
 				F24FD32A1F30CFD700119E7A /* Renderer.m in Sources */,
 				F24FD3341F30D00700119E7A /* MTUDevice.m in Sources */,
@@ -1109,6 +1228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F0D491F37003700965EAC /* MTUSkybox.m in Sources */,
 				F278EB2F1F08DB8F0081B339 /* ViewController.m in Sources */,
 				F2FF30071F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F278EB321F08DBA20081B339 /* main.m in Sources */,
@@ -1120,6 +1240,7 @@
 				F291017C1F2A456200ADBF18 /* MTUMaterial.m in Sources */,
 				F278EB2E1F08DB8C0081B339 /* AppDelegate.m in Sources */,
 				F29101CD1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F21F0D541F37027500965EAC /* Reflection.metal in Sources */,
 				F29101791F2A454E00ADBF18 /* PhongDiffuse.metal in Sources */,
 				F291017B1F2A455B00ADBF18 /* MTUDevice.m in Sources */,
 				F29101781F2A454C00ADBF18 /* Basic.metal in Sources */,
@@ -1132,6 +1253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F0D461F37003200965EAC /* MTUSkybox.m in Sources */,
 				F29101C21F2DB83D00ADBF18 /* MTUMaterial.m in Sources */,
 				F2FF30081F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F29101C11F2DB83B00ADBF18 /* MTUMath.c in Sources */,
@@ -1143,6 +1265,7 @@
 				F29101BB1F2DB81E00ADBF18 /* Basic.metal in Sources */,
 				F29101C31F2DB84100ADBF18 /* MTUMesh.m in Sources */,
 				F29101CE1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F21F0D551F37027500965EAC /* Reflection.metal in Sources */,
 				F29101BC1F2DB82200ADBF18 /* PhongDiffuse.metal in Sources */,
 				F29101BA1F2DB81700ADBF18 /* main.m in Sources */,
 				F29101B61F2DB7F100ADBF18 /* Renderer.m in Sources */,
@@ -1155,6 +1278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F0D521F37027500965EAC /* Reflection.metal in Sources */,
 				F2B716251EFABD57001B9A87 /* ViewController.m in Sources */,
 				F29476E31F03F04500F793C5 /* MTUMath.c in Sources */,
 				F2B64BEF1F0D3A6C00FE06FA /* MTUFbxImporter.mm in Sources */,
@@ -1167,6 +1291,7 @@
 				F226789B1F1A007F004E1516 /* MTUNode.m in Sources */,
 				F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */,
 				F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */,
+				F21F0D471F37003600965EAC /* MTUSkybox.m in Sources */,
 				F22EB7381F34BE5000F174D9 /* MTUCamera.m in Sources */,
 				F29101CB1F2DB99B00ADBF18 /* Phong.metal in Sources */,
 				F2B64BE51F0BF4E000FE06FA /* MTUMesh.m in Sources */,
@@ -1177,6 +1302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F0D481F37003700965EAC /* MTUSkybox.m in Sources */,
 				F2E0556E1F076EAA007A4BAA /* main.m in Sources */,
 				F2FF30061F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F28B09581F27940300A37338 /* MTUFbxImporter.mm in Sources */,
@@ -1188,6 +1314,7 @@
 				F28B09571F2793FE00A37338 /* PhongDiffuse.metal in Sources */,
 				F28B095A1F27941300A37338 /* MTUMaterial.m in Sources */,
 				F29101CC1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F21F0D531F37027500965EAC /* Reflection.metal in Sources */,
 				F29101BE1F2DB83000ADBF18 /* PhongNormalMap.metal in Sources */,
 				F2E055671F076E83007A4BAA /* Renderer.m in Sources */,
 				F2E0556A1F076E97007A4BAA /* ViewController.m in Sources */,
@@ -1210,6 +1337,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F21F0D321F36FFBA00965EAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Reflection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/debug/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Reflection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F21F0D331F36FFBA00965EAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Reflection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/release/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Reflection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F24FD3241F30CF5D00119E7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1678,6 +1851,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F21F0D341F36FFBA00965EAC /* Build configuration list for PBXNativeTarget "Reflection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F21F0D321F36FFBA00965EAC /* Debug */,
+				F21F0D331F36FFBA00965EAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F24FD3261F30CF5D00119E7A /* Build configuration list for PBXNativeTarget "Skybox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

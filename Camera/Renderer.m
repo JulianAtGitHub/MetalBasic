@@ -7,14 +7,7 @@
 //
 
 #include <math.h>
-#import "Utilities/FBX/MTUFbxImporter.h"
-#import "Utilities/MTUTypes.h"
-#import "Utilities/MTUMath.h"
-#import "Utilities/MTUDevice.h"
-#import "Utilities/MTUNode.h"
-#import "Utilities/MTUMesh.h"
-#import "Utilities/MTUMaterial.h"
-#import "Utilities/MTUCamera.h"
+#import "Utilities/MetalUtils.h"
 #import "Renderer.h"
 
 @interface Renderer () {

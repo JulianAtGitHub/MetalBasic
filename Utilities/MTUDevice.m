@@ -163,80 +163,24 @@ static MTUDevice *instance = nil;
 #endif
 }
 
-- (nullable NSArray <id <MTLBuffer> > *) newInFlightBuffersWithTransformType:(MTUTransformType)type {
-    size_t bufferLenght = 0;
-    switch (type) {
-        case MTUTransformTypeMvp: bufferLenght = sizeof(MTUTransformMvp); break;
-        case MTUTransformTypeMvpMN: bufferLenght = sizeof(MTUTransformMvpMN); break;
-        case MTUTransformTypeMvpMNP: bufferLenght = sizeof(MTUTransformMvpMNP); break;
-        case MTUTransformTypeMvpMNPD: bufferLenght = sizeof(MTUTransformMvpMNPD); break;
-        default: break;
-    }
-    if (bufferLenght == 0) {
+- (nullable NSArray <id <MTLBuffer> > *) newInFlightBuffersWithSize:(size_t)size {
+    if (size == 0) {
         return nil;
     }
     
     id <MTLBuffer> inFlightBuffers[MAX_BUFFERS_IN_FLIGHT];
     for (NSUInteger i = 0; i < MAX_BUFFERS_IN_FLIGHT; ++i) {
-        inFlightBuffers[i] = [_device newBufferWithLength:bufferLenght options:MTLResourceStorageModeShared];
+        inFlightBuffers[i] = [_device newBufferWithLength:size options:MTLResourceStorageModeShared];
     }
     return [NSArray arrayWithObjects:inFlightBuffers count:MAX_BUFFERS_IN_FLIGHT];
 }
 
-- (void) updateInFlightBuffersWithNode:(MTUNode *)node andCamera:(MTUCamera *)camera {
-    CGSize viewSize = _view.drawableSize;
-    matrix_float4x4 projectionMatrix = matrix_perspective_right_hand(radians_from_degrees(camera.fovy),
-                                                                     viewSize.width / viewSize.height,
-                                                                     0.01f, 10000.0f);
-    
-    matrix_float4x4 modelview_projection = matrix_multiply(projectionMatrix, matrix_multiply(camera->viewMatrix, node->modelMatrix));
-    matrix_float3x3 normal_matrix = matrix3x3_upper_left(node->modelMatrix);
-    
-    for (MTUMesh *mesh in node.meshes) {
-        if (mesh.material == nil) {
-            continue;
-        }
-        
-        id <MTLBuffer> buffer = mesh.material.transformBuffers[_inFlightBufferIndex];
-        switch (mesh.material.transformType) {
-            case MTUTransformTypeMvp: {
-                MTUTransformMvp transform;
-                transform.modelview_projection = modelview_projection;
-                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvp));
-                break;
-            }
-            case MTUTransformTypeMvpMN: {
-                MTUTransformMvpMN transform;
-                transform.modelview_projection = modelview_projection;
-                transform.model_matrix = node->modelMatrix;
-                transform.normal_matrix = normal_matrix;
-                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMN));
-                break;
-            }
-            case MTUTransformTypeMvpMNP: {
-                MTUTransformMvpMNP transform;
-                transform.modelview_projection = modelview_projection;
-                transform.model_matrix = node->modelMatrix;
-                transform.normal_matrix = normal_matrix;
-                transform.camera_position = camera->position;
-                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNP));
-                break;
-            }
-            case MTUTransformTypeMvpMNPD: {
-                MTUTransformMvpMNPD transform;
-                transform.modelview_projection = modelview_projection;
-                transform.model_matrix = node->modelMatrix;
-                transform.normal_matrix = normal_matrix;
-                transform.camera_position = camera->position;
-                transform.camera_look_at = vector_normalize(camera->target - camera->position);
-                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMNPD));
-                break;
-            }
-            default:
-            break;
-        }
+- (id <MTLBuffer>) currentInFlightBuffer:(NSArray <id <MTLBuffer> > *)buffers {
+    if (buffers.count != MAX_BUFFERS_IN_FLIGHT) {
+        return nil;
     }
-
+    
+    return buffers[_inFlightBufferIndex];
 }
 
 - (id <MTLTexture>) newTextureWithFilename:(NSString *)filename {
@@ -310,8 +254,31 @@ static MTUDevice *instance = nil;
     [_renderCommandEncoder setVertexBuffer:mesh.vertexBuffer offset:0 atIndex:0];
     
     // transform
-    id <MTLBuffer> transformBuffer = material.transformBuffers[_inFlightBufferIndex];
-    [_renderCommandEncoder setVertexBuffer:transformBuffer offset:0 atIndex:1];
+    id <MTLBuffer> transform = [self currentInFlightBuffer:material.transformBuffers];
+    [_renderCommandEncoder setVertexBuffer:transform offset:0 atIndex:1];
+    
+    NSUInteger bufferOffset = 2;
+    if (material.cameraParamsUsage != MTUCameraParamsNotUse) {
+        id <MTLBuffer> cameraParams = [self currentInFlightBuffer:material.cameraBuffers];
+        switch (material.cameraParamsUsage) {
+            case MTUCameraParamsForVertexShader:
+                [_renderCommandEncoder setVertexBuffer:cameraParams offset:0 atIndex:2];
+                break;
+
+            case MTUCameraParamsForFragmentShader:
+                [_renderCommandEncoder setFragmentBuffer:cameraParams offset:0 atIndex:2];
+                break;
+
+            case MTUCameraParamsForBothShaders:
+                [_renderCommandEncoder setVertexBuffer:cameraParams offset:0 atIndex:2];
+                [_renderCommandEncoder setFragmentBuffer:cameraParams offset:0 atIndex:2];
+                break;
+
+            default:
+                break;
+        }
+        ++bufferOffset;
+    }
     
     // Other buffers for vertex shader and fragment shader
     NSArray <id <MTLBuffer> > *buffers = material.buffers;
@@ -320,7 +287,7 @@ static MTUDevice *instance = nil;
         for (NSUInteger i = 0; i < vsBufferIndices.count; ++i) {
             NSNumber *number = vsBufferIndices[i];
             id <MTLBuffer> buffer = buffers[number.unsignedIntegerValue];
-            [_renderCommandEncoder setVertexBuffer:buffer offset:0 atIndex:i + 2];
+            [_renderCommandEncoder setVertexBuffer:buffer offset:0 atIndex:i + bufferOffset];
         }
     }
     NSArray <NSNumber *> *fsBufferIndices = material.bufferIndexOfFragmentShader;
@@ -328,7 +295,7 @@ static MTUDevice *instance = nil;
         for (NSUInteger i = 0; i < fsBufferIndices.count; ++i) {
             NSNumber *number = fsBufferIndices[i];
             id <MTLBuffer> buffer = buffers[number.unsignedIntegerValue];
-            [_renderCommandEncoder setFragmentBuffer:buffer offset:0 atIndex:i + 2];
+            [_renderCommandEncoder setFragmentBuffer:buffer offset:0 atIndex:i + bufferOffset];
         }
     }
     

@@ -14,8 +14,9 @@ using namespace metal;
 
 vertex VertOutPTNTBH vertPhongNormalMap(uint vertexID [[vertex_id]],
                                         constant MTUVertexPTNTB *vertices [[buffer(0)]],
-                                        constant MTUTransformMvpMNP &transform [[buffer(1)]],
-                                        constant MTUGlobalLight &light [[buffer(2)]]) {
+                                        constant MTUTransformMvpMN &transform [[buffer(1)]],
+                                        constant MTUCameraParams &camera [[buffer(2)]],
+                                        constant MTUGlobalLight &light [[buffer(3)]]) {
     VertOutPTNTBH out;
     constant MTUVertexPTNTB &vertIn = vertices[vertexID];
     
@@ -27,15 +28,15 @@ vertex VertOutPTNTBH vertPhongNormalMap(uint vertexID [[vertex_id]],
     out.binormal = normalize(transform.normal_matrix * vertIn.binormal);
     
     float4 position = transform.model_matrix * float4(vertIn.position, 1.0);
-    float3 eye_direction = normalize(transform.camera_position - position.xyz);
+    float3 eye_direction = normalize(camera.position - position.xyz);
     out.halfVector = normalize(eye_direction + light.direction);
     
     return out;
 }
 
 fragment float4 fragPhongNormalMap(VertOutPTNTBH in [[stage_in]],
-                                   constant MTUGlobalLight &light [[buffer(2)]],
-                                   constant MTUObjectParams &object [[buffer(3)]],
+                                   constant MTUGlobalLight &light [[buffer(3)]],
+                                   constant MTUObjectParams &object [[buffer(4)]],
                                    texture2d<float> colorTexture [[texture(0)]],
                                    texture2d<float> normalTexture [[texture(1)]]) {
     in.normal = normalize(in.normal);

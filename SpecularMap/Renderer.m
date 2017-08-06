@@ -7,15 +7,7 @@
 //
 
 #include <math.h>
-#import "Utilities/FBX/MTUFbxImporter.h"
-#import "Utilities/MTUTypes.h"
-#import "Utilities/MTUShaderTypes.h"
-#import "Utilities/MTUMath.h"
-#import "Utilities/MTUDevice.h"
-#import "Utilities/MTUNode.h"
-#import "Utilities/MTUMesh.h"
-#import "Utilities/MTUCamera.h"
-#import "Utilities/MTUMaterial.h"
+#import "Utilities/MetalUtils.h"
 #import "Renderer.h"
 
 @interface Renderer () {
@@ -53,7 +45,8 @@
     structureConfig.fragmentShader = @"fragPhong";
     structureConfig.isCullBackFace = YES;
     structureConfig.isClockWise = NO;
-    structureConfig.transformType = MTUTransformTypeMvpMNP;
+    structureConfig.transformType = MTUTransformTypeMvpMN;
+    structureConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
     structureConfig.buffers = @[lightData, objectData];
     structureConfig.bufferIndexOfVertexShader = @[@0];
     structureConfig.bufferIndexOfFragmentShader = @[@0, @1];
@@ -66,7 +59,8 @@
     foliageConfig.fragmentShader = @"fragPhong";
     foliageConfig.isCullBackFace = YES;
     foliageConfig.isClockWise = NO;
-    foliageConfig.transformType = MTUTransformTypeMvpMNP;
+    foliageConfig.transformType = MTUTransformTypeMvpMN;
+    foliageConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
     foliageConfig.buffers = @[lightData, objectData];
     foliageConfig.bufferIndexOfVertexShader = @[@0];
     foliageConfig.bufferIndexOfFragmentShader = @[@0, @1];

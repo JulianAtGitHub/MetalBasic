@@ -14,22 +14,23 @@ using namespace metal;
 
 vertex VertOutPTNH vertPhongDiffuse(uint vertexID [[vertex_id]],
                                 constant MTUVertexPTN *vertices [[buffer(0)]],
-                                constant MTUTransformMvpMNP &transform [[buffer(1)]],
-                                constant MTUGlobalLight &light [[buffer(2)]]) {
+                                constant MTUTransformMvpMN &transform [[buffer(1)]],
+                                constant MTUCameraParams &camera [[buffer(2)]],
+                                constant MTUGlobalLight &light [[buffer(3)]]) {
     VertOutPTNH vertOut;
     constant MTUVertexPTN &vertIn = vertices[vertexID];
     vertOut.position = transform.modelview_projection * float4(vertIn.position, 1.0);
     vertOut.texCoord = vertIn.texCoord;
     vertOut.normal = normalize(transform.normal_matrix * vertIn.normal);
     float4 position = transform.model_matrix * float4(vertIn.position, 1.0);
-    float3 eye_direction = normalize(transform.camera_position - position.xyz);
+    float3 eye_direction = normalize(camera.position - position.xyz);
     vertOut.halfVector = normalize(eye_direction + light.direction);
     return vertOut;
 }
 
 fragment float4 fragPhongDiffuse(VertOutPTNH in [[stage_in]],
-                                 constant MTUGlobalLight &light [[buffer(2)]],
-                                 constant MTUObjectParams &object [[buffer(3)]],
+                                 constant MTUGlobalLight &light [[buffer(3)]],
+                                 constant MTUObjectParams &object [[buffer(4)]],
                                  texture2d<float> colorTexture [[texture(0)]]) {
     float3 normal = normalize(in.normal);
     float3 halfVector = normalize(in.halfVector);

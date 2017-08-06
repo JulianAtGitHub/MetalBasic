@@ -6,8 +6,10 @@
 //  Copyright © 2017 julian. All rights reserved.
 //
 
+#include <simd/simd.h>
 #import "FBX/MTUFbxImporter.h"
 #import "MTUMath.h"
+#import "MTUShaderTypes.h"
 #import "MTUMesh.h"
 #import "MTUMaterial.h"
 #import "MTUDevice.h"
@@ -15,9 +17,16 @@
 #import "MTUNode.h"
 
 @interface MTUNode () {
+    vector_float3 position;
+    vector_float3 rotation;
+    vector_float3 scale;
+    matrix_float4x4 modelMatrix;
+    
     NSMutableArray <MTUMesh *> *_meshes;
     NSMutableArray <MTUNode *> *_children;
 }
+
+- (void) updateBuffersWithCamera:(MTUCamera *)camera;
 
 @end
 
@@ -108,19 +117,54 @@
     rotation = vector3(rotation_.x, rotation_.y, rotation_.z);
 }
 
+- (void) updateBuffersWithCamera:(MTUCamera *)camera {
+    matrix_float4x4 translateMatrix = matrix4x4_translation(position);
+    matrix_float4x4 scaleMatrix = matrix4x4_scale(scale);
+    quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion_multiply(
+                                                  quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
+                                                  quaternion_normalize(quaternion(rotation.y, vector3(0.0f, 1.0f, 0.0f))))),
+                                                  quaternion_normalize(quaternion(rotation.z, vector3(0.0f, 0.0f, 1.0f))));
+    matrix_float4x4 rotateMatrix = matrix4x4_from_quaternion(rotate);
+    modelMatrix = matrix_multiply(translateMatrix, matrix_multiply(rotateMatrix, scaleMatrix));
+    matrix_float4x4 modelview_projection = matrix_multiply(camera->projectionMatrix, matrix_multiply(camera->viewMatrix, modelMatrix));
+    matrix_float3x3 normal_matrix = matrix3x3_upper_left(modelMatrix);
+    
+    MTUDevice *device = [MTUDevice sharedInstance];
+    for (MTUMesh *mesh in _meshes) {
+        if (mesh.material == nil) {
+            continue;
+        }
+        
+        if (mesh.material.cameraParamsUsage != MTUCameraParamsNotUse) {
+            mesh.material.cameraBuffers = camera.buffers;
+        }
+        
+        id <MTLBuffer> buffer = [device currentInFlightBuffer:mesh.material.transformBuffers];
+        switch (mesh.material.transformType) {
+            case MTUTransformTypeMvp: {
+                MTUTransformMvp transform;
+                transform.modelview_projection = modelview_projection;
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvp));
+                break;
+            }
+            case MTUTransformTypeMvpMN: {
+                MTUTransformMvpMN transform;
+                transform.modelview_projection = modelview_projection;
+                transform.model_matrix = modelMatrix;
+                transform.normal_matrix = normal_matrix;
+                memcpy(buffer.contents, &transform, sizeof(MTUTransformMvpMN));
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
 - (void) updateWithCamera:(MTUCamera *)camera {
     if (_meshes.count > 0) {
-        matrix_float4x4 translateMatrix = matrix4x4_translation(position);
-        matrix_float4x4 scaleMatrix = matrix4x4_scale(scale);
-        quaternion_float rotate = quaternion_multiply(quaternion_normalize(quaternion_multiply(
-                                  quaternion_normalize(quaternion(rotation.x, vector3(1.0f, 0.0f, 0.0f))),
-                                  quaternion_normalize(quaternion(rotation.y, vector3(0.0f, 1.0f, 0.0f))))),
-                                  quaternion_normalize(quaternion(rotation.z, vector3(0.0f, 0.0f, 1.0f))));
-        matrix_float4x4 rotateMatrix = matrix4x4_from_quaternion(rotate);
-        modelMatrix = matrix_multiply(translateMatrix, matrix_multiply(rotateMatrix, scaleMatrix));
-        
-        MTUDevice *device = [MTUDevice sharedInstance];
-        [device updateInFlightBuffersWithNode:self andCamera:camera];
+        // transform buffer and camera params buffer
+        [self updateBuffersWithCamera: camera];
     }
     
     for (MTUNode *child in _children) {

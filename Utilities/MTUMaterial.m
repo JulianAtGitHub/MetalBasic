@@ -7,6 +7,7 @@
 //
 
 #import "MTUMaterial.h"
+#import "MTUShaderTypes.h"
 #import "MTUDevice.h"
 
 @implementation MTUMaterialConfig
@@ -23,6 +24,7 @@
         _depthWritable = YES;
         _isCullBackFace = NO;
         _isClockWise = YES;
+        _cameraParamsUsage = MTUCameraParamsNotUse;
     }
     return self;
 }
@@ -45,7 +47,15 @@
         _winding = config.isClockWise == YES ? MTLWindingClockwise : MTLWindingCounterClockwise;
         
         _transformType = config.transformType;
-        _transformBuffers = [device newInFlightBuffersWithTransformType:_transformType];
+        size_t transformBufferLenght = 0;
+        switch (_transformType) {
+            case MTUTransformTypeMvp: transformBufferLenght = sizeof(MTUTransformMvp); break;
+            case MTUTransformTypeMvpMN: transformBufferLenght = sizeof(MTUTransformMvpMN); break;
+            default: break;
+        }
+        _transformBuffers = [device newInFlightBuffersWithSize:transformBufferLenght];
+        
+        _cameraParamsUsage = config.cameraParamsUsage;
         
         if (config.buffers != nil && config.buffers.count > 0) {
             NSUInteger bufferCount = config.buffers.count;

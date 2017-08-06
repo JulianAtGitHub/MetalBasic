@@ -57,19 +57,9 @@ typedef struct {
 } MTUTransformMvpMN;
 
 typedef struct {
-    matrix_float4x4 modelview_projection;
-    matrix_float4x4 model_matrix;
-    matrix_float3x3 normal_matrix;
-    vector_float3 camera_position;
-} MTUTransformMvpMNP;
-
-typedef struct {
-    matrix_float4x4 modelview_projection;
-    matrix_float4x4 model_matrix;
-    matrix_float3x3 normal_matrix;
-    vector_float3 camera_position;
-    vector_float3 camera_look_at;
-} MTUTransformMvpMNPD;
+    vector_float3 position;
+    vector_float3 direction;
+} MTUCameraParams;
 
 // Material types
 

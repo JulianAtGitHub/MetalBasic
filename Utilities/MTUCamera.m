@@ -7,6 +7,8 @@
 //
 
 #import "MTUMath.h"
+#import "MTUShaderTypes.h"
+#import "MTUDevice.h"
 #import "MTUCamera.h"
 
 @implementation MTUCamera
@@ -17,6 +19,11 @@
     up = vector3(0.0f, 1.0f, 0.0f);
     viewMatrix = matrix_identity_float4x4;
     _fovy = 65.0f;
+    
+    if (!_buffers) {
+        MTUDevice *device = [MTUDevice sharedInstance];
+        _buffers = [device newInFlightBuffersWithSize:sizeof(MTUCameraParams)];
+    }
 }
 
 - (instancetype) init {
@@ -46,7 +53,20 @@
 }
 
 - (void) update {
+    MTUDevice *device = [MTUDevice sharedInstance];
+    
     viewMatrix = matrix_look_at_right_hand(position, target, up);
+    
+    CGSize viewSize = device.view.drawableSize;
+    projectionMatrix = matrix_perspective_right_hand(radians_from_degrees(_fovy),
+                                                     viewSize.width / viewSize.height,
+                                                     0.01f, 10000.0f);
+    
+    id <MTLBuffer> buffer = [device currentInFlightBuffer:_buffers];
+    MTUCameraParams params;
+    params.position = position;
+    params.direction = vector_normalize(target - position);
+    memcpy(buffer.contents, &params, sizeof(MTUCameraParams));
 }
 
 @end

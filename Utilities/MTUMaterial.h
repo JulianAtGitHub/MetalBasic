@@ -36,6 +36,8 @@
 
 @property (nonatomic) MTUTransformType transformType;
 
+@property (nonatomic) MTUCameraParamsUsage cameraParamsUsage;
+
 @property (nonnull, nonatomic) NSArray <NSData *> *buffers;
 
 @property (nonnull, nonatomic) NSArray <NSNumber *> *bufferIndexOfVertexShader;
@@ -62,7 +64,11 @@
 
 @property (nonatomic, readonly) MTUTransformType transformType;
 
+@property (nonatomic, readonly) MTUCameraParamsUsage cameraParamsUsage;
+
 @property (nonnull, readonly) NSArray <id <MTLBuffer> > *transformBuffers;
+
+@property (nonnull, readwrite) NSArray <id <MTLBuffer> > *cameraBuffers;
 
 @property (nonnull, readonly) NSArray <id <MTLBuffer> > *buffers;
 

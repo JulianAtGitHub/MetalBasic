@@ -9,7 +9,6 @@
 #ifndef _MTU_NODE_H_
 #define _MTU_NODE_H_
 
-#include <simd/simd.h>
 #import <Foundation/Foundation.h>
 #import "MTUTypes.h"
 
@@ -17,13 +16,7 @@
 @class MTUMaterial;
 @class MTUCamera;
 
-@interface MTUNode : NSObject {
-    @public
-    vector_float3 position;
-    vector_float3 rotation;
-    vector_float3 scale;
-    matrix_float4x4 modelMatrix;
-}
+@interface MTUNode : NSObject
 
 @property (nullable, nonatomic) NSString *name;
 

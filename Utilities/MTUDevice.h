@@ -30,9 +30,9 @@
 
 - (nullable id <MTLBuffer>) newBufferWithRawData:(nonnull NSData *)data;
 
-- (nullable NSArray <id <MTLBuffer> > *) newInFlightBuffersWithTransformType:(MTUTransformType)type;
+- (nullable NSArray <id <MTLBuffer> > *) newInFlightBuffersWithSize:(size_t)size;
 
-- (void) updateInFlightBuffersWithNode:(nonnull MTUNode *)node andCamera:(nonnull MTUCamera *)camera;
+- (nullable id <MTLBuffer>) currentInFlightBuffer:(nonnull NSArray <id <MTLBuffer> > *)buffers;
 
 - (nullable id <MTLTexture>) newTextureWithFilename:(nonnull NSString *)filename;
 
