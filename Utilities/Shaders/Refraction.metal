@@ -1,8 +1,8 @@
 //
-//  Reflection.metal
+//  Refraction.metal
 //  MetalSample
 //
-//  Created by zhuwei on 8/6/17.
+//  Created by zhuwei on 8/7/17.
 //  Copyright © 2017 julian. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ using namespace metal;
 #include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
-vertex VertOutPPTN vertBasicReflection(uint vertexID [[vertex_id]],
-                                         constant MTUVertexPTN *vertices [[buffer(0)]],
-                                         constant MTUTransformMvpMN &transform [[buffer(1)]]) {
+vertex VertOutPPTN vertBasicRefraction(uint vertexID [[vertex_id]],
+                                       constant MTUVertexPTN *vertices [[buffer(0)]],
+                                       constant MTUTransformMvpMN &transform [[buffer(1)]]) {
     VertOutPPTN out;
     constant MTUVertexPTN &vertIn = vertices[vertexID];
     
@@ -26,19 +26,20 @@ vertex VertOutPPTN vertBasicReflection(uint vertexID [[vertex_id]],
     return out;
 }
 
-fragment float4 fragBasicReflection(VertOutPPTN in [[stage_in]],
+fragment float4 fragBasicRefraction(VertOutPPTN in [[stage_in]],
                                     constant MTUCameraParams &camera [[buffer(2)]],
+                                    constant MTUObjectParams &object [[buffer(3)]],
                                     texturecube<float> envTexture [[texture(0)]]) {
     float3 N = normalize(in.normal);
     float3 I = normalize(in.wp_position - camera.position);
-    float3 R = normalize(reflect(I, N));
+    float3 R = normalize(refract(I, N, object.refractRatio));
     
     return envTexture.sample(cubemapSampler, R);
 }
 
-vertex VertOutPPTNTB vertReflection(uint vertexID [[vertex_id]],
-                                   constant MTUVertexPTNTB *vertices [[buffer(0)]],
-                                   constant MTUTransformMvpMN &transform [[buffer(1)]]) {
+vertex VertOutPPTNTB vertRefraction(uint vertexID [[vertex_id]],
+                                    constant MTUVertexPTNTB *vertices [[buffer(0)]],
+                                    constant MTUTransformMvpMN &transform [[buffer(1)]]) {
     VertOutPPTNTB out;
     constant MTUVertexPTNTB &vertIn = vertices[vertexID];
     
@@ -53,8 +54,9 @@ vertex VertOutPPTNTB vertReflection(uint vertexID [[vertex_id]],
     return out;
 }
 
-fragment float4 fragReflection(VertOutPPTNTB in [[stage_in]],
+fragment float4 fragRefraction(VertOutPPTNTB in [[stage_in]],
                                constant MTUCameraParams &camera [[buffer(2)]],
+                               constant MTUObjectParams &object [[buffer(3)]],
                                texture2d<float> normalTexture [[texture(0)]],
                                texturecube<float> envTexture [[texture(1)]]) {
     in.normal = normalize(in.normal);
@@ -65,12 +67,10 @@ fragment float4 fragReflection(VertOutPPTNTB in [[stage_in]],
     float3 normalRaw = normalTexture.sample(defaultSampler, in.texCoord).xyz;
     normalRaw.xy = normalRaw.xy * 2.0 - 1.0;
     normalRaw = normalize(normalRaw);
-
+    
     float3 N = tangentMatrix * normalRaw;
     float3 I = normalize(in.wp_position - camera.position);
-    float3 R = normalize(reflect(I, N));
+    float3 R = normalize(refract(I, N, object.refractRatio));
     
     return envTexture.sample(cubemapSampler, R);
 }
-
-

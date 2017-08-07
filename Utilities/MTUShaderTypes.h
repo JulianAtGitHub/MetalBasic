@@ -76,6 +76,15 @@ typedef struct {
 
 typedef struct {
     float shiness;
+/*
+     Material    Refractive index
+     Air         1.00
+     Water       1.33
+     Ice         1.309
+     Glass       1.52
+     Diamond     2.42
+*/
+    float refractRatio;
 } MTUObjectParams;
     
 #ifdef __cplusplus

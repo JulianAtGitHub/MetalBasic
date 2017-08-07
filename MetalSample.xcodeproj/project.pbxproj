@@ -45,6 +45,37 @@
 		F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
 		F22678A31F1D0596004E1516 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
 		F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F22ADA7D1F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADA7E1F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADA7F1F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADA801F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADA811F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADA821F38AD6A005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADAA21F38B1DF005FA3DC /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA9B1F38B1D6005FA3DC /* Renderer.m */; };
+		F22ADAA31F38B26A005FA3DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479461EEEDBD700A43D21 /* AppDelegate.m */; };
+		F22ADAA41F38B26D005FA3DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B4794C1EEEDBD700A43D21 /* ViewController.m */; };
+		F22ADAA51F38B271005FA3DC /* BaseRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FF2FFE1F322C3200EAE2A9 /* BaseRenderer.m */; };
+		F22ADAA61F38B276005FA3DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B479501EEEDBD700A43D21 /* Main.storyboard */; };
+		F22ADAA71F38B27B005FA3DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479491EEEDBD700A43D21 /* main.m */; };
+		F22ADAA81F38B284005FA3DC /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
+		F22ADAA91F38B288005FA3DC /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
+		F22ADAAA1F38B28B005FA3DC /* PhongNormalMap.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */; };
+		F22ADAAB1F38B28E005FA3DC /* Phong.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101CA1F2DB99B00ADBF18 /* Phong.metal */; };
+		F22ADAAC1F38B291005FA3DC /* Reflection.metal in Sources */ = {isa = PBXBuildFile; fileRef = F21F0D511F37027500965EAC /* Reflection.metal */; };
+		F22ADAAD1F38B294005FA3DC /* Refraction.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */; };
+		F22ADAAE1F38B29C005FA3DC /* MTUDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F22678931F167A0F004E1516 /* MTUDevice.m */; };
+		F22ADAAF1F38B2A0005FA3DC /* MTUMath.c in Sources */ = {isa = PBXBuildFile; fileRef = F29476E01F03F03C00F793C5 /* MTUMath.c */; };
+		F22ADAB01F38B2A2005FA3DC /* MTUMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789F1F1A741D004E1516 /* MTUMaterial.m */; };
+		F22ADAB11F38B2A5005FA3DC /* MTUMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */; };
+		F22ADAB21F38B2A8005FA3DC /* MTUNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F226789A1F1A007F004E1516 /* MTUNode.m */; };
+		F22ADAB31F38B2AB005FA3DC /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
+		F22ADAB41F38B2AE005FA3DC /* MTUSkybox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24FD33F1F30D1B600119E7A /* MTUSkybox.m */; };
+		F22ADAB51F38B2BB005FA3DC /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F29101951F2B9C6500ADBF18 /* Models */; };
+		F22ADAB61F38B2BD005FA3DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F291017F1F2B911E00ADBF18 /* Assets.xcassets */; };
+		F22ADAB71F38B2C1005FA3DC /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795C1EEEDCA400A43D21 /* Metal.framework */; };
+		F22ADAB81F38B2C4005FA3DC /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
+		F22ADAB91F38B2C6005FA3DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
+		F22ADABA1F38B3CC005FA3DC /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
 		F22EB7381F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
 		F22EB7391F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
 		F22EB73A1F34BE5000F174D9 /* MTUCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = F22EB7371F34BE5000F174D9 /* MTUCamera.m */; };
@@ -227,6 +258,10 @@
 		F22678A21F1D0596004E1516 /* Basic.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Basic.metal; sourceTree = "<group>"; };
 		F22678A51F1D0888004E1516 /* PhongDiffuse.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongDiffuse.metal; sourceTree = "<group>"; };
 		F22678A71F1D0DDB004E1516 /* PrivateTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateTypes.h; sourceTree = "<group>"; };
+		F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Refraction.metal; sourceTree = "<group>"; };
+		F22ADA871F38B19C005FA3DC /* Refraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Refraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F22ADA971F38B19C005FA3DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F22ADA9B1F38B1D6005FA3DC /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
 		F22EB7361F34BE5000F174D9 /* MTUCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUCamera.h; sourceTree = "<group>"; };
 		F22EB7371F34BE5000F174D9 /* MTUCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUCamera.m; sourceTree = "<group>"; };
 		F24BC8AB1F2246F700D0CE2F /* MTUShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUShaderTypes.h; sourceTree = "<group>"; };
@@ -307,6 +342,16 @@
 				F21F0D4C1F37019700965EAC /* Metal.framework in Frameworks */,
 				F21F0D4D1F37019A00965EAC /* MetalKit.framework in Frameworks */,
 				F21F0D4E1F37019C00965EAC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F22ADA841F38B19C005FA3DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F22ADAB71F38B2C1005FA3DC /* Metal.framework in Frameworks */,
+				F22ADAB81F38B2C4005FA3DC /* MetalKit.framework in Frameworks */,
+				F22ADAB91F38B2C6005FA3DC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,8 +486,18 @@
 				F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */,
 				F29101CA1F2DB99B00ADBF18 /* Phong.metal */,
 				F21F0D511F37027500965EAC /* Reflection.metal */,
+				F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		F22ADA881F38B19C005FA3DC /* Refraction */ = {
+			isa = PBXGroup;
+			children = (
+				F22ADA9B1F38B1D6005FA3DC /* Renderer.m */,
+				F22ADA971F38B19C005FA3DC /* Info.plist */,
+			);
+			path = Refraction;
 			sourceTree = "<group>";
 		};
 		F24FD3141F30CF5D00119E7A /* Skybox */ = {
@@ -575,6 +630,7 @@
 				F291019E1F2DB75B00ADBF18 /* SpecularMap */,
 				F24FD3141F30CF5D00119E7A /* Skybox */,
 				F21F0D221F36FFBA00965EAC /* Reflection */,
+				F22ADA881F38B19C005FA3DC /* Refraction */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -625,6 +681,7 @@
 				F291019D1F2DB75B00ADBF18 /* SpecularMap.app */,
 				F24FD3131F30CF5D00119E7A /* Skybox.app */,
 				F21F0D211F36FFBA00965EAC /* Reflection.app */,
+				F22ADA871F38B19C005FA3DC /* Refraction.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -708,6 +765,23 @@
 			name = Reflection;
 			productName = Reflection;
 			productReference = F21F0D211F36FFBA00965EAC /* Reflection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F22ADA861F38B19C005FA3DC /* Refraction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F22ADA981F38B19C005FA3DC /* Build configuration list for PBXNativeTarget "Refraction" */;
+			buildPhases = (
+				F22ADA831F38B19C005FA3DC /* Sources */,
+				F22ADA841F38B19C005FA3DC /* Frameworks */,
+				F22ADA851F38B19C005FA3DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Refraction;
+			productName = Refraction;
+			productReference = F22ADA871F38B19C005FA3DC /* Refraction.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F24FD3121F30CF5D00119E7A /* Skybox */ = {
@@ -910,6 +984,10 @@
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
+					F22ADA861F38B19C005FA3DC = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					F24FD3121F30CF5D00119E7A = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -981,6 +1059,7 @@
 				F291019C1F2DB75B00ADBF18 /* SpecularMap */,
 				F24FD3121F30CF5D00119E7A /* Skybox */,
 				F21F0D201F36FFBA00965EAC /* Reflection */,
+				F22ADA861F38B19C005FA3DC /* Refraction */,
 			);
 		};
 /* End PBXProject section */
@@ -993,6 +1072,16 @@
 				F21F0D501F3701B200965EAC /* Models in Resources */,
 				F21F0D4F1F3701A200965EAC /* Assets.xcassets in Resources */,
 				F21F0D3A1F36FFF900965EAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F22ADA851F38B19C005FA3DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F22ADAB51F38B2BB005FA3DC /* Models in Resources */,
+				F22ADAB61F38B2BD005FA3DC /* Assets.xcassets in Resources */,
+				F22ADAA61F38B276005FA3DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,12 +1202,39 @@
 				F21F0D371F36FFED00965EAC /* AppDelegate.m in Sources */,
 				F21F0D411F37002000965EAC /* MTUDevice.m in Sources */,
 				F21F0D361F36FFE600965EAC /* Renderer.m in Sources */,
+				F22ADA821F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F21F0D571F37027500965EAC /* Reflection.metal in Sources */,
 				F21F0D4A1F37003800965EAC /* MTUSkybox.m in Sources */,
 				F21F0D391F36FFF400965EAC /* BaseRenderer.m in Sources */,
 				F21F0D421F37002300965EAC /* MTUMath.c in Sources */,
 				F21F0D401F37001A00965EAC /* MTUFbxImporter.mm in Sources */,
 				F21F0D4B1F37003B00965EAC /* MTUCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F22ADA831F38B19C005FA3DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F22ADAB21F38B2A8005FA3DC /* MTUNode.m in Sources */,
+				F22ADABA1F38B3CC005FA3DC /* MTUFbxImporter.mm in Sources */,
+				F22ADAAE1F38B29C005FA3DC /* MTUDevice.m in Sources */,
+				F22ADAAA1F38B28B005FA3DC /* PhongNormalMap.metal in Sources */,
+				F22ADAAB1F38B28E005FA3DC /* Phong.metal in Sources */,
+				F22ADAAC1F38B291005FA3DC /* Reflection.metal in Sources */,
+				F22ADAA71F38B27B005FA3DC /* main.m in Sources */,
+				F22ADAA41F38B26D005FA3DC /* ViewController.m in Sources */,
+				F22ADAAD1F38B294005FA3DC /* Refraction.metal in Sources */,
+				F22ADAA81F38B284005FA3DC /* Basic.metal in Sources */,
+				F22ADAAF1F38B2A0005FA3DC /* MTUMath.c in Sources */,
+				F22ADAB01F38B2A2005FA3DC /* MTUMaterial.m in Sources */,
+				F22ADAA91F38B288005FA3DC /* PhongDiffuse.metal in Sources */,
+				F22ADAA31F38B26A005FA3DC /* AppDelegate.m in Sources */,
+				F22ADAA21F38B1DF005FA3DC /* Renderer.m in Sources */,
+				F22ADAB11F38B2A5005FA3DC /* MTUMesh.m in Sources */,
+				F22ADAA51F38B271005FA3DC /* BaseRenderer.m in Sources */,
+				F22ADAB41F38B2AE005FA3DC /* MTUSkybox.m in Sources */,
+				F22ADAB31F38B2AB005FA3DC /* MTUCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1254,7 @@
 				F24FD3361F30D00D00119E7A /* MTUMaterial.m in Sources */,
 				F24FD32F1F30CFF400119E7A /* Basic.metal in Sources */,
 				F24FD3301F30CFF800119E7A /* PhongDiffuse.metal in Sources */,
+				F22ADA811F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F21F0D561F37027500965EAC /* Reflection.metal in Sources */,
 				F24FD32E1F30CFE900119E7A /* main.m in Sources */,
 				F24FD32A1F30CFD700119E7A /* Renderer.m in Sources */,
@@ -1240,6 +1357,7 @@
 				F291017C1F2A456200ADBF18 /* MTUMaterial.m in Sources */,
 				F278EB2E1F08DB8C0081B339 /* AppDelegate.m in Sources */,
 				F29101CD1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F22ADA7F1F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F21F0D541F37027500965EAC /* Reflection.metal in Sources */,
 				F29101791F2A454E00ADBF18 /* PhongDiffuse.metal in Sources */,
 				F291017B1F2A455B00ADBF18 /* MTUDevice.m in Sources */,
@@ -1265,6 +1383,7 @@
 				F29101BB1F2DB81E00ADBF18 /* Basic.metal in Sources */,
 				F29101C31F2DB84100ADBF18 /* MTUMesh.m in Sources */,
 				F29101CE1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F22ADA801F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F21F0D551F37027500965EAC /* Reflection.metal in Sources */,
 				F29101BC1F2DB82200ADBF18 /* PhongDiffuse.metal in Sources */,
 				F29101BA1F2DB81700ADBF18 /* main.m in Sources */,
@@ -1290,6 +1409,7 @@
 				F2FF30051F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
 				F226789B1F1A007F004E1516 /* MTUNode.m in Sources */,
 				F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */,
+				F22ADA7D1F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F22678A01F1A741D004E1516 /* MTUMaterial.m in Sources */,
 				F21F0D471F37003600965EAC /* MTUSkybox.m in Sources */,
 				F22EB7381F34BE5000F174D9 /* MTUCamera.m in Sources */,
@@ -1314,6 +1434,7 @@
 				F28B09571F2793FE00A37338 /* PhongDiffuse.metal in Sources */,
 				F28B095A1F27941300A37338 /* MTUMaterial.m in Sources */,
 				F29101CC1F2DB99B00ADBF18 /* Phong.metal in Sources */,
+				F22ADA7E1F38AD6A005FA3DC /* Refraction.metal in Sources */,
 				F21F0D531F37027500965EAC /* Reflection.metal in Sources */,
 				F29101BE1F2DB83000ADBF18 /* PhongNormalMap.metal in Sources */,
 				F2E055671F076E83007A4BAA /* Renderer.m in Sources */,
@@ -1379,6 +1500,52 @@
 					"-lz",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = julian.Reflection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F22ADA991F38B19C005FA3DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Refraction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/debug/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Refraction;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F22ADA9A1F38B19C005FA3DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = (
+					"${FBXSDK}/include",
+					"$(SRCROOT)/Utilities",
+				);
+				INFOPLIST_FILE = Refraction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"${FBXSDK}/lib/clang/release/libfbxsdk.a",
+					"-lm",
+					"-liconv",
+					"-fexceptions",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = julian.Refraction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1856,6 +2023,15 @@
 			buildConfigurations = (
 				F21F0D321F36FFBA00965EAC /* Debug */,
 				F21F0D331F36FFBA00965EAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F22ADA981F38B19C005FA3DC /* Build configuration list for PBXNativeTarget "Refraction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F22ADA991F38B19C005FA3DC /* Debug */,
+				F22ADA9A1F38B19C005FA3DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
