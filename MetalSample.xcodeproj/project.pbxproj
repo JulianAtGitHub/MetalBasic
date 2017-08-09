@@ -207,6 +207,15 @@
 		F29101CD1F2DB99B00ADBF18 /* Phong.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101CA1F2DB99B00ADBF18 /* Phong.metal */; };
 		F29101CE1F2DB99B00ADBF18 /* Phong.metal in Sources */ = {isa = PBXBuildFile; fileRef = F29101CA1F2DB99B00ADBF18 /* Phong.metal */; };
 		F29476E31F03F04500F793C5 /* MTUMath.c in Sources */ = {isa = PBXBuildFile; fileRef = F29476E01F03F03C00F793C5 /* MTUMath.c */; };
+		F2B508B01F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B11F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B21F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B31F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B41F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B51F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508B61F3B5A5C00FEABA9 /* PostProcess.metal in Sources */ = {isa = PBXBuildFile; fileRef = F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */; };
+		F2B508BF1F3B6F0E00FEABA9 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B508B71F3B6F0400FEABA9 /* Image.png */; };
+		F2B508C01F3B6F1000FEABA9 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B508B71F3B6F0400FEABA9 /* Image.png */; };
 		F2B64BE51F0BF4E000FE06FA /* MTUMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */; };
 		F2B64BEF1F0D3A6C00FE06FA /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
 		F2B716241EFABD53001B9A87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B479461EEEDBD700A43D21 /* AppDelegate.m */; };
@@ -317,6 +326,8 @@
 		F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F2B4795C1EEEDCA400A43D21 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PostProcess.metal; sourceTree = "<group>"; };
+		F2B508B71F3B6F0400FEABA9 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
 		F2B64BE31F0BF33500FE06FA /* MTUMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTUMesh.h; sourceTree = "<group>"; };
 		F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUMesh.m; sourceTree = "<group>"; };
 		F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MTUFbxImporter.mm; sourceTree = "<group>"; };
@@ -487,6 +498,7 @@
 				F29101CA1F2DB99B00ADBF18 /* Phong.metal */,
 				F21F0D511F37027500965EAC /* Reflection.metal */,
 				F22ADA7C1F38AD6A005FA3DC /* Refraction.metal */,
+				F2B508AF1F3B5A5C00FEABA9 /* PostProcess.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -580,6 +592,7 @@
 		F271EB3E1EF649E200236CEE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F2B508B71F3B6F0400FEABA9 /* Image.png */,
 				F29101951F2B9C6500ADBF18 /* Models */,
 				F291017F1F2B911E00ADBF18 /* Assets.xcassets */,
 			);
@@ -1124,6 +1137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F271EB2F1EF2CA3700236CEE /* Main.storyboard in Resources */,
+				F2B508BF1F3B6F0E00FEABA9 /* Image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,6 +1146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F271EB5C1EF64B8400236CEE /* Main.storyboard in Resources */,
+				F2B508C01F3B6F1000FEABA9 /* Image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,6 +1224,7 @@
 				F21F0D421F37002300965EAC /* MTUMath.c in Sources */,
 				F21F0D401F37001A00965EAC /* MTUFbxImporter.mm in Sources */,
 				F21F0D4B1F37003B00965EAC /* MTUCamera.m in Sources */,
+				F2B508B51F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,6 +1251,7 @@
 				F22ADAA51F38B271005FA3DC /* BaseRenderer.m in Sources */,
 				F22ADAB41F38B2AE005FA3DC /* MTUSkybox.m in Sources */,
 				F22ADAB31F38B2AB005FA3DC /* MTUCamera.m in Sources */,
+				F2B508B61F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,6 +1278,7 @@
 				F24FD3341F30D00700119E7A /* MTUDevice.m in Sources */,
 				F24FD3311F30CFFB00119E7A /* PhongNormalMap.metal in Sources */,
 				F22EB73C1F34BE5000F174D9 /* MTUCamera.m in Sources */,
+				F2B508B41F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1382,7 @@
 				F29101781F2A454C00ADBF18 /* Basic.metal in Sources */,
 				F29101771F2A42CF00ADBF18 /* PhongNormalMap.metal in Sources */,
 				F291017A1F2A455500ADBF18 /* MTUFbxImporter.mm in Sources */,
+				F2B508B21F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,6 +1409,7 @@
 				F29101B61F2DB7F100ADBF18 /* Renderer.m in Sources */,
 				F29101C41F2DB84300ADBF18 /* MTUNode.m in Sources */,
 				F29101BD1F2DB82500ADBF18 /* PhongNormalMap.metal in Sources */,
+				F2B508B31F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,6 +1427,7 @@
 				F2B716241EFABD53001B9A87 /* AppDelegate.m in Sources */,
 				F22678A31F1D0596004E1516 /* Basic.metal in Sources */,
 				F2FF30051F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F2B508B01F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 				F226789B1F1A007F004E1516 /* MTUNode.m in Sources */,
 				F22678A61F1D0888004E1516 /* PhongDiffuse.metal in Sources */,
 				F22ADA7D1F38AD6A005FA3DC /* Refraction.metal in Sources */,
@@ -1441,6 +1462,7 @@
 				F2E0556A1F076E97007A4BAA /* ViewController.m in Sources */,
 				F28B09561F2793FA00A37338 /* Basic.metal in Sources */,
 				F2E055691F076E93007A4BAA /* AppDelegate.m in Sources */,
+				F2B508B11F3B5A5C00FEABA9 /* PostProcess.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2034,6 +2056,7 @@
 				F22ADA9A1F38B19C005FA3DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F24FD3261F30CF5D00119E7A /* Build configuration list for PBXNativeTarget "Skybox" */ = {
 			isa = XCConfigurationList;

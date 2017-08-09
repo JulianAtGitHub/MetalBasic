@@ -34,7 +34,7 @@ fragment float4 fragBasicRefraction(VertOutPPTN in [[stage_in]],
     float3 I = normalize(in.wp_position - camera.position);
     float3 R = normalize(refract(I, N, object.refractRatio));
     
-    return envTexture.sample(cubemapSampler, R);
+    return envTexture.sample(defaultSampler, R);
 }
 
 vertex VertOutPPTNTB vertRefraction(uint vertexID [[vertex_id]],
@@ -72,5 +72,5 @@ fragment float4 fragRefraction(VertOutPPTNTB in [[stage_in]],
     float3 I = normalize(in.wp_position - camera.position);
     float3 R = normalize(refract(I, N, object.refractRatio));
     
-    return envTexture.sample(cubemapSampler, R);
+    return envTexture.sample(defaultSampler, R);
 }

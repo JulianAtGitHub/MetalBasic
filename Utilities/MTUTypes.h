@@ -30,7 +30,8 @@ typedef enum {
 } MTUVertexFormat;
 
 typedef enum {
-    MTUTransformTypeMvp = 0,
+    MTUTransformTypeInvalid = 0,
+    MTUTransformTypeMvp,
     MTUTransformTypeMvpMN,
     MTUTransformTypeMax
 } MTUTransformType;

@@ -33,7 +33,7 @@ fragment float4 fragBasicReflection(VertOutPPTN in [[stage_in]],
     float3 I = normalize(in.wp_position - camera.position);
     float3 R = normalize(reflect(I, N));
     
-    return envTexture.sample(cubemapSampler, R);
+    return envTexture.sample(defaultSampler, R);
 }
 
 vertex VertOutPPTNTB vertReflection(uint vertexID [[vertex_id]],
@@ -70,7 +70,7 @@ fragment float4 fragReflection(VertOutPPTNTB in [[stage_in]],
     float3 I = normalize(in.wp_position - camera.position);
     float3 R = normalize(reflect(I, N));
     
-    return envTexture.sample(cubemapSampler, R);
+    return envTexture.sample(defaultSampler, R);
 }
 
 

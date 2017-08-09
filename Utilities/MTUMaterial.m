@@ -24,6 +24,7 @@
         _depthWritable = YES;
         _isCullBackFace = NO;
         _isClockWise = YES;
+        _transformType = MTUTransformTypeInvalid;
         _cameraParamsUsage = MTUCameraParamsNotUse;
     }
     return self;
@@ -53,7 +54,9 @@
             case MTUTransformTypeMvpMN: transformBufferLenght = sizeof(MTUTransformMvpMN); break;
             default: break;
         }
-        _transformBuffers = [device newInFlightBuffersWithSize:transformBufferLenght];
+        if (transformBufferLenght > 0) {
+            _transformBuffers = [device newInFlightBuffersWithSize:transformBufferLenght];
+        }
         
         _cameraParamsUsage = config.cameraParamsUsage;
         

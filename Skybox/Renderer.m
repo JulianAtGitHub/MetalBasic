@@ -23,8 +23,6 @@
 @implementation Renderer
 
 - (void) loadMetal:(MTKView *)view {
-    view.depthStencilPixelFormat = MTLPixelFormatDepth32Float;
-    
     _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 2.5f, 5.0f}
                                            target:(MTUPoint3){0.0f, 2.5f, 0.0f}
                                                up:(MTUPoint3){0.0f, 1.0f, 0.0f}];

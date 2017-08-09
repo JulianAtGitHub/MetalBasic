@@ -57,7 +57,7 @@ typedef struct {
     float3 halfVector;
 } VertOutPTNTBH;
 
-constexpr sampler defaultSampler(filter::linear, address::repeat);
-constexpr sampler cubemapSampler(filter::linear, address::clamp_to_edge);
+constexpr sampler defaultSampler(filter::linear, address::clamp_to_edge);
+constexpr sampler repeatSampler(filter::linear, address::repeat);
 
 #endif /* _PRIVATE_SHADER_TYPES_H_ */

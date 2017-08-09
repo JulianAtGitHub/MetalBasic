@@ -16,15 +16,35 @@
 
 const static NSUInteger MAX_BUFFERS_IN_FLIGHT = 3;
 
+static const MTUVertexPT QuadVertices[] = {
+    // Pixel Positions,  Texture Coordinates
+    { { 1.f,-1.f, 0.f }, { 1.f, 1.f } },
+    { {-1.f,-1.f, 0.f }, { 0.f, 1.f } },
+    { {-1.f, 1.f, 0.f }, { 0.f, 0.f } },
+    
+    { { 1.f,-1.f, 0.f }, { 1.f, 1.f } },
+    { {-1.f, 1.f, 0.f }, { 0.f, 0.f } },
+    { { 1.f, 1.f, 0.f }, { 1.f, 0.f } },
+};
+
 @interface MTUDevice () {
     id <MTLDevice> _device;
     id <MTLLibrary> _library;
     id <MTLCommandQueue> _commandQueue;
     
+    id <MTLTexture> _renderTargetColor;
+    id <MTLTexture> _renderTargetDepth;
+    MTLRenderPassDescriptor *_renderTargetPass;
+    
+    // post process
+    MTUMesh *_postProcess;
+    
+    // re-alloc before render
     id <MTLCommandBuffer> _commandBuffer;
     id <MTLRenderCommandEncoder> _renderCommandEncoder;
     
     MTKView *_view;
+    MTLViewport _viewPort;
     MTKTextureLoader *_textureLoader;
     
     NSUInteger _inFlightBufferIndex;
@@ -33,6 +53,9 @@ const static NSUInteger MAX_BUFFERS_IN_FLIGHT = 3;
     NSMutableDictionary <NSString *, id <MTLRenderPipelineState> > *_renderPipelineStateCache;
     NSMutableDictionary <NSString *, id <MTLDepthStencilState> > *_depthStencilStateCache;
 }
+
+- (void) resetPostProcess;
+- (void) resetRenderTargetWithViewSize:(CGSize)viewSize;
 
 - (id <MTLFunction>) getShaderFunctionWithName:(NSString *)name;
 - (NSString *) renderPipelineStateIdentityFromConfig:(MTUMaterialConfig *)config;
@@ -63,6 +86,80 @@ static MTUDevice *instance = nil;
         _depthStencilStateCache = [NSMutableDictionary dictionary];
     }
     return self;
+}
+
+- (void) resetPostProcess {
+    if (_renderTargetColor == nil) {
+        return;
+    }
+    
+    if (_postProcess) {
+        _postProcess = nil;
+    }
+    
+    NSData *vertexData = [NSData dataWithBytes:QuadVertices length:sizeof(QuadVertices)];
+    _postProcess = [[MTUMesh alloc] initWithVertexData:vertexData andVertexFormat:MTUVertexFormatPT];
+    _postProcess.name = @"post process of view";
+    
+    MTUMaterialConfig *materialConfig = [[MTUMaterialConfig alloc] init];
+    materialConfig.name = @"post process material";
+    materialConfig.vertexShader = @"vertPostProcess";
+    materialConfig.fragmentShader = @"fragPostProcess";
+    materialConfig.depthFormat = MTLPixelFormatInvalid;
+    _postProcess.material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+}
+
+- (void) resetRenderTargetWithViewSize:(CGSize)viewSize {
+    if (viewSize.width < 1 || viewSize.height < 1) {
+        return;
+    }
+    
+    if (_renderTargetPass) {
+        _renderTargetPass = nil;
+    }
+    if (_renderTargetColor) {
+        _renderTargetColor = nil;
+    }
+    if (_renderTargetDepth) {
+        _renderTargetDepth = nil;
+    }
+    
+    
+    MTLTextureDescriptor *colorDescriptor =
+        [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatBGRA8Unorm
+                                                           width:viewSize.width
+                                                          height:viewSize.height
+                                                          mipmapped:NO];
+    colorDescriptor.storageMode = MTLStorageModePrivate;
+    colorDescriptor.usage = MTLTextureUsageRenderTarget | MTLTextureUsageShaderRead;
+    _renderTargetColor = [_device newTextureWithDescriptor:colorDescriptor];
+    
+    MTLTextureDescriptor *depthDescriptor =
+        [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatDepth32Float
+                                                           width:viewSize.width
+                                                           height:viewSize.height
+                                                           mipmapped:NO];
+    depthDescriptor.storageMode = MTLStorageModePrivate;
+    depthDescriptor.usage = MTLTextureUsageRenderTarget;
+    _renderTargetDepth = [_device newTextureWithDescriptor:depthDescriptor];
+    
+    _renderTargetPass = [MTLRenderPassDescriptor renderPassDescriptor];
+    _renderTargetPass.colorAttachments[0].texture = _renderTargetColor;
+    _renderTargetPass.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.0, 0.0, 1.0);
+    _renderTargetPass.colorAttachments[0].loadAction = MTLLoadActionClear;
+    _renderTargetPass.depthAttachment.texture = _renderTargetDepth;
+    _renderTargetPass.depthAttachment.clearDepth = 1.0;
+    _renderTargetPass.depthAttachment.loadAction = MTLLoadActionClear;
+}
+
+- (void) setView:(MTKView *)view {
+    _view = view;
+    view.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
+    
+    CGSize viewSize = view.drawableSize;
+    _viewPort = (MTLViewport){0.0, 0.0, viewSize.width, viewSize.height, -1.0, 1.0};
+    [self resetRenderTargetWithViewSize:viewSize];
+    [self resetPostProcess];
 }
 
 - (id <MTLFunction>) getShaderFunctionWithName:(NSString *)name {
@@ -217,6 +314,13 @@ static MTUDevice *instance = nil;
 }
 
 - (void) startDraw {
+    if (_renderTargetColor == nil
+        || _renderTargetDepth == nil
+        || _renderTargetPass == nil
+        || _postProcess == nil) {
+        return;
+    }
+    
     dispatch_semaphore_wait(_inFlightSemaphore, DISPATCH_TIME_FOREVER);
     
     _inFlightBufferIndex = (_inFlightBufferIndex + 1) % MAX_BUFFERS_IN_FLIGHT;
@@ -224,16 +328,18 @@ static MTUDevice *instance = nil;
     _commandBuffer = [_commandQueue commandBuffer];
     _commandBuffer.label = @"MTU CommandBuffer";
     
+    __block dispatch_semaphore_t block_sema = _inFlightSemaphore;
+    [_commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBuffer) {
+        dispatch_semaphore_signal(block_sema);
+    }];
+    
     _renderCommandEncoder = nil;
-    MTLRenderPassDescriptor *renderPassDescriptor = _view.currentRenderPassDescriptor;
-    if (renderPassDescriptor) {
-        _renderCommandEncoder = [_commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
-        _renderCommandEncoder.label = @"MTU RenderCommandEncoder";
-        
-        // view port
-        CGSize viewSize = _view.drawableSize;
-        [_renderCommandEncoder setViewport:(MTLViewport){0.0, 0.0, viewSize.width, viewSize.height, -1.0, 1.0}];
-    }
+
+    _renderCommandEncoder = [_commandBuffer renderCommandEncoderWithDescriptor:_renderTargetPass];
+    _renderCommandEncoder.label = @"MTU RenderCommandEncoder";
+    
+    // view port
+    [_renderCommandEncoder setViewport:_viewPort];
 }
 
 - (void) drawMesh:(nonnull MTUMesh *)mesh withMaterial:(nonnull MTUMaterial *)material {
@@ -254,8 +360,10 @@ static MTUDevice *instance = nil;
     [_renderCommandEncoder setVertexBuffer:mesh.vertexBuffer offset:0 atIndex:0];
     
     // transform
-    id <MTLBuffer> transform = [self currentInFlightBuffer:material.transformBuffers];
-    [_renderCommandEncoder setVertexBuffer:transform offset:0 atIndex:1];
+    if (material.transformType != MTUTransformTypeInvalid) {
+        id <MTLBuffer> transform = [self currentInFlightBuffer:material.transformBuffers];
+        [_renderCommandEncoder setVertexBuffer:transform offset:0 atIndex:1];
+    }
     
     NSUInteger bufferOffset = 2;
     if (material.cameraParamsUsage != MTUCameraParamsNotUse) {
@@ -312,12 +420,26 @@ static MTUDevice *instance = nil;
 - (void) commit {
     [_renderCommandEncoder endEncoding];
     
-    __block dispatch_semaphore_t block_sema = _inFlightSemaphore;
-    [_commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> commandBuffer) {
-        dispatch_semaphore_signal(block_sema);
-    }];
+    MTLRenderPassDescriptor *postProcessPassDescriptor = _view.currentRenderPassDescriptor;
+    if (postProcessPassDescriptor) {
+        id <MTLRenderCommandEncoder> postProcessEncoder =
+            [_commandBuffer renderCommandEncoderWithDescriptor:postProcessPassDescriptor];
+        postProcessEncoder.label = @"MTU PostProcessEncoder";
+        
+        [postProcessEncoder setViewport:_viewPort];
+        
+        [postProcessEncoder setRenderPipelineState:_postProcess.material.renderPipelineState];
+        
+        [postProcessEncoder setVertexBuffer:_postProcess.vertexBuffer offset:0 atIndex:0];
+        [postProcessEncoder setFragmentTexture:_renderTargetColor atIndex:0];
+        
+        [postProcessEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:_postProcess.vertexCount];
+        
+        [postProcessEncoder endEncoding];
+    }
     
     [_commandBuffer presentDrawable:_view.currentDrawable];
+    
     [_commandBuffer commit];
 }
 

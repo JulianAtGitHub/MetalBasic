@@ -40,5 +40,5 @@ vertex VertOutPT3 vertSkybox(uint vertexID [[vertex_id]],
 
 fragment float4 fragSkybox(VertOutPT3 in [[stage_in]],
                            texturecube<float> colorTexture [[texture(0)]]) {
-    return colorTexture.sample(cubemapSampler, in.texCoord);
+    return colorTexture.sample(defaultSampler, in.texCoord);
 }

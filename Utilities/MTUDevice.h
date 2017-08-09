@@ -20,7 +20,7 @@
 
 @interface MTUDevice : NSObject
 
-@property (nullable) MTKView *view;
+@property (nullable, nonatomic, readwrite) MTKView *view;
 
 + (nonnull MTUDevice *) sharedInstance;
 
