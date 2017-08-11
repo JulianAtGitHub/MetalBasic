@@ -300,10 +300,6 @@ static MTUFbxImporter *instance = nil;
                 vertexSize = sizeof(MTUVertexPT);
                 hasTexCoord = YES;
             } break;
-            case MTUVertexFormatPN: {
-                vertexSize = sizeof(MTUVertexPN);
-                hasNormal = YES;
-            } break;
             case MTUVertexFormatPTN: {
                 vertexSize = sizeof(MTUVertexPTN);
                 hasTexCoord = YES;
@@ -362,11 +358,10 @@ static MTUFbxImporter *instance = nil;
             
             // read position
             FbxVector4 position = fbxMesh->GetControlPointAt(cpIndex);
-            vector_float3 *vPosition = NULL;
+            MTUPoint3 *vPosition = NULL;
             switch (_vertexFormat) {
                 case MTUVertexFormatP: vPosition = &(((MTUVertexP *)vertex)->position); break;
                 case MTUVertexFormatPT: vPosition = &(((MTUVertexPT *)vertex)->position); break;
-                case MTUVertexFormatPN: vPosition = &(((MTUVertexPN *)vertex)->position); break;
                 case MTUVertexFormatPTN: vPosition = &(((MTUVertexPTN *)vertex)->position); break;
                 case MTUVertexFormatPTNTB: vPosition = &(((MTUVertexPTNTB *)vertex)->position); break;
                 default: break;
@@ -446,7 +441,7 @@ static MTUFbxImporter *instance = nil;
     // update texCoord
     if (uvIndex >= 0) {
         FbxVector2 uv = elementUV->GetDirectArray().GetAt(uvIndex);
-        vector_float2 *vTexCoord = NULL;
+        MTUPoint2 *vTexCoord = NULL;
         switch (_vertexFormat) {
             case MTUVertexFormatPT: vTexCoord = &(((MTUVertexPT *)vertex)->texCoord); break;
             case MTUVertexFormatPTN: vTexCoord = &(((MTUVertexPTN *)vertex)->texCoord); break;
@@ -501,9 +496,8 @@ static MTUFbxImporter *instance = nil;
     }
     if (normalIndex >= 0) {
         FbxVector4 normal = elementNormal->GetDirectArray().GetAt(normalIndex);
-        vector_float3 *vNormal = NULL;
+        MTUPoint3 *vNormal = NULL;
         switch (_vertexFormat) {
-            case MTUVertexFormatPN: vNormal = &(((MTUVertexPN *)vertex)->normal); break;
             case MTUVertexFormatPTN: vNormal = &(((MTUVertexPTN *)vertex)->normal); break;
             case MTUVertexFormatPTNTB: vNormal = &(((MTUVertexPTNTB *)vertex)->normal); break;
             default: break;

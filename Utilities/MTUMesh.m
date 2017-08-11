@@ -8,6 +8,7 @@
 
 #import "MTUShaderTypes.h"
 #import "MTUDevice.h"
+#import "MTUMaterial.h"
 #import "MTUMesh.h"
 
 @implementation MTUMesh
@@ -22,7 +23,6 @@
         switch (format) {
             case MTUVertexFormatP: vertexSize = sizeof(MTUVertexP); break;
             case MTUVertexFormatPT: vertexSize = sizeof(MTUVertexPT); break;
-            case MTUVertexFormatPN: vertexSize = sizeof(MTUVertexPN); break;
             case MTUVertexFormatPTN: vertexSize = sizeof(MTUVertexPTN); break;
             case MTUVertexFormatPTNTB: vertexSize = sizeof(MTUVertexPTNTB); break;
             default: break;
@@ -32,6 +32,15 @@
         }
     }
     return self;
+}
+
+- (void) resetMaterialFromConfig:(MTUMaterialConfig *)config {
+    if (config == nil) {
+        return;
+    }
+    
+    _material = nil;
+    _material = [[MTUMaterial alloc] initWithConfig:config andVertexFormat:_vertexFormat];
 }
 
 @end

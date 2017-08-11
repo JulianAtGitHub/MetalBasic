@@ -43,13 +43,14 @@
         materialConfig.name = @"Phong-NormalMap";
         materialConfig.vertexShader = @"vertPhongNormalMap";
         materialConfig.fragmentShader = @"fragPhongNormalMap";
+        materialConfig.vertexFormat = MTUVertexFormatPTNTB;
         materialConfig.transformType = MTUTransformTypeMvpMN;
         materialConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
         materialConfig.buffers = @[lightData, objectData];
         materialConfig.bufferIndexOfVertexShader = @[@0];
         materialConfig.bufferIndexOfFragmentShader = @[@0, @1];
         materialConfig.textures = @[@"earth_day", @"earth_normal"];
-        sphere.meshes[0].material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+        [sphere.meshes[0] resetMaterialFromConfig:materialConfig];
     }
 }
 

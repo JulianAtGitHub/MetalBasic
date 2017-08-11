@@ -13,10 +13,9 @@
 #import "MTUTypes.h"
 
 @class MTUMaterial;
+@class MTUMaterialConfig;
 
 @interface MTUMesh : NSObject
-
-- (nonnull instancetype) initWithVertexData:(nonnull NSData *)data andVertexFormat:(MTUVertexFormat) format;
 
 @property (nullable, readwrite) NSString *name;
 
@@ -26,7 +25,11 @@
 
 @property (nullable, readonly) id <MTLBuffer> vertexBuffer;
 
-@property (nullable, readwrite) MTUMaterial *material;
+@property (nullable, readonly) MTUMaterial *material;
+
+- (nonnull instancetype) initWithVertexData:(nonnull NSData *)data andVertexFormat:(MTUVertexFormat) format;
+
+- (void) resetMaterialFromConfig:(nonnull MTUMaterialConfig *)config;
 
 @end
 

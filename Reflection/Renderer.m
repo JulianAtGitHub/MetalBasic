@@ -33,15 +33,15 @@
     cyborgConfig.name = @"cyborg-reflect";
     cyborgConfig.vertexShader = @"vertBasicReflection";
     cyborgConfig.fragmentShader = @"fragBasicReflection";
+    cyborgConfig.vertexFormat = MTUVertexFormatPTN;
     cyborgConfig.transformType = MTUTransformTypeMvpMN;
     cyborgConfig.cameraParamsUsage = MTUCameraParamsForFragmentShader;
     cyborgConfig.textures = @[@"skybox_baseColor"];
-    MTUMaterial *cyborgMaterial = [[MTUMaterial alloc] initWithConfig:cyborgConfig];
     
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Cyborg.obj" andConvertToFormat:MTUVertexFormatPTN];
     MTUNode *cyborg = [_scene findNodeWithName:@"default"];
     NSArray <MTUMesh *> *meshes = cyborg.meshes;
-    meshes[0].material = cyborgMaterial;
+    [meshes[0] resetMaterialFromConfig:cyborgConfig];
     
     _skybox = [[MTUSkybox alloc] initWithTextureAsset:@"skybox_baseColor"];
 }

@@ -17,13 +17,40 @@ extern "C" {
 #endif
 
 typedef struct {
+    float x, y;
+} MTUPoint2;
+
+typedef struct {
     float x, y, z;
 } MTUPoint3;
+
+// vertex types
+typedef struct {
+    MTUPoint3 position;
+} MTUVertexP;
+
+typedef struct {
+    MTUPoint3 position;
+    MTUPoint2 texCoord;
+} MTUVertexPT;
+
+typedef struct {
+    MTUPoint3 position;
+    MTUPoint2 texCoord;
+    MTUPoint3 normal;
+} MTUVertexPTN;
+
+typedef struct {
+    MTUPoint3 position;
+    MTUPoint2 texCoord;
+    MTUPoint3 normal;
+    MTUPoint3 tangent;
+    MTUPoint3 binormal;
+} MTUVertexPTNTB;
 
 typedef enum {
     MTUVertexFormatP = 0,
     MTUVertexFormatPT,
-    MTUVertexFormatPN,
     MTUVertexFormatPTN,
     MTUVertexFormatPTNTB,
     MTUVertexFormatMax

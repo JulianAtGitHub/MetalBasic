@@ -34,6 +34,8 @@
 
 @property (nonatomic) BOOL isClockWise;
 
+@property (nonatomic) MTUVertexFormat vertexFormat;
+
 @property (nonatomic) MTUTransformType transformType;
 
 @property (nonatomic) MTUCameraParamsUsage cameraParamsUsage;
@@ -50,7 +52,7 @@
 
 @interface MTUMaterial : NSObject
 
-- (nonnull instancetype) initWithConfig:(nonnull MTUMaterialConfig *)config;
+- (nonnull instancetype) initWithConfig:(nonnull MTUMaterialConfig *)config andVertexFormat:(MTUVertexFormat)vertexFormat;
 
 @property (nonnull, readonly) NSString *name;
 
@@ -61,6 +63,8 @@
 @property (readonly) MTLCullMode cullMode;
 
 @property (readonly) MTLWinding winding;
+
+@property (nonatomic, readonly) MTUVertexFormat vertexFormat;
 
 @property (nonatomic, readonly) MTUTransformType transformType;
 

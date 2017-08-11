@@ -12,11 +12,9 @@ using namespace metal;
 #include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
-vertex VertOutPT vertBasicColor(uint vertexID [[vertex_id]],
-                                constant MTUVertexPT *verties [[buffer(0)]],
+vertex VertOutPT vertBasicColor(VertInPT vertIn [[stage_in]],
                                 constant MTUTransformMvp &transform [[buffer(1)]]) {
     VertOutPT vertOut;
-    constant MTUVertexPT &vertIn = verties[vertexID];
     vertOut.position = transform.modelview_projection * float4(vertIn.position, 1.0);
     vertOut.texCoord = vertIn.texCoord;
     return vertOut;
@@ -27,11 +25,9 @@ fragment float4 fragBasicColor(VertOutPT in [[stage_in]],
     return colorTexture.sample(defaultSampler, in.texCoord);
 }
 
-vertex VertOutPT3 vertSkybox(uint vertexID [[vertex_id]],
-                             constant MTUVertexP *verties [[buffer(0)]],
+vertex VertOutPT3 vertSkybox(VertInP vertIn [[stage_in]],
                              constant MTUTransformMvp &transform [[buffer(1)]]) {
     VertOutPT3 vertOut;
-    constant MTUVertexP &vertIn = verties[vertexID];
     float4 position = transform.modelview_projection * float4(vertIn.position, 1.0);
     vertOut.position = position.xyww;
     vertOut.texCoord = vertIn.position;

@@ -13,7 +13,7 @@
 #import "MTUMaterial.h"
 #import "MTUSkybox.h"
 
-const static vector_float3 SkyboxVertices[] = {
+const static MTUVertexP SkyboxVertices[] = {
     // positions
     {-1.0f,  1.0f, -1.0f},
     {-1.0f, -1.0f, -1.0f},
@@ -86,9 +86,10 @@ const static vector_float3 SkyboxVertices[] = {
     config.fragmentShader = @"fragSkybox";
     config.depthCompareFunction = MTLCompareFunctionLessEqual;
     config.depthWritable = NO;
+    config.vertexFormat = MTUVertexFormatP;
     config.transformType = MTUTransformTypeMvp;
     config.textures = @[@"skybox_baseColor"];
-    mesh.material = [[MTUMaterial alloc] initWithConfig:config];
+    [mesh resetMaterialFromConfig:config];
     
     return mesh;
 }

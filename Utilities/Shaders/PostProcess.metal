@@ -12,11 +12,9 @@ using namespace metal;
 #include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
-vertex VertOutPT vertPostProcess(uint vertexID [[vertex_id]],
-                                 constant MTUVertexPT *vertices [[buffer(0)]]) {
+vertex VertOutPT vertPostProcess(VertInPT vertIn [[stage_in]]) {
     
     VertOutPT out;
-    constant MTUVertexPT &vertIn = vertices[vertexID];
     
     out.position = float4(vertIn.position, 1.0);
     out.texCoord = vertIn.texCoord;

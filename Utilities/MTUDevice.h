@@ -24,7 +24,7 @@
 
 + (nonnull MTUDevice *) sharedInstance;
 
-- (nullable id <MTLRenderPipelineState>) renderPipelineStateWithConfig:(nonnull MTUMaterialConfig *)config;
+- (nullable id <MTLRenderPipelineState>) renderPipelineStateWithConfig:(nonnull MTUMaterialConfig *)config andMeshVertexFormat:(MTUVertexFormat)meshVertexFormat;
 
 - (nullable id <MTLDepthStencilState>) depthStencilStateWithConfig:(nonnull MTUMaterialConfig *)config;
 

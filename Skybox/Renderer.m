@@ -42,18 +42,18 @@
     cyborgConfig.name = @"cyborg-phong";
     cyborgConfig.vertexShader = @"vertPhong";
     cyborgConfig.fragmentShader = @"fragPhong";
+    cyborgConfig.vertexFormat = MTUVertexFormatPTNTB;
     cyborgConfig.transformType = MTUTransformTypeMvpMN;
     cyborgConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
     cyborgConfig.buffers = @[lightData, objectData];
     cyborgConfig.bufferIndexOfVertexShader = @[@0];
     cyborgConfig.bufferIndexOfFragmentShader = @[@0, @1];
     cyborgConfig.textures = @[@"cyborg_diffuse", @"cyborg_normal", @"cyborg_specular"];
-    MTUMaterial *cyborgMaterial = [[MTUMaterial alloc] initWithConfig:cyborgConfig];
     
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Cyborg.obj" andConvertToFormat:MTUVertexFormatPTNTB];
     MTUNode *cyborg = [_scene findNodeWithName:@"default"];
     NSArray <MTUMesh *> *meshes = cyborg.meshes;
-    meshes[0].material = cyborgMaterial;
+    [meshes[0] resetMaterialFromConfig:cyborgConfig];
     
     _skybox = [[MTUSkybox alloc] initWithTextureAsset:@"skybox_baseColor"];
 }

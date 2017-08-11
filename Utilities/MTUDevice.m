@@ -58,7 +58,7 @@ static const MTUVertexPT QuadVertices[] = {
 - (void) resetRenderTargetWithViewSize:(CGSize)viewSize;
 
 - (id <MTLFunction>) getShaderFunctionWithName:(NSString *)name;
-- (NSString *) renderPipelineStateIdentityFromConfig:(MTUMaterialConfig *)config;
+- (NSString *) renderPipelineStateIdentityFromConfig:(MTUMaterialConfig *)config andMeshVertexFormat:(MTUVertexFormat)meshVertexFormat;
 - (NSString *) depthStencilStateIdentityFromConfig:(MTUMaterialConfig *)config;
 
 @end
@@ -106,7 +106,8 @@ static MTUDevice *instance = nil;
     materialConfig.vertexShader = @"vertPostProcess";
     materialConfig.fragmentShader = @"fragPostProcess";
     materialConfig.depthFormat = MTLPixelFormatInvalid;
-    _postProcess.material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+    materialConfig.vertexFormat = MTUVertexFormatPT;
+    [_postProcess resetMaterialFromConfig:materialConfig];
 }
 
 - (void) resetRenderTargetWithViewSize:(CGSize)viewSize {
@@ -166,17 +167,19 @@ static MTUDevice *instance = nil;
     return name ? [_library newFunctionWithName:name] : nil;
 }
 
-- (NSString *) renderPipelineStateIdentityFromConfig:(MTUMaterialConfig *)config {
+- (NSString *) renderPipelineStateIdentityFromConfig:(MTUMaterialConfig *)config andMeshVertexFormat:(MTUVertexFormat)meshVertexFormat {
     if (config == nil) {
         return nil;
     }
     
-    return [NSString stringWithFormat:@"RPS_%@_%@_%lu_%lu_%lu",
+    return [NSString stringWithFormat:@"RenderPipelineState#%@#%@#%lu#%lu#%lu#%u#%u",
                                       config.vertexShader,
                                       config.fragmentShader,
                                       config.colorFormat,
                                       config.depthFormat,
-                                      config.stencilFormat];
+                                      config.stencilFormat,
+                                      config.vertexFormat,
+                                      meshVertexFormat];
 }
 
 - (NSString *) depthStencilStateIdentityFromConfig:(MTUMaterialConfig *)config {
@@ -184,13 +187,18 @@ static MTUDevice *instance = nil;
         return nil;
     }
     
-    return [NSString stringWithFormat:@"DSS_%lu_%hhd",
+    return [NSString stringWithFormat:@"DepthStencilState#%lu#%hhd",
                                       config.depthCompareFunction,
                                       config.depthWritable];
 }
 
-- (id <MTLRenderPipelineState>) renderPipelineStateWithConfig:(MTUMaterialConfig *)config {
-    NSString *renderPipelineStateId = [self renderPipelineStateIdentityFromConfig:config];
+- (id <MTLRenderPipelineState>) renderPipelineStateWithConfig:(MTUMaterialConfig *)config andMeshVertexFormat:(MTUVertexFormat)meshVertexFormat {
+    if (config.vertexFormat > meshVertexFormat) {
+        NSLog(@"Create render pipeline state failed! Vertex fromat not match!");
+        return nil;
+    }
+    
+    NSString *renderPipelineStateId = [self renderPipelineStateIdentityFromConfig:config andMeshVertexFormat:meshVertexFormat];
     if (renderPipelineStateId == nil) {
         return nil;
     }
@@ -213,6 +221,70 @@ static MTUDevice *instance = nil;
     renderPipelineDescriptor.colorAttachments[0].pixelFormat = config.colorFormat;
     renderPipelineDescriptor.depthAttachmentPixelFormat = config.depthFormat;
     renderPipelineDescriptor.inputPrimitiveTopology = MTLPrimitiveTopologyClassTriangle;
+    
+    MTLVertexDescriptor *vertexDescriptor = [[MTLVertexDescriptor alloc] init];
+    // position
+    vertexDescriptor.attributes[0].format = MTLVertexFormatFloat3;
+    vertexDescriptor.attributes[0].offset = 0;
+    vertexDescriptor.attributes[0].bufferIndex = 0;
+    switch (config.vertexFormat) {
+        case MTUVertexFormatPT:
+            // texture coord
+            vertexDescriptor.attributes[1].format = MTLVertexFormatFloat2;
+            vertexDescriptor.attributes[1].offset = 12;
+            vertexDescriptor.attributes[1].bufferIndex = 0;
+            break;
+        case MTUVertexFormatPTN:
+            // texture coord
+            vertexDescriptor.attributes[1].format = MTLVertexFormatFloat2;
+            vertexDescriptor.attributes[1].offset = 12;
+            vertexDescriptor.attributes[1].bufferIndex = 0;
+            // normal
+            vertexDescriptor.attributes[2].format = MTLVertexFormatFloat3;
+            vertexDescriptor.attributes[2].offset = 20;
+            vertexDescriptor.attributes[2].bufferIndex = 0;
+            break;
+        case MTUVertexFormatPTNTB:
+            // texture coord
+            vertexDescriptor.attributes[1].format = MTLVertexFormatFloat2;
+            vertexDescriptor.attributes[1].offset = 12;
+            vertexDescriptor.attributes[1].bufferIndex = 0;
+            // normal
+            vertexDescriptor.attributes[2].format = MTLVertexFormatFloat3;
+            vertexDescriptor.attributes[2].offset = 20;
+            vertexDescriptor.attributes[2].bufferIndex = 0;
+            // tangent
+            vertexDescriptor.attributes[3].format = MTLVertexFormatFloat3;
+            vertexDescriptor.attributes[3].offset = 32;
+            vertexDescriptor.attributes[3].bufferIndex = 0;
+            // binormal
+            vertexDescriptor.attributes[4].format = MTLVertexFormatFloat3;
+            vertexDescriptor.attributes[4].offset = 44;
+            vertexDescriptor.attributes[4].bufferIndex = 0;
+            break;
+        default:
+            break;
+    }
+    switch (meshVertexFormat) {
+        case MTUVertexFormatP:
+            vertexDescriptor.layouts[0].stride = 12;
+            break;
+        case MTUVertexFormatPT:
+            vertexDescriptor.layouts[0].stride = 20;
+            break;
+        case MTUVertexFormatPTN:
+            vertexDescriptor.layouts[0].stride = 32;
+            break;
+        case MTUVertexFormatPTNTB:
+            vertexDescriptor.layouts[0].stride = 56;
+            break;
+        default:
+            break;
+    }
+    vertexDescriptor.layouts[0].stepFunction = MTLStepFunctionPerVertex;
+    vertexDescriptor.layouts[0].stepRate = 1;
+    
+    renderPipelineDescriptor.vertexDescriptor = vertexDescriptor;
     
     NSError *error = nil;
     renderPipelineState = [_device newRenderPipelineStateWithDescriptor:renderPipelineDescriptor error:&error];

@@ -15,35 +15,6 @@
 extern "C" {
 #endif
 
-// vertex types
-typedef struct {
-    vector_float3 position;
-} MTUVertexP;
-
-typedef struct {
-    vector_float3 position;
-    vector_float2 texCoord;
-} MTUVertexPT;
-
-typedef struct {
-    vector_float3 position;
-    vector_float3 normal;
-} MTUVertexPN;
-
-typedef struct {
-    vector_float3 position;
-    vector_float2 texCoord;
-    vector_float3 normal;
-} MTUVertexPTN;
-
-typedef struct {
-    vector_float3 position;
-    vector_float2 texCoord;
-    vector_float3 normal;
-    vector_float3 tangent;
-    vector_float3 binormal;
-} MTUVertexPTNTB;
-
 // transform types
 
 typedef struct {

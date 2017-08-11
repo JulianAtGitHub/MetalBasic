@@ -12,13 +12,11 @@ using namespace metal;
 #include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
-vertex VertOutPTNH vertPhongDiffuse(uint vertexID [[vertex_id]],
-                                constant MTUVertexPTN *vertices [[buffer(0)]],
-                                constant MTUTransformMvpMN &transform [[buffer(1)]],
-                                constant MTUCameraParams &camera [[buffer(2)]],
-                                constant MTUGlobalLight &light [[buffer(3)]]) {
+vertex VertOutPTNH vertPhongDiffuse(VertInPTN vertIn [[stage_in]],
+                                    constant MTUTransformMvpMN &transform [[buffer(1)]],
+                                    constant MTUCameraParams &camera [[buffer(2)]],
+                                    constant MTUGlobalLight &light [[buffer(3)]]) {
     VertOutPTNH vertOut;
-    constant MTUVertexPTN &vertIn = vertices[vertexID];
     vertOut.position = transform.modelview_projection * float4(vertIn.position, 1.0);
     vertOut.texCoord = vertIn.texCoord;
     vertOut.normal = normalize(transform.normal_matrix * vertIn.normal);

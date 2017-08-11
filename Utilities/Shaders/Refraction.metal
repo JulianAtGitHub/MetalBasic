@@ -12,11 +12,9 @@ using namespace metal;
 #include "PrivateTypes.h"
 #include "../MTUShaderTypes.h"
 
-vertex VertOutPPTN vertBasicRefraction(uint vertexID [[vertex_id]],
-                                       constant MTUVertexPTN *vertices [[buffer(0)]],
+vertex VertOutPPTN vertBasicRefraction(VertInPTN vertIn [[stage_in]],
                                        constant MTUTransformMvpMN &transform [[buffer(1)]]) {
     VertOutPPTN out;
-    constant MTUVertexPTN &vertIn = vertices[vertexID];
     
     out.position = transform.modelview_projection * float4(vertIn.position, 1.0);
     out.wp_position = (transform.model_matrix * float4(vertIn.position, 1.0)).xyz;
@@ -37,11 +35,9 @@ fragment float4 fragBasicRefraction(VertOutPPTN in [[stage_in]],
     return envTexture.sample(defaultSampler, R);
 }
 
-vertex VertOutPPTNTB vertRefraction(uint vertexID [[vertex_id]],
-                                    constant MTUVertexPTNTB *vertices [[buffer(0)]],
+vertex VertOutPPTNTB vertRefraction(VertInPTNTB vertIn [[stage_in]],
                                     constant MTUTransformMvpMN &transform [[buffer(1)]]) {
     VertOutPPTNTB out;
-    constant MTUVertexPTNTB &vertIn = vertices[vertexID];
     
     out.position = transform.modelview_projection * float4(vertIn.position, 1.0);
     out.wp_position = (transform.model_matrix * float4(vertIn.position, 1.0)).xyz;

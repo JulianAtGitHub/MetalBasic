@@ -34,9 +34,11 @@
         materialConfig.name = @"BasicColor";
         materialConfig.vertexShader = @"vertBasicColor";
         materialConfig.fragmentShader = @"fragBasicColor";
+        materialConfig.vertexFormat = MTUVertexFormatPT;
         materialConfig.transformType = MTUTransformTypeMvp;
+        materialConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
         materialConfig.textures = @[@"metal_image"];
-        sphere.meshes[0].material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+        [sphere.meshes[0] resetMaterialFromConfig:materialConfig];
     }
 }
 

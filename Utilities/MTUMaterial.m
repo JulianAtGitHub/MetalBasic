@@ -24,6 +24,7 @@
         _depthWritable = YES;
         _isCullBackFace = NO;
         _isClockWise = YES;
+        _vertexFormat = MTUVertexFormatP;
         _transformType = MTUTransformTypeInvalid;
         _cameraParamsUsage = MTUCameraParamsNotUse;
     }
@@ -34,18 +35,20 @@
 
 @implementation MTUMaterial
 
-- (instancetype) initWithConfig:(MTUMaterialConfig *)config {
+- (instancetype) initWithConfig:(MTUMaterialConfig *)config andVertexFormat:(MTUVertexFormat)vertexFormat {
     self = [super init];
     if (self) {
         _name = config.name;
         
         MTUDevice *device = [MTUDevice sharedInstance];
         
-        _renderPipelineState = [device renderPipelineStateWithConfig:config];
+        _renderPipelineState = [device renderPipelineStateWithConfig:config andMeshVertexFormat:vertexFormat];
         _depthStencilState = [device depthStencilStateWithConfig:config];
         
         _cullMode = config.isCullBackFace == YES ? MTLCullModeBack : MTLCullModeNone;
         _winding = config.isClockWise == YES ? MTLWindingClockwise : MTLWindingCounterClockwise;
+        
+        _vertexFormat = config.vertexFormat;
         
         _transformType = config.transformType;
         size_t transformBufferLenght = 0;

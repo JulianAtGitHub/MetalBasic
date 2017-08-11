@@ -43,13 +43,13 @@
     structureConfig.fragmentShader = @"fragPhong";
     structureConfig.isCullBackFace = YES;
     structureConfig.isClockWise = NO;
+    structureConfig.vertexFormat = MTUVertexFormatPTNTB;
     structureConfig.transformType = MTUTransformTypeMvpMN;
     structureConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
     structureConfig.buffers = @[lightData, objectData];
     structureConfig.bufferIndexOfVertexShader = @[@0];
     structureConfig.bufferIndexOfFragmentShader = @[@0, @1];
     structureConfig.textures = @[@"structure_baseColor", @"structure_normal", @"structure_specular"];
-    MTUMaterial *structureMaterial = [[MTUMaterial alloc] initWithConfig:structureConfig];
     
     MTUMaterialConfig *foliageConfig = [[MTUMaterialConfig alloc] init];
     foliageConfig.name = @"foliage-phong";
@@ -57,19 +57,19 @@
     foliageConfig.fragmentShader = @"fragPhong";
     foliageConfig.isCullBackFace = YES;
     foliageConfig.isClockWise = NO;
+    foliageConfig.vertexFormat = MTUVertexFormatPTNTB;
     foliageConfig.transformType = MTUTransformTypeMvpMN;
     foliageConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
     foliageConfig.buffers = @[lightData, objectData];
     foliageConfig.bufferIndexOfVertexShader = @[@0];
     foliageConfig.bufferIndexOfFragmentShader = @[@0, @1];
     foliageConfig.textures = @[@"foliage_baseColor", @"foliage_normal", @"foliage_specular"];
-    MTUMaterial *foliageMaterial = [[MTUMaterial alloc] initWithConfig:foliageConfig];
     
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/Temple.dae" andConvertToFormat:MTUVertexFormatPTNTB];
     MTUNode *cageStairs = [_scene findNodeWithName:@"cage_stairs_01_001"];
     NSArray <MTUMesh *> *meshes = cageStairs.meshes;
-    meshes[0].material = structureMaterial;
-    meshes[1].material = foliageMaterial;
+    [meshes[0] resetMaterialFromConfig:structureConfig];
+    [meshes[1] resetMaterialFromConfig:foliageConfig];
 }
 
 - (float) calculateDistance {

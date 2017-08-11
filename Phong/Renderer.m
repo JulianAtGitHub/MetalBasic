@@ -47,13 +47,14 @@
         materialConfig.name = @"Phong-Diffuse";
         materialConfig.vertexShader = @"vertPhongDiffuse";
         materialConfig.fragmentShader = @"fragPhongDiffuse";
+        materialConfig.vertexFormat = MTUVertexFormatPTN;
         materialConfig.transformType = MTUTransformTypeMvpMN;
         materialConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
         materialConfig.buffers = @[lightData, objectData];
         materialConfig.bufferIndexOfVertexShader = @[@0];
         materialConfig.bufferIndexOfFragmentShader = @[@0, @1];
         materialConfig.textures = @[@"earth_day"];
-        sphere.meshes[0].material = [[MTUMaterial alloc] initWithConfig:materialConfig];
+        [sphere.meshes[0] resetMaterialFromConfig:materialConfig];
     }
 }
 

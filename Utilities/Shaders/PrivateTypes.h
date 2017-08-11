@@ -9,6 +9,32 @@
 #ifndef _PRIVATE_SHADER_TYPES_H_
 #define _PRIVATE_SHADER_TYPES_H_
 
+// vertex input
+typedef struct {
+    float3 position [[attribute(0)]];
+} VertInP;
+
+typedef struct {
+    float3 position [[attribute(0)]];
+    float2 texCoord [[attribute(1)]];
+} VertInPT;
+
+typedef struct {
+    float3 position [[attribute(0)]];
+    float2 texCoord [[attribute(1)]];
+    float3 normal   [[attribute(2)]];
+} VertInPTN;
+
+typedef struct {
+    float3 position [[attribute(0)]];;
+    float2 texCoord [[attribute(1)]];;
+    float3 normal   [[attribute(2)]];;
+    float3 tangent  [[attribute(3)]];;
+    float3 binormal [[attribute(4)]];;
+} VertInPTNTB;
+
+// vertex output
+
 typedef struct {
     float4 position [[position]];
     float2 texCoord;
