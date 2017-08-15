@@ -14,6 +14,7 @@
 #import "MTUMath.h"
 
 #import "MTUDevice.h"
+#import "MTULayer.h"
 #import "MTUMaterial.h"
 #import "MTUMesh.h"
 #import "MTUNode.h"

@@ -161,6 +161,13 @@
 		F278EB3A1F08DBD40081B339 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795D1EEEDCA400A43D21 /* MetalKit.framework */; };
 		F278EB3B1F08DBD60081B339 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4795A1EEEDC9B00A43D21 /* Cocoa.framework */; };
 		F278EB401F08DC0C0081B339 /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = F278EB3D1F08DC0C0081B339 /* Renderer.m */; };
+		F27D8E551F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E561F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E571F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E581F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E591F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E5A1F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
+		F27D8E5B1F3F543500F5D73D /* MTULayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F27D8E541F3F543500F5D73D /* MTULayer.m */; };
 		F28B09561F2793FA00A37338 /* Basic.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A21F1D0596004E1516 /* Basic.metal */; };
 		F28B09571F2793FE00A37338 /* PhongDiffuse.metal in Sources */ = {isa = PBXBuildFile; fileRef = F22678A51F1D0888004E1516 /* PhongDiffuse.metal */; };
 		F28B09581F27940300A37338 /* MTUFbxImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2B64BED1F0D3A6C00FE06FA /* MTUFbxImporter.mm */; };
@@ -308,6 +315,8 @@
 		F278EB1A1F08DB660081B339 /* NormalMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F278EB2A1F08DB660081B339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F278EB3D1F08DC0C0081B339 /* Renderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		F27D8E531F3F543500F5D73D /* MTULayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTULayer.h; sourceTree = "<group>"; };
+		F27D8E541F3F543500F5D73D /* MTULayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTULayer.m; sourceTree = "<group>"; };
 		F29101761F2A42CF00ADBF18 /* PhongNormalMap.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PhongNormalMap.metal; sourceTree = "<group>"; };
 		F291017F1F2B911E00ADBF18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F29101951F2B9C6500ADBF18 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
@@ -524,25 +533,27 @@
 		F26D2CDC1EFAC66A00C33683 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F22678A11F1BC0D7004E1516 /* Shaders */,
 				F2B64BE81F0D3A2D00FE06FA /* FBX */,
-				F24BC8AB1F2246F700D0CE2F /* MTUShaderTypes.h */,
-				F226789C1F1A084F004E1516 /* MTUTypes.h */,
+				F21F0D581F37798800965EAC /* MetalUtils.h */,
+				F22EB7361F34BE5000F174D9 /* MTUCamera.h */,
+				F22EB7371F34BE5000F174D9 /* MTUCamera.m */,
 				F22678921F167501004E1516 /* MTUDevice.h */,
 				F22678931F167A0F004E1516 /* MTUDevice.m */,
-				F29476E11F03F03C00F793C5 /* MTUMath.h */,
-				F29476E01F03F03C00F793C5 /* MTUMath.c */,
+				F27D8E531F3F543500F5D73D /* MTULayer.h */,
+				F27D8E541F3F543500F5D73D /* MTULayer.m */,
 				F226789E1F1A7401004E1516 /* MTUMaterial.h */,
 				F226789F1F1A741D004E1516 /* MTUMaterial.m */,
+				F29476E01F03F03C00F793C5 /* MTUMath.c */,
+				F29476E11F03F03C00F793C5 /* MTUMath.h */,
 				F2B64BE31F0BF33500FE06FA /* MTUMesh.h */,
 				F2B64BE41F0BF4E000FE06FA /* MTUMesh.m */,
 				F22678991F19FF29004E1516 /* MTUNode.h */,
 				F226789A1F1A007F004E1516 /* MTUNode.m */,
-				F22EB7361F34BE5000F174D9 /* MTUCamera.h */,
-				F22EB7371F34BE5000F174D9 /* MTUCamera.m */,
+				F24BC8AB1F2246F700D0CE2F /* MTUShaderTypes.h */,
 				F24FD33E1F30D1B600119E7A /* MTUSkybox.h */,
 				F24FD33F1F30D1B600119E7A /* MTUSkybox.m */,
-				F21F0D581F37798800965EAC /* MetalUtils.h */,
+				F226789C1F1A084F004E1516 /* MTUTypes.h */,
+				F22678A11F1BC0D7004E1516 /* Shaders */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1208,6 +1219,7 @@
 				F21F0D3E1F37001400965EAC /* PhongNormalMap.metal in Sources */,
 				F21F0D441F37002900965EAC /* MTUMesh.m in Sources */,
 				F21F0D3F1F37001700965EAC /* Phong.metal in Sources */,
+				F27D8E5A1F3F543500F5D73D /* MTULayer.m in Sources */,
 				F21F0D431F37002600965EAC /* MTUMaterial.m in Sources */,
 				F21F0D3B1F37000400965EAC /* main.m in Sources */,
 				F21F0D381F36FFF100965EAC /* ViewController.m in Sources */,
@@ -1235,6 +1247,7 @@
 				F22ADAB21F38B2A8005FA3DC /* MTUNode.m in Sources */,
 				F22ADABA1F38B3CC005FA3DC /* MTUFbxImporter.mm in Sources */,
 				F22ADAAE1F38B29C005FA3DC /* MTUDevice.m in Sources */,
+				F27D8E5B1F3F543500F5D73D /* MTULayer.m in Sources */,
 				F22ADAAA1F38B28B005FA3DC /* PhongNormalMap.metal in Sources */,
 				F22ADAAB1F38B28E005FA3DC /* Phong.metal in Sources */,
 				F22ADAAC1F38B291005FA3DC /* Reflection.metal in Sources */,
@@ -1262,6 +1275,7 @@
 				F24FD3351F30D00A00119E7A /* MTUMath.c in Sources */,
 				F24FD3401F30D1B600119E7A /* MTUSkybox.m in Sources */,
 				F2FF30091F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F27D8E591F3F543500F5D73D /* MTULayer.m in Sources */,
 				F24FD3321F30CFFE00119E7A /* Phong.metal in Sources */,
 				F24FD32C1F30CFE100119E7A /* ViewController.m in Sources */,
 				F24FD3371F30D01000119E7A /* MTUMesh.m in Sources */,
@@ -1366,6 +1380,7 @@
 				F21F0D491F37003700965EAC /* MTUSkybox.m in Sources */,
 				F278EB2F1F08DB8F0081B339 /* ViewController.m in Sources */,
 				F2FF30071F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F27D8E571F3F543500F5D73D /* MTULayer.m in Sources */,
 				F278EB321F08DBA20081B339 /* main.m in Sources */,
 				F291017D1F2A456500ADBF18 /* MTUMesh.m in Sources */,
 				F278EB401F08DC0C0081B339 /* Renderer.m in Sources */,
@@ -1393,6 +1408,7 @@
 				F21F0D461F37003200965EAC /* MTUSkybox.m in Sources */,
 				F29101C21F2DB83D00ADBF18 /* MTUMaterial.m in Sources */,
 				F2FF30081F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F27D8E581F3F543500F5D73D /* MTULayer.m in Sources */,
 				F29101C11F2DB83B00ADBF18 /* MTUMath.c in Sources */,
 				F29101B81F2DB80600ADBF18 /* ViewController.m in Sources */,
 				F29101BF1F2DB83400ADBF18 /* MTUFbxImporter.mm in Sources */,
@@ -1421,6 +1437,7 @@
 				F2B716251EFABD57001B9A87 /* ViewController.m in Sources */,
 				F29476E31F03F04500F793C5 /* MTUMath.c in Sources */,
 				F2B64BEF1F0D3A6C00FE06FA /* MTUFbxImporter.mm in Sources */,
+				F27D8E551F3F543500F5D73D /* MTULayer.m in Sources */,
 				F2B716281EFABD6A001B9A87 /* main.m in Sources */,
 				F2B716311EFABDBA001B9A87 /* Renderer.m in Sources */,
 				F22678941F167A0F004E1516 /* MTUDevice.m in Sources */,
@@ -1446,6 +1463,7 @@
 				F21F0D481F37003700965EAC /* MTUSkybox.m in Sources */,
 				F2E0556E1F076EAA007A4BAA /* main.m in Sources */,
 				F2FF30061F322C3200EAE2A9 /* BaseRenderer.m in Sources */,
+				F27D8E561F3F543500F5D73D /* MTULayer.m in Sources */,
 				F28B09581F27940300A37338 /* MTUFbxImporter.mm in Sources */,
 				F2E0556F1F076EB0007A4BAA /* MTUMath.c in Sources */,
 				F28B095B1F27941E00A37338 /* MTUMesh.m in Sources */,

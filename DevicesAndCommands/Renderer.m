@@ -15,7 +15,8 @@
 }
 
 - (void) loadMetal:(MTKView *)view {
-    _device = view.device;
+    _device = MTLCreateSystemDefaultDevice();
+    view.device = _device;
     _commandQueue = [_device newCommandQueue];
 }
 

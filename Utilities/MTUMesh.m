@@ -40,7 +40,7 @@
     }
     
     _material = nil;
-    _material = [[MTUMaterial alloc] initWithConfig:config andVertexFormat:_vertexFormat];
+    _material = [[MTUMaterial alloc] initWithConfig:config];
 }
 
 @end

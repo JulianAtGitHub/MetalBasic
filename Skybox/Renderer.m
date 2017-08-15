@@ -23,11 +23,12 @@
 @implementation Renderer
 
 - (void) loadMetal:(MTKView *)view {
+    [MTUDevice sharedInstance].view = view;
+    
     _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 2.5f, 5.0f}
                                            target:(MTUPoint3){0.0f, 2.5f, 0.0f}
                                                up:(MTUPoint3){0.0f, 1.0f, 0.0f}];
     
-    [MTUDevice sharedInstance].view = view;
     MTUDirectLight light;
     light.inversed_direction = vector_normalize(vector3(1.0f, 1.0f, 1.0f));
     light.ambient_color = vector3(0.25f, 0.25f, 0.25f);
@@ -104,10 +105,14 @@
     [_scene updateWithCamera:_camera];
     [_skybox updateWithCamera:_camera];
     
+    [device setTargetLayer:[MTULayer layerFromCache:device.default3DLayerName]];
+    
     [_scene draw];
     [_skybox draw];
     
-    [device commit];
+    [device targetLayerEnded];
+    
+    [device presentToView];
 }
 
 @end

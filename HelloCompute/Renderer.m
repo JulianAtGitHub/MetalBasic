@@ -39,7 +39,9 @@ static const Vertex quadVertices[] = {
 }
 
 - (void) loadMetal:(MTKView *)view {
-    _device = view.device;
+    _device = MTLCreateSystemDefaultDevice();
+    view.device = _device;
+    
     NSError *err = nil;
     id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
     

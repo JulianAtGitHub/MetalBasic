@@ -80,8 +80,9 @@ static const NSUInteger MaxBuffersInFlight = 3;
 /// Initialize with the MetalKit view from which we'll obtain our Metal device.  We'll also use this
 /// mtkView object to set the pixelformat and other properties of our drawable
 /// Initialize with the MetalKit view from which we'll obtain our metal device
-- (void) loadMetal:(MTKView *)view {
-    _device = mtkView.device;
+- (void) loadMetal:(MTKView *)mtkView {
+    _device = MTLCreateSystemDefaultDevice();
+    mtkView.device = _device;
     
     _inFlightSemaphore = dispatch_semaphore_create(MaxBuffersInFlight);
     // Create and load our basic Metal state objects

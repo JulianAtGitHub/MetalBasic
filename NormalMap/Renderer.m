@@ -22,11 +22,12 @@
 @implementation Renderer
 
 - (void) loadMetal:(MTKView *)view {
+    [MTUDevice sharedInstance].view = view;
+    
     _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 3.0f, 0.0f}
                                            target:(MTUPoint3){0.0f, 0.0f, 0.0f}
                                                up:(MTUPoint3){0.0f, 0.0f, 1.0f}];
     
-    [MTUDevice sharedInstance].view = view;
     _scene = [[MTUFbxImporter shadedInstance] loadNodeFromFile:@"Models/sphere.obj" andConvertToFormat:MTUVertexFormatPTNTB];
     MTUNode *sphere = [_scene findNodeWithName:@"default"];
     if (sphere) {
@@ -93,8 +94,10 @@
     [device startDraw];
     [_camera update];
     [_scene updateWithCamera:_camera];
+    [device setTargetLayer:[MTULayer layerFromCache:device.default3DLayerName]];
     [_scene draw];
-    [device commit];
+    [device targetLayerEnded];
+    [device presentToView];
 }
 
 @end

@@ -12,27 +12,23 @@
 #import <Metal/Metal.h>
 #import "MTUTypes.h"
 
+@class MTULayer;
+
 @interface MTUMaterialConfig : NSObject
 
-@property (nonnull, nonatomic) NSString *name;
+@property (nonnull, nonatomic, copy) NSString *name;
 
 @property (nullable, nonatomic) NSString *vertexShader;
 
 @property (nullable, nonatomic) NSString *fragmentShader;
 
-@property (nonatomic) MTLPixelFormat colorFormat;
-
-@property (nonatomic) MTLPixelFormat depthFormat;
-
-@property (nonatomic) MTLPixelFormat stencilFormat;
-
 @property (nonatomic) MTLCompareFunction depthCompareFunction;
 
 @property (nonatomic) BOOL depthWritable;
 
-@property (nonatomic) BOOL isCullBackFace;
+@property (nonatomic) MTLCullMode cullMode;
 
-@property (nonatomic) BOOL isClockWise;
+@property (nonatomic) MTLWinding winding;
 
 @property (nonatomic) MTUVertexFormat vertexFormat;
 
@@ -52,23 +48,13 @@
 
 @interface MTUMaterial : NSObject
 
-- (nonnull instancetype) initWithConfig:(nonnull MTUMaterialConfig *)config andVertexFormat:(MTUVertexFormat)vertexFormat;
-
 @property (nonnull, readonly) NSString *name;
+
+@property (nonnull, readonly) MTUMaterialConfig *config;
 
 @property (nonnull, readonly) id <MTLRenderPipelineState> renderPipelineState;
 
 @property (nullable, readonly) id <MTLDepthStencilState> depthStencilState;
-
-@property (readonly) MTLCullMode cullMode;
-
-@property (readonly) MTLWinding winding;
-
-@property (nonatomic, readonly) MTUVertexFormat vertexFormat;
-
-@property (nonatomic, readonly) MTUTransformType transformType;
-
-@property (nonatomic, readonly) MTUCameraParamsUsage cameraParamsUsage;
 
 @property (nonnull, readonly) NSArray <id <MTLBuffer> > *transformBuffers;
 
@@ -81,6 +67,10 @@
 @property (nonnull, readonly) NSArray <NSNumber *> *bufferIndexOfFragmentShader;
 
 @property (nonnull, readonly) NSArray <id <MTLTexture> > *textures;
+
+- (nonnull instancetype) initWithConfig:(nonnull MTUMaterialConfig *)config;
+
+- (void) setRenderLayer:(nonnull MTULayer *)layer andMeshVertexFormat:(MTUVertexFormat)format;
 
 @end
 

@@ -205,7 +205,7 @@ static MTUFbxImporter *instance = nil;
 }
 
 - (MTUNode *)loadNodeFromFile:(NSString *)filename andConvertToFormat:(MTUVertexFormat)format {
-    _vertexFormat = (format >= MTUVertexFormatMax ? MTUVertexFormatPTN : format);
+    _vertexFormat = (format == MTUVertexFormatInvalid ? MTUVertexFormatPTN : format);
     
     //Create an FBX scene. This object holds most objects imported/exported from/to files.
     FbxScene *scene = FbxScene::Create(_sdkManager, "Import Scene Root");

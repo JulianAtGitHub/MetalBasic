@@ -26,7 +26,8 @@ static const Vertex triangleVertices[] = {
 }
 
 - (void) loadMetal:(MTKView *)view {
-    _device = view.device;
+    _device = MTLCreateSystemDefaultDevice();
+    view.device = _device;
     
     id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
     id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
@@ -42,7 +43,7 @@ static const Vertex triangleVertices[] = {
     _pipelineState = [_device newRenderPipelineStateWithDescriptor:pipelineStateDescriptor error:&err];
     if (!_pipelineState) {
         NSLog(@"Failed to created pipeline state, error %@", err);
-        return nil;
+        return;
     }
     
     _commandQueue = [_device newCommandQueue];

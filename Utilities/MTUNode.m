@@ -135,12 +135,12 @@
             continue;
         }
         
-        if (mesh.material.cameraParamsUsage != MTUCameraParamsNotUse) {
+        if (mesh.material.config.cameraParamsUsage != MTUCameraParamsNotUse) {
             mesh.material.cameraBuffers = camera.buffers;
         }
         
         id <MTLBuffer> buffer = [device currentInFlightBuffer:mesh.material.transformBuffers];
-        switch (mesh.material.transformType) {
+        switch (mesh.material.config.transformType) {
             case MTUTransformTypeMvp: {
                 MTUTransformMvp transform;
                 transform.modelview_projection = modelview_projection;
@@ -179,7 +179,7 @@
             if (mesh.material == nil) {
                 continue;
             }
-            [device drawMesh:mesh withMaterial:mesh.material];
+            [device drawMesh:mesh];
         }
     }
     

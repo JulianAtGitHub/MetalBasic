@@ -34,7 +34,9 @@ static const Vertex quadVertices[] = {
 }
 
 - (void) loadMetal:(MTKView *)view {
-    _device = view.device;
+    _device = MTLCreateSystemDefaultDevice();
+    view.device = _device;
+    
     id <MTLLibrary> defaultLibrary = [_device newDefaultLibrary];
     id <MTLFunction> vertexFunction = [defaultLibrary newFunctionWithName:@"vertexShader"];
     id <MTLFunction> fragmentFunction = [defaultLibrary newFunctionWithName:@"fragmentShader"];

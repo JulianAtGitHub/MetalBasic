@@ -22,11 +22,12 @@
 @implementation Renderer
 
 - (void) loadMetal:(MTKView *)view {
+    [MTUDevice sharedInstance].view = view;
+    
     _camera = [[MTUCamera alloc] initWithPosition:(MTUPoint3){0.0f, 300.0f, 800.0f}
                                            target:(MTUPoint3){0.0f, 300.0f, 0.0f}
                                                up:(MTUPoint3){0.0f, 1.0f, 0.0f}];
     
-    [MTUDevice sharedInstance].view = view;
     MTUDirectLight light;
     light.inversed_direction = vector_normalize(vector3(1.0f, 1.0f, 1.0f));
     light.ambient_color = vector3(0.2f, 0.2f, 0.2f);
@@ -41,8 +42,8 @@
     structureConfig.name = @"structure-phong";
     structureConfig.vertexShader = @"vertPhong";
     structureConfig.fragmentShader = @"fragPhong";
-    structureConfig.isCullBackFace = YES;
-    structureConfig.isClockWise = NO;
+    structureConfig.cullMode = MTLCullModeBack;
+    structureConfig.winding = MTLWindingCounterClockwise;
     structureConfig.vertexFormat = MTUVertexFormatPTNTB;
     structureConfig.transformType = MTUTransformTypeMvpMN;
     structureConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
@@ -55,8 +56,8 @@
     foliageConfig.name = @"foliage-phong";
     foliageConfig.vertexShader = @"vertPhong";
     foliageConfig.fragmentShader = @"fragPhong";
-    foliageConfig.isCullBackFace = YES;
-    foliageConfig.isClockWise = NO;
+    foliageConfig.cullMode = MTLCullModeBack;
+    foliageConfig.winding = MTLWindingCounterClockwise;
     foliageConfig.vertexFormat = MTUVertexFormatPTNTB;
     foliageConfig.transformType = MTUTransformTypeMvpMN;
     foliageConfig.cameraParamsUsage = MTUCameraParamsForVertexShader;
@@ -109,10 +110,17 @@
     
     MTUDevice *device = [MTUDevice sharedInstance];
     [device startDraw];
+    
     [_camera update];
     [_scene updateWithCamera:_camera];
+    
+    [device setTargetLayer:[MTULayer layerFromCache:device.default3DLayerName]];
+    
     [_scene draw];
-    [device commit];
+    
+    [device targetLayerEnded];
+    
+    [device presentToView];
 }
 
 @end

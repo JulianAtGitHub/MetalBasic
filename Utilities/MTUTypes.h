@@ -49,18 +49,17 @@ typedef struct {
 } MTUVertexPTNTB;
 
 typedef enum {
-    MTUVertexFormatP = 0,
+    MTUVertexFormatInvalid = 0,
+    MTUVertexFormatP,
     MTUVertexFormatPT,
     MTUVertexFormatPTN,
     MTUVertexFormatPTNTB,
-    MTUVertexFormatMax
 } MTUVertexFormat;
 
 typedef enum {
     MTUTransformTypeInvalid = 0,
     MTUTransformTypeMvp,
     MTUTransformTypeMvpMN,
-    MTUTransformTypeMax
 } MTUTransformType;
 
 typedef enum {

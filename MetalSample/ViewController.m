@@ -20,14 +20,7 @@
 
     // Do any additional setup after loading the view.
     _mtkView = (MTKView *)self.view;
-    _mtkView.device = MTLCreateSystemDefaultDevice();
-    
-    if (!_mtkView.device) {
-        NSLog(@"Metal is not support on this device!");
-        self.view = [[NSView alloc] initWithFrame:self.view.frame];
-        return;
-    }
-    
+
     _renderer = [[Renderer alloc] initWithMTKView:_mtkView];
     if(!_renderer) {
         NSLog(@"Renderer failed initialization");

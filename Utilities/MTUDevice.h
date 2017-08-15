@@ -14,19 +14,22 @@
 
 @class MTUNode;
 @class MTUMesh;
-@class MTUMaterial;
-@class MTUCamera;
 @class MTUMaterialConfig;
+@class MTUMaterial;
+@class MTULayer;
+@class MTUCamera;
 
 @interface MTUDevice : NSObject
 
 @property (nullable, nonatomic, readwrite) MTKView *view;
 
+@property (nullable, nonatomic, readonly) id <MTLDevice> mtlDevice;
+
+@property (nonnull, nonatomic, readonly) NSString *default3DLayerName;
+
 + (nonnull MTUDevice *) sharedInstance;
 
-- (nullable id <MTLRenderPipelineState>) renderPipelineStateWithConfig:(nonnull MTUMaterialConfig *)config andMeshVertexFormat:(MTUVertexFormat)meshVertexFormat;
-
-- (nullable id <MTLDepthStencilState>) depthStencilStateWithConfig:(nonnull MTUMaterialConfig *)config;
+- (nullable id <MTLFunction>) shaderFunctionWithName:(nonnull NSString *)name;
 
 - (nullable id <MTLBuffer>) newBufferWithRawData:(nonnull NSData *)data;
 
@@ -40,9 +43,13 @@
 
 - (void) startDraw;
 
-- (void) drawMesh:(nonnull MTUMesh *)mesh withMaterial:(nonnull MTUMaterial *)material;
+- (void) setTargetLayer:(nonnull MTULayer *)layer;
 
-- (void) commit;
+- (void) targetLayerEnded;
+
+- (void) drawMesh:(nonnull MTUMesh *)mesh;
+
+- (void) presentToView;
 
 @end
 
