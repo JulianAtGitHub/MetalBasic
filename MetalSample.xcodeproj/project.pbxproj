@@ -1502,6 +1502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1525,6 +1526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1548,6 +1550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1571,6 +1574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1594,6 +1598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1617,6 +1622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1784,6 +1790,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1807,6 +1814,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1830,6 +1838,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1853,6 +1862,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1966,6 +1976,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -1990,6 +2001,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -2013,6 +2025,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",
@@ -2036,6 +2049,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"${FBXSDK}/include",

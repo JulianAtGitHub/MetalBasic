@@ -266,7 +266,7 @@ static MTUFbxImporter *instance = nil;
         }
     }
     
-    for (NSUInteger i = 0; i < root->GetChildCount(); ++i) {
+    for (int i = 0; i < root->GetChildCount(); ++i) {
         MTUNode *child = [self loadNodeFromFbxNode:root->GetChild(i) toParent:node];
         [node addChild:child];
     }
